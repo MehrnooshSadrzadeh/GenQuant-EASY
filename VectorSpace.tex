@@ -1,0 +1,85 @@
+\section{Vector Space Interpretation}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Quant"
+%%% End: 
+
+In this section, we interpret the model on category $FVect$ of finite dimensional vector spaces and linear maps. We then provide concrete instantiations on a version of this category built from normal practice of distributional semanticists. 
+
+In a concrete vector space model, built from a corpus using distributional methods, we assume that  vector meaning of the subject is $\sum_i C_i \ov{n}_i$ and the linear map corresponding to the verb is $\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k$. Further, we assume that ${\cal P} = id$. The meaning of ``Q Sbj Verb'' is  the following
+
+\[
+(\epsilon_N \otimes 1_S) \circ (Det \otimes ({\cal P} \circ \mu_N) \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})\Big(\sum_i C_i \ov{n}_i \otimes \sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k\Big)
+\]
+In the first step of computation we have
+
+\begin{align*}
+(\delta_N \otimes 1_{N \otimes S})\Big(\sum_i C_i \ov{n}_i \otimes \sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k\Big) = 
+(\sum_i C_i \ov{n}_i \otimes \ov{n}_i) \otimes  (\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k)
+\end{align*}
+
+\noindent
+Then we proceed by
+
+\begin{align*}
+(Det \otimes  \mu_N \otimes 1_S)\Big((\sum_i C_i \ov{n}_i \otimes \ov{n}_i) \otimes  (\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k)\Big) = \\
+???
+\end{align*}
+
+\noindent
+The final step is as follows:
+
+\begin{align*}
+(\epsilon_{{\cal P} N} \otimes 1_S)  \Big(Det(\sum_i \ov{n}_i) \otimes {\cal P}(\sum_i \sigma_{ij} \ov{n}_i) \otimes \ov{1} \Big) =   \langle \ov{w}_k \mid \ov{\{\sum_i \ov{n}_i\}} \rangle  \otimes \ov{1}
+\end{align*}
+
+\noindent 
+where $Det (\sum_i \ov{n}_i) = \sum_k \ov{w}_k$, for $w_k \subseteq B_N$ where $B_N$ is the set of basis vectors of $N$.  Meanings of sentences with quantified objects and transitive verbs are computed in an identical fashion. 
+
+
+
+
+
+
+
+\section{Degrees of Truth}
+
+As an example, defining  $c_Q(\sigma_{ij} \ov{n}_j) =  C_{jw}\ov{s}_w$ for $\ov{n}_j \otimes \ov{s}_w \in \ov{Verb}$, will yield unification of  the subjects of the verb with the subject and obtain the modification of the subject with the verb as the output. If this output is non-zero, this provides the meaning of the sentence with Q = $\exists$, otherwise, this will be the meaning of the sentence  with Q = $\nexists$. 
+
+As a first example suppose the coordinates $C_i$ and $C_{jk}$ correspond to \emph{degrees of truth}. The vector of the subject $\sum_i C_i \ov{n}_i$ is read as `the degrees according to which the basis words of the space $N$, that is   $\ov{n}_i$'s,  share properties with subject'.  The linear map of the verb $\sum_{jk} C_{jk} \ov{n}_i \otimes \ov{s}_k$ is read as `the degree according to which the verb is applicable to  the basis words of $N$'. For instance, take the basis words of $N$ to be ``bearded'' and `cute'' and take $S$ as in the truth theoretic interpretation, that is the real line.  Suppose the vector of ``men'' is a follows
+\[
+\ov{\text{men}} = 2/3 \ov{\text{bearded}} + 1/3 \ov{\text{cute}}
+\]
+This is read as ``men are  bearded 2/3rd of the time and cute 1/3 of the time''. Suppose the meaning of ``sleep'' is as follows
+\[
+\ov{\text{sleep}} = 1/5 \ov{\text{bearded}} \otimes \ov{1}  + 3/5 \ov{\text{cute}} \otimes \ov{1}
+\]
+This is read as bearded things sleep 1/5th of the time  and cute things sleep 3/5th of the time. To compute the meaning of `some men sleep' , we first compute
+\begin{align*}
+\mu \otimes 1_S (\ov{\text{men}} \otimes \ov{\text{sleep}}) = &\\
+2/3 \times 1/5 \ov{\text{bearded}} \otimes \ov{1} \ + \ 
+1/3\times 3/5\ov{\text{cute}} \otimes \ov{1}&
+\end{align*}
+When $c_{\exists}$ is applied to the above, it returns the weights multiplied by the sentence basis vector. Hence the application of $c_{\exists} \otimes 1_S$ to the above  is 
+\[
+2/15 (\ov{1} \otimes \ov{1})+ 3/15 (\ov{1} \otimes \ov{1})
+\]
+Finally, when $\mu$ is applied to the above, we will obtain  $2/15 \ov{1} + 3/15 \ov{1}$, which reads as in 1/3rd of the times it is true that some men sleep. 
+
+As a third example, we  use the  concrete instantiation  of verbs as in \cite{GrefenSadr}. In this model the above so-called `degrees of truth' are obtained from a corpus by counting co-occurrences of one word with the basis words of a vector space. The vector of a noun on each coordinate is the (a normalised version) of the  number of times the noun has occurred in the window of (usually taken to be 5 words) the basis words. The vector of an intransitive verb is the sum of the vectors of its subjects across the corpus. The Vector of a transitive verb is the sum of tensor products of the subjects and objects of the verb across the corpus. That is we have
+\[
+\ov{iVerb} = \sum_i \ov{Sbj}_i
+\qquad
+\ov{tVerb} = \sum_i (\ov{Sbj} \otimes \ov{Obj})_i
+\]
+Hence, the vectors of `Q Sbj Verb', `Q Sbj Verb Obj'  become as follows
+\[
+c_Q(\ov{Sbj} \odot (\ov{Verb} \times \ov{Obj})) \times   (\ov{Verb} \times \ov{Obj}))\\
+\]
+In the first case, we set  $c_{\exists} = Id$  (this is possible here since $\ov{Verb} \in N$) and  via the $\odot$ obtain the joint properties of the subject of the sentence and the subjects of the verb, which at the same time will represent the application of the verb to the vector representing these joint properties. In the transitive case, we first obtain the joint properties of the subject of the sentence and the subjects of the verb phrase Verb-Obj, and then apply the verb phrase to the vector representing these joint properties. 
+
+
+
+
+

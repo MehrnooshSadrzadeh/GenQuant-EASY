@@ -1,0 +1,49 @@
+\section{Diagrammatic and Compact Closed Semantics}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Quant"
+%%% End: 
+
+In this section we develop compact closed semantics for the quantifiers and the sentences containing them. We present   diagrams and  categorical morphisms for the quantifier word and quantifiers sentence. For each case, we also provide an intuitive explanation on why the semantics is as it is. 
+
+
+The diagrammatic semantics of a determiner $Det$ is as follows:
+
+\begin{center}
+\tikzfig{Q-Sbj-Frob}
+\end{center}
+
+\noindent
+It corresponds to the following compact closed categorical morphism
+{\small
+\[
+(1_N \otimes \delta_N) \circ (1_N \otimes Det \otimes \mu_N) \circ (1_N \otimes \eta_N \otimes 1_N) \circ \eta_N 
+\]}
+
+\noindent
+The meaning of the sentence with a quantified phrase in a subject position and its normalised form are as follows:
+
+
+\begin{minipage}{20cm}
+\begin{minipage}{7cm}
+\tikzfig{Q-Sbj-Frob-Sent}
+\end{minipage}
+\ $\leadsto$ \
+\begin{minipage}{5cm}
+ \tikzfig{Q-Sbj-Norm}
+\end{minipage}
+\end{minipage}
+
+
+\noindent
+The symbolic representation of the above is as follows
+\[{\small
+(\epsilon_N \otimes 1_S) \circ (Det \otimes  \mu_N \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})}
+\]
+
+
+The intuitive justification  is that the determiner first makes a copy of the subject (via the Frobenius $\delta$ map), so now we have two copies of the subject. One of these is being unified with the subject argument of the verb (via the Frobenius $\mu$ map). In set-theoretic terms this is the intersection of the interpretations of subject and subjects-of-verb. The other copy is being inputted to the determiner map $Det$ and will produce a modified noun based on the meaning of the determiner.  The last step is the application of the unification to the output of $Det$. Set theoretically, this step will decide whether the intersection of the subject-of-verb and the noun belongs to the interpretation of the quantified noun. The ${\cal P}$ map is there to turn the result of  the unification into a form applicable to the result of $Det$.  Set-theoretically, we can just check member ship, but in vector spaces we have to take an inner product. But the two outputs do not have the same type, set-theoretically, the former is a set whereas the latter a family of sets. So, we first  turn the result of the intersection, which is just a set, into a family of sets (which contains only one set) by putting brackets around the original set. The result of this decision will be reflected via the output  $S$ in the verb. 
+ 
+The diagrams,  morphisms, and intuitions for a quantified phrase in an object position are identical.
+

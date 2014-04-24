@@ -1,0 +1,40 @@
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{trees}
+\usetikzlibrary{topaths}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{matrix,backgrounds,folding}
+\usetikzlibrary{chains,scopes,positioning,fit}
+\usetikzlibrary{arrows,shadows}
+\usetikzlibrary{calc} 
+\usetikzlibrary{chains}
+\usetikzlibrary{shapes,shapes.geometric,shapes.misc}
+
+
+\newcommand{\tikzfig}[1]{{%
+\beginpgfgraphicnamed{#1}
+\InputIfFileExists{#1.tikz}{}{\input{./tikz/#1.tikz}}
+\endpgfgraphicnamed}}
+
+\newcommand{\ctikzfig}[1]{%
+\begin{center}\rm
+  \tikzfig{#1}
+\end{center}}
+
+\newcommand{\inlinetikzfig}[1]{\InputIfFileExists{#1.tikz}{}{\input{./tikz/#1.tikz}}}
+
+\pgfdeclarelayer{edgelayer}
+\pgfdeclarelayer{nodelayer}
+\pgfsetlayers{background,edgelayer,nodelayer,main}
+
+\tikzstyle{dot}=[circle,fill=black,draw=black]
+\tikzstyle{every picture}=[baseline=(current bounding box).east,scale=0.5,node distance=5mm]
+\tikzstyle{none}=[inner sep=0pt]
+\tikzstyle{every loop}=[]
+
+
+%% this is a work around for tikzit bug
+\tikzstyle{(null)}=[]
+\tikzstyle{plain}=[]
+

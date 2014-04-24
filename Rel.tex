@@ -1,0 +1,93 @@
+\section{Relational Interpretation}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Quant"
+%%% End: 
+
+For this part, we work in the category $Rel$ of sets and relations. This is compact closed as follows \cite{BobEric}. 
+
+Take $N$ to be a vector space with a fixed basis ${\cal B}$, where ${\cal B}$ is a finite set. A  basis vector of $N$  is denoted by $\ov{n}_i$. Given a set of individuals ${\cal U}$,  each  individual is mapped to a basis vector of $N$, the map is denoted by $\pi \colon {\cal U} \to {\cal B}$.  Thus a subset of basis vectors of $N$ represents a subset of individuals.  For example,    the sum $\sum_i \ov{n}_i$ denotes the `men' subset of individuals, where $i$ ranges over the basis vectors that are mappings of the individuals that are men. 
+
+Take $S$ to be the one dimensional space free over the singleton $\ov{1}$. The  zero vector represents false, and any nonzero value represents a degree of truth. 
+
+A transitive verb $w$, which is a vector in the space $N \otimes S
+\otimes N$, is represented by 
+\[
+\ov{w} := \sum_{ij} \ov{\{{n}\}}_i \otimes \ov{1}  \otimes \ov{\{n\}}_j, \quad 
+\text{if} \  \pi^{-1}({n}_i) \ w\mbox{'s} \  \pi^{-1}({n}_j)
+\]
+ For example, the verb ``stroke'', denoted by $\ov{stroke}$, is represented by $
+\sum_{(i,j) \in  R_{stroke}} \ov{\{n\}}_i \otimes  \ov{1}
+\otimes \ov{\{n\}}_j$, for  $R_{stroke}$  the set of all pairs $(i,j)$ such that $\pi^{-1}(\ov{n}_i)$ strokes $\pi^{-1}(\ov{n}_j)$.  An intransitive verb ``sneeze'', denoted by $\ov{sneeze}$, is represented by $\sum_{i \in R_{sleep}} \ov{\{n\}}_i \otimes \ov{1}$, such that $\pi^{-1}(\ov{n}_i)$ sneezes.  
+
+
+The meaning of the sentence ``Det Sbj Verb''is a vector obtained by computing the following, which corresponds to the categorical morphism of the normalised diagram of the sentence.  
+
+\[
+(\epsilon_N \otimes 1_S) \circ (Det \otimes  \mu_N \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})\Big(\ov{Sbj} \otimes \ov{Verb}\Big)
+\]
+This is computed in three steps. First we compute the following
+
+\begin{align*}
+(\delta_N \otimes 1_{N \otimes S})\Big(\ov{Sbj} \otimes \ov{Verb}\Big) = 
+(\delta_N \otimes 1_{N \otimes S})\Big((\sum_i \ov{n}_i) \otimes (\sum_j \ov{n}_j  \otimes \ov{1}) \Big) =\\
+\delta_N(\sum_i \ov{n}_i) \otimes (\sum_j \ov{n}_j \otimes \ov{1}) = (\sum_i \ov{n}_i \otimes \ov{n}_i) \otimes (\sum_j \ov{n}_j \otimes \ov{1})
+\end{align*}
+
+\noindent
+Then we proceed by
+
+\begin{align*}
+(Det \otimes  \mu_N \otimes 1_S)\Big(\sum_i \ov{n}_i \otimes \ov{n}_i) \otimes (\sum_j \ov{n}_j \otimes \ov{1}\Big) = \\
+Det(\sum_i \ov{n}_i) \otimes  \mu_N(\sum_i \sum_j \ov{n}_i \otimes \ov{n}_j) \otimes 1_S(\ov{1}) = \\
+Det(\sum_i \ov{n}_i) \otimes  (\sum_i \sigma_{ij} \ov{n}_i) \otimes \ov{1} 
+\end{align*}
+
+\noindent
+The final step is as follows:
+
+\begin{align*}
+(\epsilon_{N} \otimes 1_S)  \Big(Det(\sum_i \ov{n}_i) \otimes (\sum_i \sigma_{ij} \ov{n}_i) \otimes \ov{1} \Big) =   \langle \ov{w}_k \mid \ov{\{\sum_i \ov{n}_i\}} \rangle  \otimes \ov{1}
+\end{align*}
+
+\noindent 
+where $Det (\sum_i \ov{n}_i) = \sum_k \ov{w}_k$, for $w_k \subseteq B_N$ where $B_N$ is the set of basis vectors of $N$.  Meanings of sentences with quantified objects and transitive verbs are computed in an identical fashion. 
+
+
+
+
+As an example suppose we have  a set of men $\{m_1, m_2\}$ and a set of cats $\{c_1, c_2\}$. Now suppose that one of the men $m_1$ and all of the cats  sleep, that is we have
+\[
+\ov{sleep} \ = \  \ov{m}_1 \otimes \ov{1} + \ov{c}_1 \otimes \ov{1} + \ov{c}_2 \otimes \ov{1}
+\]
+Here are some sample sentences:
+\begin{enumerate}
+\item The meaning  of the sentence `some men sleep', is computed in three steps. In the first step, we obtain
+\[
+(\ov{m}_1 \otimes \ov{m}_1 + \ov{m}_2 \otimes \ov{m}_2)  \otimes ( \ov{m}_1 \otimes \ov{1} + \ov{c}_1 \otimes \ov{1} + \ov{c}_2 \otimes \ov{1})
+\]
+In the second step we obtain
+\[
+Some(\ov{m}_1 + \ov{m}_2) \otimes {\cal P}(\ov{m}_1) \otimes \ov{1} = 
+(\ov{\{\ov{m}_1\}} + \ov{\{\ov{m}_2\}} + \ov{\{\ov{m}_1, \ov{m}_2\}}) \otimes (\ov{\{\ov{m}_1\}}) \otimes \ov{1}
+ \]
+In the last step we obtain $\ov{1}$, since we have $\left \langle \ov{\{\ov{m}_1\}} \mid \ov{\{\ov{m}_1\}}) \right \rangle = 1$. This  means that the meaning of this sentence is true.  
+\item The meaning of `all men sleep' would be false. Since, in this case, in the second step we would obtain
+\[
+All(\ov{m}_1 + \ov{m}_2) \otimes {\cal P}(\ov{m}_1) \otimes \ov{1} = 
+(\ov{\{\ov{m}_1, \ov{m}_2\}}) \otimes (\ov{\{\ov{m}_1\}}) \otimes \ov{1}
+ \]
+which would result to a 0 in the third step, since $\left \langle \ov{\{\ov{m}_1, \ov{m}_2\}} \mid \ov{\{\ov{m}_1\}}) \right \rangle = 0$.  
+\item The sentence `half of  men sleep' would also be true, since in the second step we obtain
+\[
+Half(\ov{m}_1 + \ov{m}_2) \otimes {\cal P}(\ov{m}_1) \otimes \ov{1} = 
+(\ov{\{\ov{m}_1\}} + \ov{\{\ov{m}_2\}}) \otimes (\ov{\{\ov{m}_1\}}) \otimes \ov{1}
+ \]
+since we  have $\left \langle \ov{\{\ov{m}_1\}} \mid \ov{\{\ov{m}_1\}}) \right \rangle = 1$, in the third step we will obtain a $\ov{1}$.  
+\item The sentence `no man sleeps' will be false, since in the second step we obtain
+\[
+No(\ov{m}_1 + \ov{m}_2) \otimes {\cal P}(\ov{m}_1) \otimes \ov{1} = 
+(\ov{\{ \ \}}) \otimes (\ov{\{\ov{m}_1\}}) \otimes \ov{1}
+ \]
+ This, in the third step,  will results in $\left \langle \ov{\{\ \}} \mid \ov{\{\ov{m}_1\}}) \right \rangle = 0$.
+\end{enumerate}
