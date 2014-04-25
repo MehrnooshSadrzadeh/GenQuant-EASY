@@ -1,5 +1,45 @@
 \newcommand{\FinSet}{\mathrm{FinSet}}
 \section{Compact Closed Semantics}
 %
+Categorical logic is an algebra of subobjects. For instance, a
+predicate on a set corresponds to its subset, intersection to
+conjunction, etc. Likewise, one would like to identify a predicate on
+a vector space with a subspace. However, $\Set$ and $\FdVect$ are very
+different categories so one cannot expect the logic of sets to work
+for vector spaces without some strong additional assumptions. A
+stepping stone on the route from sets to vector spaces, which is
+important in its own right, is the category of sets and relations,
+$\Rel$. $\Rel$ is somewhat like $\FdVect$ in that it is also dagger
+compact closed, and the empty set, $\emptyset$, is both initial and
+terminal. 
+% On the other hand, there are many differences: $\FdVect$ is
+% abelian; it has pullbacks and bi-products $\oplus$ but $A \oplus 0
+% \cong A$ in $\FdVect$ whereas $A \times 0 \cong 0$ in $\Set$ and
+% $\Rel$.
 
-Functorial Passage from $Preg$ to a compact closed cat. 
+Here we start to investigate how far one can get in $\FdVect$ by
+working in analogy with $\Rel$.  First and foremost, the compact tensor of $\Rel$ is the cartesian product. Its analogical version is the compact tensor of $FVect$ is the tensor product of  vector spaces.  Further, the  unit of tensor in $\Rel$ is the singleton set $\{\star\}$; its analogical version is the unit of tensor in $\FdVect$, that  is the scalar field $\mathbb{K}$. In the former case, we have two relations on $\{\star\}$: the identity and the empty set. In the latter, each linear map from $\mathbb{K}$ to itself represents a scalar. Both of these units form monoids, that of the former case is the monoid of Booleans and that of the latter case is the scalar monoid. They both are also rings, we have the scalar addition in the former case, which corresponds to the Boolean disjunction in the latter case. 
+
+
+Hence, by moving from $\Rel$ to $\FdVect$, we are replacing propositional
+truth values $\mathsf{t}$ and $\mathsf{f}$ by positive real numbers
+$1$ and $0$, and the propositional connectives $\wedge$ and $\vee$ by
+$\times$ and $+$, respectively.  I.e. the property of being related
+becomes a number, a \emph{degree of relatedness}.  Formally, we
+proceede by formulating set-theoretical logic in terms of the compact
+structure in $\Rel$. Then by replacing the compact structure of $\Rel$
+by the one in $\FdVect$ we obtain an analogous but very
+different notion of \emph{generalised} subset. {\tt what is a generalised subset?}
+
+An important assumption we make about our vector spaces is that we
+assume they come with a fixed basis, which is equivalent to having a
+Frobenius algebra $(\mu_A,\eta_A,\delta_A,\iota_A)$ over each vector
+space. A vector space with Frobenius algebra over it is called
+a \emph{classical structure} in \cite{CoeckePaquettePavlovic}. Classical
+structures share many properties with sets. However, even though one
+can define an appropriate notion of morphism for classical structures
+so that they form a category, $\FdVect_c$, unless 
+composition is redefined in a radical way there is not even a functor
+from $\Rel$ to $\FdVect_c$.
+{\tt ... may be explain why this the case briefly?}
+
