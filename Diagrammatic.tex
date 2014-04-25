@@ -5,7 +5,7 @@
 %%% TeX-master: "Quant"
 %%% End: 
 
-In this section we develop compact closed semantics for the quantifiers and the sentences containing them. We present   diagrams and  categorical morphisms for the quantifier word and quantifiers sentence. For each case, we also provide an intuitive explanation on why the semantics is as it is. 
+Following the terminology and notation of Barwise and  Perry, given a phrase containing a quantifier followed by a noun, that is `Q noun', we call `Q' a determiner and the phrase `Q noun' a quantified  phrase.Hence,  a quantified phrase is a noun phrase which is created by the application of a determiner to a noun phrase.  
 
 
 The diagrammatic semantics of a determiner $Det$ is as follows:
@@ -43,7 +43,8 @@ The symbolic representation of the above is as follows
 \]
 
 
-The intuitive justification  is that the determiner first makes a copy of the subject (via the Frobenius $\delta$ map), so now we have two copies of the subject. One of these is being unified with the subject argument of the verb (via the Frobenius $\mu$ map). In set-theoretic terms this is the intersection of the interpretations of subject and subjects-of-verb. The other copy is being inputted to the determiner map $Det$ and will produce a modified noun based on the meaning of the determiner.  The last step is the application of the unification to the output of $Det$. Set theoretically, this step will decide whether the intersection of the subject-of-verb and the noun belongs to the interpretation of the quantified noun. The ${\cal P}$ map is there to turn the result of  the unification into a form applicable to the result of $Det$.  Set-theoretically, we can just check member ship, but in vector spaces we have to take an inner product. But the two outputs do not have the same type, set-theoretically, the former is a set whereas the latter a family of sets. So, we first  turn the result of the intersection, which is just a set, into a family of sets (which contains only one set) by putting brackets around the original set. The result of this decision will be reflected via the output  $S$ in the verb. 
+The intuitive justification  is that the determiner first makes a copy of the subject (via the Frobenius $\delta$ map), so now we have two copies of the subject. One of these is being unified with the subject argument of the verb (via the Frobenius $\mu$ map). In set-theoretic terms this is the intersection of the interpretations of subject and subjects-of-verb. The other copy is being inputted to the determiner map $Det$ and will produce a modified noun based on the meaning of the determiner.  The last step is the application of the unification to the output of $Det$. Set theoretically, this step will decide whether the intersection of the subject-of-verb and the noun belongs to the interpretation of the quantified noun. 
+
  
 The diagrams,  morphisms, and intuitions for a quantified phrase in an object position are identical.
 
