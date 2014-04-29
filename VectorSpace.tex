@@ -22,11 +22,12 @@ where we have:
 \noindent
 The intuitive reading of the above is that $Det$ of a word $\ov{n}_i$ is the average of all the words that are $\alpha$-close to $\ov{n}_i$. In other words, the average of all the words  whose distance from $\ov{n}_i$ is $\alpha$.  For instance, if $Det$ is `few', then $\alpha$ is a small number (closer to 0 than to 1), indicating that we are taking the average of vectors that are not so close to $\ov{n}_i$. If $Det$ is `most', then $\alpha$ will be a large number (closer to 1 than to 0), indicating that we are taking the average of vectors that are close to $\ov{n}_i$. The distance $\alpha$ can be learnt from a corpus using a relevant task. 
 
-The meaning of ``Q Sbj Verb'' is  the following
+The meaning of ``Q Sbj Verb'' is obtained by computing the following:
 
 \[
-(\epsilon_N \otimes 1_S) \circ (Det \otimes ({\cal P} \circ \mu_N) \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})\Big(\sum_i C_i \ov{n}_i \otimes \sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k\Big)
+(\epsilon_N \otimes 1_S) \circ (Det \otimes  \mu_N \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})
 \]
+
 In the first step of computation we have
 
 \begin{align*}
