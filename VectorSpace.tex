@@ -20,12 +20,12 @@ where we have:
 \end{itemize}
 
 \noindent
-The intuitive reading of the above is that $Det$ of a word $\ov{n}_i$ is the average of all the words that are $\alpha$-close to $\ov{n}_i$. In other words, the average of all the words  whose distance from $\ov{n}_i$ is $\alpha$.  For instance, if $Det$ is `few', then $\alpha$ is a small number (closer to 0 than to 1), indicating that we are taking the average of vectors that are not so close to $\ov{n}_i$. If $Det$ is `most', then $\alpha$ will be a large number (closer to 1 than to 0), indicating that we are taking the average of vectors that are close to $\ov{n}_i$. The distance $\alpha$ can be learnt from a corpus using a relevant task. 
+The intuitive reading of the above is that $Det$ of a word $\ov{n}_i$ is the average of all the words that are $\alpha$-close to $\ov{n}_i$. In other words, the average of all the words  whose distance from $\ov{n}_i$ is $\alpha$.  For instance, if $Det$ is `few', then $\alpha$ is a small number (closer to 0 than to 1), indicating that we are taking the average of vectors that are not so close to $\ov{n}_i$. If $Det$ is `most', then $\alpha$ will be a large number (closer to 1 than to 0), indicating that we are taking the average of vectors that are close to $\ov{n}_i$. The distance $\alpha$ can be learnt from a corpus using a relevant task. This will extend to any (possibly non-basis) word by linearity. 
 
 The meaning of ``Q Sbj Verb'' is obtained by computing the following:
 
 \[
-(\epsilon_N \otimes 1_S) \circ (Det \otimes  \mu_N \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})
+(\epsilon_N \otimes 1_S) \circ (Det \otimes  \mu_N \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})\left(\ov{\text{Sbj}} \otimes \ov{\text{Verb}}\right)
 \]
 
 In the first step of computation we have
@@ -39,25 +39,38 @@ In the first step of computation we have
 Then we proceed by
 
 \begin{align*}
-(Det \otimes  \mu_N \otimes 1_S)\Big((\sum_i C_i \ov{n}_i \otimes \ov{n}_i) \otimes  (\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k)\Big) = \\
-???
+(Det \otimes  \mu_N \otimes 1_S)\Big((\sum_i C_i \ov{n}_i \otimes \ov{n}_i) \otimes  (\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k)\Big) &= \\
+\sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \mu(\ov{n}_i \otimes \ov{n}_j) \otimes \ov{s}_k &=\\
+\sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \delta_{ij} \ov{n}_i \otimes \ov{s}_k&
 \end{align*}
 
 \noindent
 The final step is as follows:
 
 \begin{align*}
-(\epsilon_{{\cal P} N} \otimes 1_S)  \Big(Det(\sum_i \ov{n}_i) \otimes {\cal P}(\sum_i \sigma_{ij} \ov{n}_i) \otimes \ov{1} \Big) =   \langle \ov{w}_k \mid \ov{\{\sum_i \ov{n}_i\}} \rangle  \otimes \ov{1}
+(\epsilon_{N} \otimes 1_S)  \Big(\sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \delta_{ij} \ov{n}_i \otimes \ov{s}_k \Big) &=   \\
+\sum_{ijk} C_i C_{jk} \langle Det(\ov{n}_i) \mid \delta_{ij} \ov{n}_i \rangle \ov{s}_k
 \end{align*}
 
-\noindent 
-where $Det (\sum_i \ov{n}_i) = \sum_k \ov{w}_k$, for $w_k \subseteq B_N$ where $B_N$ is the set of basis vectors of $N$.  Meanings of sentences with quantified objects and transitive verbs are computed in an identical fashion. 
 
+As an example, take $N$ to be the two dimensional space with the basis $\{\ov{n}_1, \ov{n}_2\}$. Suppose the linear expansion of $\ov{\text{men}}$ in this space be $a \ov{n}_1 + b \ov{n}_2$ and the linear expansion of $\ov{\text{sneeze}}$ be $c (\ov{n}_1 \otimes \ov{n}_1) + d (\ov{n}_1 \otimes \ov{n}_2) + e( \ov{n}_2 \otimes \ov{n}_1) + f (\ov{n}_2 \otimes \ov{n}_2)$.  Since the  basis is fixed, we can represent these in matrix notation as follows
+\[
+\ov{\text{men}} = \left ( \begin{array}{c} a\\b\end{array}\right)\qquad
+\ov{\text{sneeze}} = \left (\begin{array}{cc} c \quad & d\\ e \quad &f \end{array}\right)
+\]
+The meaning of `Q men sneeze' is obtained by computing the following
 
-
-
-
-
+\[
+(\epsilon_N \otimes 1_S) \circ (Det \otimes  \mu_N \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})\left(\ov{\text{men}} \otimes \ov{\text{sneeze}}\right)
+\]
+In the first step, we obtain
+\[
+(\delta_N \otimes 1_{N \otimes S})\left( \left ( \begin{array}{c} a\\b\end{array}\right) \otimes  \left (\begin{array}{cc} c \quad & d\\ e \quad &f \end{array}\right)\right) \quad = \quad \left(\begin{array}{cc} a \quad & 0\\ 0 \quad & a\end{array}\right) \otimes  \left (\begin{array}{cc} c \quad & d\\ e \quad &f \end{array}\right)
+\]
+In the second step, we obtain
+\[
+(Det \otimes  \mu_N \otimes 1_S) \left(\left(\begin{array}{cc} a \quad & 0\\ 0 \quad & a\end{array}\right) \otimes  \left (\begin{array}{cc} c \quad & d\\ e \quad &f \end{array}\right) \right)
+\]
 
 \section{Degrees of Truth}
 
