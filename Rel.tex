@@ -10,13 +10,83 @@ point out the isomorphisms $1 \to X\x Y // X \to Y // X \x Y \to 1$.
 
 Intended interpretation of $\Det$ and the need for matching powerset
 levels as a motivation for Finite Powerset lifting. 
-This can be done as a lifting of a monad to the Kleisli category of a
-monad, because $\Rel$ is $\Set_\wp$ and we have $\lambda : \wp\wp
-\Rightarrow \wp\wp$ defined by (example) $\{\{1,3,4\},\{7,2\}\} \mapsto
-\{\{1,7\},\{1,2\},\{3,7\},\{3,2\},\{4,7\},\{4,2\}\}$ really? Check
-this. 
+
+\medskip
+For a function $f : X \to Y$, the map $2^f : 2^Y \to 2^X$ has both a
+left and right adjoints with respect to the pointwise subset
+ordering. In more detail, the powerset of $X$, $2^X$, ordered by
+subset inclusion  can be seen as a
+category and $2^f$ as a functor from the category $2^Y$ to $2^X$. This
+functor has both adjoints. It is well known that when $f$ is the first
+projection $\pi_1 : X\x Y \to X$, the left adjoint interprets
+existential quantification in first order predicate logic, and the
+right adjoint interprets universal quantification. 
+
+The definitions of the adjoints are in detail as follows. 
+The left adjoint $\exists_f : 2^X \to 2^Y$, also called the
+\emph{direct image} of $f$, is defined by 
+\[\exists_f (X' \subseteq X) = \{ y \in Y ~|~ \exists x \in X. f x = y
+\wedge x \in X'\} \]
+i.e. the image of $X'$ under $f$. The right adjoint $\forall_f : 2^X
+\to 2^Y$ is defined by 
+%
+\[
+\forall_f (X' \subseteq X) = \{ y \in Y ~|~ \forall x \in X. f x = y
+\implies x \in X' \} \] 
+%
+
+
+Not that there may be many other functions from $2^{X\x Y}$ to $2^X$,
+such as the one sending an $f$ to the $g$ for which
+$g(x) = 1$ if and only if $f(x,y) = 1$ for exactly two distinct values
+of $y$. This quantifier we could call ``two''; or
+``none'' for which $g(x)=1$ iff $f(x,y) = 0$ always. Thus the
+existential and universal quantifier are the two extreme cases. 
+
+Unfortunately, $\Rel$ is not Cartesian closed with respect to the
+product. More precisely, $\Rel$ is monoidal closed with respect to the
+product of sets, $\times$,  but $\times$ is not the
+Cartesian product in $\Rel$. So we cannot replicate the $\Set$
+case directly. 
+
+We must lift $\wp$ to $\Rel$. To this end, define $\wp : \Rel \to
+\Rel$ on objects $X \mapsto \wp X$, and on arrows as follows: a
+relations $R : X \to Y$ is mapped to that relation $\wp R : \wp X \to
+\wp Y$ which relates every subset of $X$ to all subsets of $Y$ which
+arise from $X$ by replacement of element under $R$. In other words,
+when relations are understood as nondeterministic partial functions
+$\wp R$ captures all possible nondeterminism on collections of
+elements. More formally, identify $\Rel$ with $\Set_\wp$, the Kleisli
+category of the covariant powerset functor whose action on functions
+is the direct image. There is a distributive law, a natural
+transformation $\lambda_X : \wp \wp X \to \wp \wp X$, which takes a
+set of subsets of $X$ into the set of its crossections. 
+
+For example: 
+\begin{align*}
+\lambda (\{\{a,b\},\{c\}\}) & \quad = \quad \{\{a,c\},\{b,c\}\}\\
+\lambda (\{\{a,b\},\{c\},\emptyset\}) &\quad = \quad \emptyset
+\end{align*}
+
+\begin{quote}
+{\bf O.R.} check it respects the monad structure, at least the necessary
+  half of it 
+\end{quote}
+
+It follows that $\wp$ lifts to $\Rel$, equivalently the Kleisli category of $\wp$, where a
+relation $R :  X \to \wp Y$ is taken to $\wp R : \wp X \xrightarrow{R} \wp \wp Y
+\xrightarrow{\lambda_Y} \wp \wp Y$.
+
 
 Example: lifted frobenius
+
+\begin{quote}
+{\bf O.R.} Now it seems I have missed the point, because generalised
+quantifiers work in a dirrent way, it seems. Based on
+cardinality. Let's see how these two relate... trouble is I haven't
+slept well and can't really think :-/ I'll come to this a bit later. 
+\end{quote}
+
 
 Examples of determiners with some calculations: exists, all, some, two
 
@@ -111,3 +181,9 @@ Examples of determiners with some calculations: exists, all, some, two
 % \]
 % This, in the third step,  will results in $\left \langle \ov{\{\ \}} \mid \ov{\{\ov{m}_1\}}) \right \rangle = 0$.
 %\end{enumerate}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Quant"
+%%% End: 
