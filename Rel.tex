@@ -43,23 +43,53 @@ of $y$. This quantifier we could call ``two''; or
 ``none'' for which $g(x)=1$ iff $f(x,y) = 0$ always. Thus the
 existential and universal quantifier are the two extreme cases. 
 
-Unfortunately, $\Rel$ is not Cartesian closed with respect to the
-product. More precisely, $\Rel$ is monoidal closed with respect to the
-product of sets, $\times$,  but $\times$ is not the
-Cartesian product in $\Rel$. So we cannot replicate the $\Set$
-case directly. 
 
-We must lift $\wp$ to $\Rel$. To this end, define $\wp : \Rel \to
+In the following assume for simplicity that the context, $X$, is
+empty, $X = 1$, and then first order and other quantifiers become
+certain functions $2^Y \to 2$. Everything we say generalises
+straightforwardly.  Note that in this case, the existential quantifier
+becomes the characteristic function of nonempty subsets of $Y$, the
+universal quantifier is the characteristic function of the singleton
+$\{Y\}$, and ``two'' is the characteristic function of exactly two
+element sets. 
+
+In single sorted first order predicate logic, quantification ranges
+over the whole domain $Y$, which is simply assumed to be fixed, and
+often implicit, throught the formula. E.g. $\exists x. x > 0$, $x$
+ranges over some ordered set. In linguistics, however, the range of
+quantification is explicitly stated, as in ``all men sleep'', where
+the category 
+``men'' restricts the range of the quantifier, ``all'', to just
+men. In other words, the quantifier is ``all men'', and ``all'' is a
+particle which expects a category to become a quantifier. Formally,
+when we fix a domain of all possible subjects of quantification, $X$,
+quantifiers must have type 
+\begin{equation}\label{eq:q}
+2^X \to 2^{2^X}
+\end{equation}
+
+For instance, $\exists$ (exists) takes a subset $x\subseteq X$ to all
+nonempty subsets of $x$; $\forall$ maps $x\subseteq X$ to $ \{ x \}$; ``two''
+takes $x \subseteq X$ to $\{ x' \subseteq x | \mathrm{card}\,x' = 2 \}$.
+
+Now note, that the $\Rel$ is equivalent to the Kleisli category of the
+powerset monad $2^-$, i.e. an arrow of type \eqref{eq:q} is precisely
+a relation $2^X \to 2^X$. 
+
+\renewcommand{\wp}{2^}
+It follows that in order to interpret quantification in relations we
+must consider relations over powersets. 
+To this end, we lift $\wp-$ to $\Rel$. Define $\wp- : \Rel \to
 \Rel$ on objects $X \mapsto \wp X$, and on arrows as follows: a
 relations $R : X \to Y$ is mapped to that relation $\wp R : \wp X \to
 \wp Y$ which relates every subset of $X$ to all subsets of $Y$ which
-arise from $X$ by replacement of element under $R$. In other words,
+arise from $X$ by replacement of elements under $R$. In other words,
 when relations are understood as nondeterministic partial functions
 $\wp R$ captures all possible nondeterminism on collections of
-elements. More formally, identify $\Rel$ with $\Set_\wp$, the Kleisli
+elements. More formally, identify $\Rel$ with the Kleisli
 category of the covariant powerset functor whose action on functions
 is the direct image. There is a distributive law, a natural
-transformation $\lambda_X : \wp \wp X \to \wp \wp X$, which takes a
+transformation $\lambda_X : \wp{\wp X} \to \wp{\wp X}$, which takes a
 set of subsets of $X$ into the set of its crossections. 
 
 For example: 
@@ -73,22 +103,19 @@ For example:
   half of it 
 \end{quote}
 
-It follows that $\wp$ lifts to $\Rel$, equivalently the Kleisli category of $\wp$, where a
-relation $R :  X \to \wp Y$ is taken to $\wp R : \wp X \xrightarrow{R} \wp \wp Y
-\xrightarrow{\lambda_Y} \wp \wp Y$.
+It follows that $\wp-$ lifts to $\Rel$ where a
+relation $R :  X \to \wp Y$ is taken to $\wp R : \wp X \xrightarrow{R} \wp {\wp Y}
+\xrightarrow{\lambda_Y} \wp {\wp Y}$.
 
 
 Example: lifted frobenius
 
 \begin{quote}
-{\bf O.R.} Now it seems I have missed the point, because generalised
-quantifiers work in a dirrent way, it seems. Based on
-cardinality. Let's see how these two relate... trouble is I haven't
-slept well and can't really think :-/ I'll come to this a bit later. 
+{\bf O.R.} Now it all works out :)
 \end{quote}
 
 
-Examples of determiners with some calculations: exists, all, some, two
+Examples of calculations with determiners: exists, all, some, two
 
 
 
