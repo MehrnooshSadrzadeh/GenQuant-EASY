@@ -7,7 +7,7 @@
 
 In this section, we interpret the model on category $FVect$ of finite dimensional vector spaces and linear maps. We then provide concrete instantiations on a version of this category built from normal practice of distributional semanticists. 
 
-In a concrete vector space model, built from a corpus using distributional methods, we assume that  vector meaning of the subject is $\sum_i C_i \ov{n}_i$ and the linear map corresponding to the verb is $\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k$. 
+In a concrete vector space model, built from a corpus using distributional methods, we assume that  vector meaning of the subject is $\sum_i C_i \ov{n}_i \in N$ and the linear map corresponding to the verb is $\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k \in N \otimes S$. 
 
 For $\ov{n}_i$ a basis vector of $N$, we define  the map $Det$  as follows 
 \[
@@ -20,7 +20,10 @@ where we have:
 \end{itemize}
 
 \noindent
-The intuitive reading of the above is that $Det$ of a word $\ov{n}_i$ is the average of all the words that are $\alpha$-close to $\ov{n}_i$. In other words, the average of all the words  whose distance from $\ov{n}_i$ is $\alpha$.  For instance, if $Det$ is `few', then $\alpha$ is a small number (closer to 0 than to 1), indicating that we are taking the average of vectors that are not so close to $\ov{n}_i$. If $Det$ is `most', then $\alpha$ will be a large number (closer to 1 than to 0), indicating that we are taking the average of vectors that are close to $\ov{n}_i$. The distance $\alpha$ can be learnt from a corpus using a relevant task. This will extend to any other (non-basis) word by linearity. 
+The intuitive reading of the above is that $Det$ of a word $\ov{n}_i$ is the average of all the words that are $\alpha$-close to $\ov{n}_i$. In other words, the average of all the words  whose distance from $\ov{n}_i$ is $\alpha$.  For instance, if $Det$ is `few', then $\alpha$ is a small number (closer to 0 than to 1), indicating that we are taking the average of vectors that are not so close to $\ov{n}_i$. If $Det$ is `most', then $\alpha$ will be a large number (closer to 1 than to 0), indicating that we are taking the average of vectors that are close to $\ov{n}_i$. The distance $\alpha$ can be learnt from a corpus using a relevant task. This will extend to any other (non-basis) word by linearity.  
+
+The underlying idea here is that the quantitative way of quantifying in set-theoretic models, which depended on the cardinality of the quantified sets, is now transformed into a geometric way of quantifying where the meaning of the quantified phrase depends on its geometric distance with other words. Hence, a quantified phrase such as `few cats' returns a representative noun (obtained by taking the average of all such nouns) that is far from vector of  `cat'  in the semantic space. This representative noun shares `few' properties with `cat'. A quantified phrase such as `most cats' returns a representative noun that is close the the vector of `cat' and stands for a noun that shares `most' of the properties of `cat'. 
+
 
 The meaning of ``Q Sbj Verb'' is obtained by computing the following:
 
@@ -107,9 +110,9 @@ Suppose $\ov{n}_1$ is the word  `prison' and $\ov{n}_2$ is the word `owner', the
 \qquad
 \ov{\text{murderer}} = 0.1\  \ov{\text{owner}} + 0.9 \  \ov{\text{prison}}
 \]
-Hence,  meaning of the phrase   `most cats' will  be a word whose vectors is close to the word `cat' in this space, for example `kitten' or `dog', whereas the meaning of `few cats' will be a word whose vectors is far from the word `cat', for example, `murderer'. Thus meaning of the sentence `most cats sneeze' will be close to the meaning of the sentence `kittens sneeze', and the meaning of the sentence `few cats sneeze' will be close the meaning of the sentence `murdered sneeze'. The idea here is that the quantitative way of quantifying in set-theoretic models, which depended on the cardinality of the quantified sets, is now transformed into a geometric way of quantifying where the meaning of the quantified phrase depends on its geometric distance with other words. 
+Hence,  meaning of the phrase   `most cats' will  be a word whose vectors is close to the word `cat' in this space, for example `kitten' or `dog', whereas the meaning of `few cats' will be a word whose vectors is far from the word `cat', for example, `murderer'. Thus meaning of the sentence `most cats sneeze' will be close to the meaning of the sentence `kittens sneeze', and the meaning of the sentence `few cats sneeze' will be close the meaning of the sentence `murdered sneeze'.  In the first case, `most cats' is represented by `kitten' which shares most of the properties of `cat', whereas in the second case, `few cats' is represented by `murderers' which shares very few properties with `cats'. 
 
-Now in the above take $S = \mathbb{R}$ and do a truth theoretic example, if possible. 
+Take $S = \mathbb{R}$ and do a truth theoretic example, if possible. 
 
 
 %\section{Degrees of Truth}

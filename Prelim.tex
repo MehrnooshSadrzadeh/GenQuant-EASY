@@ -1,13 +1,295 @@
+
 \section{Preliminaries}
 \label{prelim}
 
 
-Generalized Quantifiers
+This section briefly reviews compact closed
+categories and Frobenius algebras. For a formal presentation, see
+\cite{KellyLaplaza80,Kock72,Baez}.  A compact closed category, $\cC$, has objects $A, B$; morphisms $f \colon A
+\to B$; a monoidal tensor $A \otimes B$ that has a unit $I$; and for
+each object $A$ two objects $A^r$ and $A^l$ together with the
+following morphisms:
+\begin{align*}
+A \otimes A^r \stackrel{\epsilon_A^r} {\longrightarrow} \; &I
+\stackrel{\eta_A^r}{\longrightarrow} A^r \otimes A \hspace{1cm}
+A^l \otimes A \stackrel{\epsilon_A^l}{\longrightarrow} \; I
+\stackrel{\eta_A^l}{\longrightarrow} A \otimes A^l\
+\end{align*}
+These morphisms satisfy the following equalities, sometimes
+referred to as the \emph{yanking} equalities, where $1_A$ is the
+identity morphism on object $A$:
+\begin{align*}
+& (1_A \otimes \epsilon_A^l) \circ (\eta_A^l \otimes 1_A)  = 1_A 
+\hspace{1cm}
+(\epsilon_A^r \otimes 1_A) \circ (1_A \otimes
+  \eta_A^r)   = 1_A\\
+& (\epsilon_A^l \otimes 1_A) \circ (1_{A^l} \otimes
+  \eta_A^l) = 1_{A^l}  
+    \hspace{1cm}
+    (1_{A^r} \otimes \epsilon_A^r) \circ (\eta_A^r \otimes 1_{A^r}) = 1_{A^r}
+\end{align*}
+%
+\noindent which express the fact the $A^l$ and $A^r$ are the left and right
+adjoints, respectively, of $A$ in the 1-object bicategory whose
+1-cells are objects of $\cC$.
+
+%A pregroup \cite{Lambek08} is a partial order compact closed category,
+%which we refer to as {\em Preg}. This means that the objects of {\em
+%  Preg} are elements of a partially ordered monoid, and between any two
+%objects $p,q \in \Preg$ there exists a morphism of type $p
+%\to q$ iff $p \leq q$. Compositions of morphisms are obtained by
+%transitivity and the identities by reflexivity of the partial
+%order. The tensor of the category is the monoid multiplication, and
+%the epsilon and eta maps are as follows:
+%\begin{align*}
+%\epsilon_p^r = p \cdot p^r \leq 1 &\hspace{1cm} \eta_p^r = 1 \leq p^r \cdot p \\
+%\epsilon_p^l = p^l \cdot p \leq 1  &\hspace{1cm}  \eta_p^l = 1 \leq p \cdot p^l
+%\end{align*}
+
+A Frobenius algebra  in a   monoidal  category $({\cal
+  C}, \otimes, I)$ is a tuple $(X,  \delta, \iota, \mu, \zeta)$ where,
+for $X$ an object of ${\cal C}$, the triple $(X, \delta, \iota)$ is  an internal comonoid; 
+i.e.~the following are  coassociative and counital  morphisms of ${\cal
+  C}$:
+\begin{align*}
+\delta \colon X \to X \otimes X&\qquad& \iota \colon X \to I
+\end{align*}
+Moreover $(X, \mu, \zeta)$ is  an internal  monoid; i.e.~the following are  associative and unital  morphisms:
+\begin{align*}
+\mu \colon  X \otimes X \to X  &\qquad& \zeta \colon I \to X
+\end{align*}
+And finally the  $\delta$ and $\mu$ morphisms satisfy the
+following \emph{Frobenius condition}:
+\begin{align*}
+\mbox{\small $(\mu \otimes 1_X) \circ (1_X \otimes \delta) \ = \  \delta \circ \mu  \ = \  (1_X \otimes \mu) \circ (\delta \otimes 1_X)$}
+\end{align*}
+%MS
+Informally, the  comultiplication $\delta$  dispatches the information contained in
+one object into two objects, and the  multiplication $\mu$ unifies  the
+information of two objects into one.
 
 
-Compact Closed Categories
 
 
-Rel
+\medskip
+\noindent
+{\bf Finite Dimensional Vector Spaces.}
+These structures  together with  linear maps  form a compact
+closed category, which we refer to as $\FdVect$.  Finite dimensional
+vector spaces $V, W$ are objects of this category; linear maps $f
+\colon V \to W$ are its morphisms with composition being the
+composition of linear maps. The tensor product $V
+\otimes W$ is the 
+linear algebraic tensor product,
+%tensor of the category, 
+whose unit is the scalar
+field of vector spaces; in our case this is the field of reals
+$\mathbb{R}$.  Here, there is  a naturual
+isomorphism $V \otimes W \cong W \otimes V$. As a result of the
+symmetry of the tensor, the two adjoints reduce to one and we obtain the  isomorphism $V^l \cong V^r \cong V^*$, 
+where $V^*$ is the dual space of $V$. When the
+basis vectors of the vector spaces are fixed, it is further the case
+that we have $V^* \cong V$.
 
-FVect
+%Elements of vector spaces, i.e. vectors, are
+%represented by morphisms from the unit of tensor to their corresponding
+%vector space; that is $\overrightarrow{v} \in V$ is represented by the
+%morphism $\mathbb{R} \stackrel{\overrightarrow{v}}{\longrightarrow}V$; by linearity this morphism is uniquely defined when setting $1\mapsto \overrightarrow{v}$.
+%
+Given a basis $\{r_i\}_i$ for a vector space $V$, the epsilon maps are
+given by the inner product extended by linearity; i.e. we have:
+\[
+\epsilon^l  =  \epsilon^r \colon   V \otimes V \to \mathbb{R} \quad \mbox{given by} \quad
+\sum_{ij} c_{ij} \ \psi_i \otimes \phi_j  \quad \mapsto \quad \sum_{ij} c_{ij} \langle \psi_i \mid \phi_j \rangle\]
+Similarly, eta maps   are defined as follows:
+\[
+\eta^l = \eta^r \colon   \mathbb{R} \to V \otimes V
+\quad \mbox{given by} \quad 
+1 \; \mapsto \; \sum_i r_i \otimes r_i
+\]
+Any vector space $V$ with a fixed basis
+$\{\ov{v_i}\}_i$ has a Frobenius algebra over it, explicitly given as follows, where $\delta_{ij}$ is the Kronecker delta.
+%\begin{align*}
+%\delta :: \ov{v_i} \mapsto \ov{v_i} \otimes \ov{v_i} &\qquad& \iota:: \ov{v_i} \mapsto 1\\
+%\mu:: \ov{v_i} \otimes \ov{v_i} \mapsto \ov{v_i} &\qquad& \zeta:: 1 \mapsto \ov{v_i}  
+%\end{align*}
+\begin{equation*}\label{eq:frob}
+\begin{array}{lll}
+\delta :: \ov{v_i} \mapsto \ov{v_i} \otimes \ov{v_i} && \iota:: \ov{v_i} \mapsto 1\vspace{3mm}\\
+\mu:: \ov{v_i} \otimes \ov{v_j} \mapsto 
+\delta_{ij}\ov{v_i} 
+%:=\left\{ \begin{array}{lll}
+%\ov{v_i} &\ \ \  & i=j\\ 
+%\ov{0} & & i\not = j
+%\end{array}\right.
+&& \zeta:: 1 \mapsto   \sum_i  \ov{v_i}  
+\end{array}
+\end{equation*}
+
+
+%Frobenius algebras over vector spaces with orthonormal bases are
+%moreover \emph{isometric} and \emph{commutative}. But in benefit of space, we do not provide these conditions here. 
+%A
+%commutative Frobenius Algebra satisfies the following two conditions
+%for $ \sigma : X \otimes Y \to Y \otimes X$, the symmetry morphism of
+%$({\cal C}, \otimes, I)$:
+%\[
+%\sigma \circ \delta = \delta \hspace{2cm} \mu \circ \sigma = \mu
+%\]
+%An isometric Frobenius Algebra is one that satisfies the following axiom:
+%\[
+%\mu \circ \delta = 1
+%\]
+%The vector spaces of distributional models have
+%fixed orthonormal bases; hence they have isometric commutative
+%Frobenius algebras over them.
+%An object $X$ with a Frobenius algebra over it is called
+%\emph{classical} in \cite{CoeckePaquettePavlovic09}. 
+
+
+%As an example, take $V$ to be a two dimensional space with
+%basis $\{\ov{v_1}, \ov{v_2}\}$; then the basis of $V \otimes V$ is
+%$\{\ov{v_1} \otimes \ov{v_1}, \ov{v_1} \otimes \ov{v_2}, \ov{v_2}
+%\otimes \ov{v_1}, \ov{v_2} \otimes \ov{v_2}\}$. For a vector $v = a
+%\ov{v_1} + b \ov{n_2}$ in $V$ we have:
+%\begingroup
+%\setlength{\arraycolsep}{2pt}
+%\[
+%\delta (v) = \delta \left(\begin{array}{c} a\\b\end{array}\right)
+% = 
+% \left(\begin{array}{cc} a&0\\0&b\end{array}\right) = a \, \ov{v_1} \otimes \ov{v_1} + b \, \ov{v_2} \otimes \ov{v_2} 
+%\]
+%And for a matrix $w = a \, \ov{v_1} \otimes \ov{v_1} + b \, \ov{v_1}
+%\otimes \ov{v_2} + c \, \ov{v_2} \otimes \ov{v_1} + d \, \ov{v_2}
+%\otimes \ov{v_2}$ in $V \otimes V$, we have:
+%\[
+%\mu (w) = \mu \left(\begin{array}{cc} a&b\\c&d\end{array}\right) = 
+%\left(\begin{array}{c} a\\d\end{array}\right)
+%= a \, \ov{v_1} + d \, \ov{v_2}
+%\]
+%\endgroup
+
+\medskip
+\noindent
+{\bf Relations}.
+Another important example of a  compact closed category is
+$\Rel$, the cateogry of sets and relations. Here, $\otimes$ is
+cartesian product with the singleton set as its unit $I = \{\star\}$, and $^*$ is identity on objects. Closure reduces to the
+fact that a relation between sets $A\times B$ and $C$ is equivalnently
+a relation between $A$ and $B \times C$.   Given a set $S$ with elements $s_i, s_j \in S$,  the epsilon and eta maps are
+given as follows
+\begin{eqnarray*}
+&\epsilon^l  =  \epsilon^r &\colon   S \times S \to I \quad \mbox{given by} \quad
+(s_i, s_j) \quad \mapsto \quad  \star \quad \text{if} \quad i=j\\
+&\eta^l = \eta^r& \colon  I \to S \times S
+\quad \mbox{given by} \quad 
+\star \quad \mapsto \quad (s_i, s_i)
+\end{eqnarray*}
+
+
+
+Every object in $\Rel$, that is a set $S$ with elements $s_i, s_j \in S$  has a
+Frobenius algebra over it given by the diagonal and codiagonal
+relations, respectively. 
+
+
+
+
+
+
+
+\section{String Diagrams} 
+\label{string}
+
+The framework of compact closed categories and Frobenius algebras
+comes with a complete diagrammatic calculus that visualises
+derivations, and which also simplifies the
+categorical and vector space computations. Morphisms are depicted by
+boxes and objects by lines, representing their identity morphisms. For
+instance a morphism $f \colon A \to B$, and an object $A$ with the
+identity arrow $1_A \colon A \to A$, are depicted as follows:
+
+\begin{center}
+  \tikzfig{compact-diag}
+\end{center}
+
+The tensor products of the objects and morphisms are depicted by
+juxtaposing their diagrams side by side, whereas compositions of
+morphisms are depicted by putting one on top of the other; for instance
+the object $A \otimes B$, and the morphisms $f \otimes g$ and $f \circ
+h$, for $f \colon A \to B, g \colon C \to D$, and $h \colon B \to C$,
+are depicted as follows:
+
+\begin{center}
+  \tikzfig{compact-diag-tensor}
+\end{center}
+
+The $\epsilon$ maps are depicted by cups, $\eta$ maps by caps, and
+yanking by their composition and straightening of the strings.  For
+instance, the diagrams for $\epsilon^l \colon A^l \otimes A \to I$,
+$\eta \colon I \to A\otimes A^l$ and $(\epsilon^l \otimes 1_A) \circ
+(1_A \otimes \eta^l) = 1_A$ are as follows:
+
+\begin{center}
+  \tikzfig{compact-cap-cup}
+  \qquad
+    \tikzfig{compact-yank}
+\end{center}
+
+ 
+As for Frobenius algebras, the diagrams for the  monoid and  comonoid 
+morphisms are as follows:
+
+\begin{center}
+\tikzfig{comp-alg-coalg}
+\end{center} 
+ 
+\noindent
+with the Frobenius condition being depicted as:
+
+\begin{center}
+\tikzfig{equation}
+\end{center} 
+
+%\noindent The commutativity conditions are depicted as follows:
+%
+%\begin{center}
+%\tikzfig{comm}
+%\end{center} 
+%
+%\noindent The isometry condition is depicted as follows:
+%
+%\begin{center}
+%\tikzfig{isom}
+%\end{center} 
+%
+
+\noindent
+The defining axioms   guarantee that any picture depicting a
+Frobenius computation can be reduced to a normal form that only
+depends on the number of input and output strings of the nodes,
+independent of the topology. 
+These normal forms can be simplified to so-called `spiders': 
+%This property, known as the \emph{spider  equality}, is depicted as follows:
+
+\[
+\tikzfig{spider}
+\]
+
+In the category $\FdVect$, apart from spaces $V,W$, which are
+objects of the category, we also have vectors $\ov{v}, \ov{w}$. These
+are depicted by their representing morphisms and as triangles with a
+number of strings emanating from them. The number of strings of a
+triangle denote the tensor rank of the vector; for instance, the
+diagrams for $\ov{v} \in V, \ov{v'} \in V \otimes W$, and $\ov{v''}
+\in V \otimes W \otimes Z$ are as follows:
+
+\begin{center}
+  \tikzfig{compact-diag-triangle}  
+\end{center} 
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Quant"
+%%% End: 
