@@ -107,12 +107,8 @@ Similarly, eta maps   are defined as follows:
 \quad \mbox{given by} \quad 
 1 \; \mapsto \; \sum_i r_i \otimes r_i
 \]
-where $1 \in \mathbb{R}$, and the above  extends to all
-other numbers by linearity.
-
-
 Any vector space $V$ with a fixed basis
-$\{\ov{v_i}\}_i$ has a Frobenius algebra over it, explicitly given by:
+$\{\ov{v_i}\}_i$ has a Frobenius algebra over it, explicitly given as follows, where $\delta_{ij}$ is the Kronecker delta.
 %\begin{align*}
 %\delta :: \ov{v_i} \mapsto \ov{v_i} \otimes \ov{v_i} &\qquad& \iota:: \ov{v_i} \mapsto 1\\
 %\mu:: \ov{v_i} \otimes \ov{v_i} \mapsto \ov{v_i} &\qquad& \zeta:: 1 \mapsto \ov{v_i}  
@@ -129,10 +125,10 @@ $\{\ov{v_i}\}_i$ has a Frobenius algebra over it, explicitly given by:
 && \zeta:: 1 \mapsto   \sum_i  \ov{v_i}  
 \end{array}
 \end{equation*}
-where $\delta_{ij}$ is the Kronecker delta.
 
-Frobenius algebras over vector spaces with orthonormal bases are
-moreover \emph{isometric} and \emph{commutative}. But in benefit of space, we do not provide these conditions here. 
+
+%Frobenius algebras over vector spaces with orthonormal bases are
+%moreover \emph{isometric} and \emph{commutative}. But in benefit of space, we do not provide these conditions here. 
 %A
 %commutative Frobenius Algebra satisfies the following two conditions
 %for $ \sigma : X \otimes Y \to Y \otimes X$, the symmetry morphism of
@@ -147,31 +143,31 @@ moreover \emph{isometric} and \emph{commutative}. But in benefit of space, we do
 %The vector spaces of distributional models have
 %fixed orthonormal bases; hence they have isometric commutative
 %Frobenius algebras over them.
-An object $X$ with a Frobenius algebra over it is called
-\emph{classical} in \cite{CoeckePaquettePavlovic09}. 
+%An object $X$ with a Frobenius algebra over it is called
+%\emph{classical} in \cite{CoeckePaquettePavlovic09}. 
 
 
-As an example, take $V$ to be a two dimensional space with
-basis $\{\ov{v_1}, \ov{v_2}\}$; then the basis of $V \otimes V$ is
-$\{\ov{v_1} \otimes \ov{v_1}, \ov{v_1} \otimes \ov{v_2}, \ov{v_2}
-\otimes \ov{v_1}, \ov{v_2} \otimes \ov{v_2}\}$. For a vector $v = a
-\ov{v_1} + b \ov{n_2}$ in $V$ we have:
-\begingroup
-\setlength{\arraycolsep}{2pt}
-\[
-\delta (v) = \delta \left(\begin{array}{c} a\\b\end{array}\right)
- = 
- \left(\begin{array}{cc} a&0\\0&b\end{array}\right) = a \, \ov{v_1} \otimes \ov{v_1} + b \, \ov{v_2} \otimes \ov{v_2} 
-\]
-And for a matrix $w = a \, \ov{v_1} \otimes \ov{v_1} + b \, \ov{v_1}
-\otimes \ov{v_2} + c \, \ov{v_2} \otimes \ov{v_1} + d \, \ov{v_2}
-\otimes \ov{v_2}$ in $V \otimes V$, we have:
-\[
-\mu (w) = \mu \left(\begin{array}{cc} a&b\\c&d\end{array}\right) = 
-\left(\begin{array}{c} a\\d\end{array}\right)
-= a \, \ov{v_1} + d \, \ov{v_2}
-\]
-\endgroup
+%As an example, take $V$ to be a two dimensional space with
+%basis $\{\ov{v_1}, \ov{v_2}\}$; then the basis of $V \otimes V$ is
+%$\{\ov{v_1} \otimes \ov{v_1}, \ov{v_1} \otimes \ov{v_2}, \ov{v_2}
+%\otimes \ov{v_1}, \ov{v_2} \otimes \ov{v_2}\}$. For a vector $v = a
+%\ov{v_1} + b \ov{n_2}$ in $V$ we have:
+%\begingroup
+%\setlength{\arraycolsep}{2pt}
+%\[
+%\delta (v) = \delta \left(\begin{array}{c} a\\b\end{array}\right)
+% = 
+% \left(\begin{array}{cc} a&0\\0&b\end{array}\right) = a \, \ov{v_1} \otimes \ov{v_1} + b \, \ov{v_2} \otimes \ov{v_2} 
+%\]
+%And for a matrix $w = a \, \ov{v_1} \otimes \ov{v_1} + b \, \ov{v_1}
+%\otimes \ov{v_2} + c \, \ov{v_2} \otimes \ov{v_1} + d \, \ov{v_2}
+%\otimes \ov{v_2}$ in $V \otimes V$, we have:
+%\[
+%\mu (w) = \mu \left(\begin{array}{cc} a&b\\c&d\end{array}\right) = 
+%\left(\begin{array}{c} a\\d\end{array}\right)
+%= a \, \ov{v_1} + d \, \ov{v_2}
+%\]
+%\endgroup
 
 \medskip
 \noindent
@@ -194,16 +190,7 @@ given as follows
 
 Every object in $\Rel$, that is a set $S$ with elements $s_i, s_j \in S$  has a
 Frobenius algebra over it given by the diagonal and codiagonal
-relations, respectively. The details of the $\delta$ and $\mu$ maps are as follows, their units are trivial, $\iota$  just assigns to each element $s_i \in S$ the only element of $I$, that is $\star$, and $\zeta$ assigns to $\star$ an element $s_i$ of $S$:
-
-
-
-\begin{equation*}\label{eq:frob}
-\begin{array}{lll}
-\delta \colon S \to S \times S & \quad \mbox{given by} \quad& s_i\mapsto (s_i, s_i)  \\
-\mu \colon S \times S \to S &\quad\mbox{given by} \quad& (s_i, s_j) \mapsto  s_i \quad \text{if} \quad i=j
-\end{array}
-\end{equation*}
+relations, respectively. 
 
 
 
