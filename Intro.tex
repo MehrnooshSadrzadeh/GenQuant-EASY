@@ -4,12 +4,14 @@
 %%% mode: latex
 %%% TeX-master: "Quant"
 %%% End: 
+Vector space models of natural language are based on Firth's hypothesis that  meanings of words can be deduced from the contexts in which they often occur  \cite{Firth}.  One then fixes a context window, of for instance 5 words, and computes frequencies of how many times a words has occurred in this window with other words. These frequencies are often normalised to be better representatives of rare and very common words. These models have been applied to various language processing tasks, for instance thesauri construction \cite{Curran}.  Compositional distributional models of meaning extend the vector space models from words to sentences. The categorical such models \cite{Coeckeetal,BaroniZam} do so by taking into account the grammatical structure of sentences and the vectors of the words in there.  These models have proven successful in practical natural language tasks such as disambiguation, term/definition classification and phrase similarity, for example see \cite{GrefenSadr,kartsaklis2012}. Nevertheless, it has been an open problem how to deal  with  meanings of logical words such as  quantifiers and conjunctives. In this paper, we present preliminary work which aims to show how quantifiers can be deal with using the generalised quantifier  theory  of Barwise and Cooper \cite{BarwiseCooper81}. 
 
-things about distributional semantics and that they treat logical words such as quantification as noise. 
+According to  generalised quantifier theory, the meaning of a sentence with a natural language  quantifier Q such as  `Q Sbj Verb' is determined by first taking the intersection of the denotation of Sbj with the denotation of subjects of the Verb, then checking if the denotation of $Q(\text{Sbj})$ is an element of this set. The denotation of $Q$ is specified separately, for example, for $Q = \exists$, it is the set of non-empty subsets of the universe, for $Q = 2$ it is  the set of  subsets of the universe that have exactly two elements and so on. As a result, and for example, the meaning of a sentence ``some men sleep'' becomes  true if the set of men who sleep is non empty. 
 
-things about generalised quantifiers'  \cite{BarwiseCooper81}.
 
-things about contribution of the paper
+In what follows,  we work in the categorical compositional distributional model of \cite{Coeckeetal}. We  first present  a brief preliminary account of compact closed categories and Frobenius algebras over them and review  how vector spaces and relations provide instances. Then, we develop a compact closed categorical semantic for quantifiers, in terms of diagrams and morphisms of compact closed categories. We present two concrete interpretations for this abstract setting: relations and vector spaces. The former is the basis for  a truth-theoretic model and the latter works for a corpus-base model of language. 
 
-experimental work \cite{BaroniZam} 
+Our future work includes formalising this rather low-level treatment in the setting of categorical logic, where quantifiers are proven to be adjoints to substitution. Lack of much structure in vector spaces (and compact closed categories in general) and in particular lack of existence of pull-backs will be obvious obstacles. 
+
+
 

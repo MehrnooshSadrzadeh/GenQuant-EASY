@@ -5,11 +5,7 @@
 %%% TeX-master: "Quant"
 %%% End: 
 
-In this section, we interpret the model on category $FVect$ of finite dimensional vector spaces and linear maps. We then provide concrete instantiations on a version of this category built from normal practice of distributional semanticists. 
-
-In a concrete vector space model, built from a corpus using distributional methods, we assume that  vector meaning of the subject is $\sum_i C_i \ov{n}_i \in N$ and the linear map corresponding to the verb is $\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k \in N \otimes S$. 
-
-For $\ov{n}_i$ a basis vector of $N$, we define  the map $Det$  as follows 
+In a concrete vector space model, built from a corpus using distributional methods, we assume that  vector meaning of the subject is $\sum_i C_i \ov{n}_i \in N$ and the linear map corresponding to the verb is $\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k \in N \otimes S$.  For $\ov{n}_i$ a basis vector of $N$, we define  the map $Det$  as follows:
 \[
 Det(\ov{n}_i) = \Phi \{\ov{w} \in N \mid \cos(\ov{n}_i, \ov{w}) = \alpha\}
 \]
@@ -22,16 +18,15 @@ where we have:
 \noindent
 The intuitive reading of the above is that $Det$ of a word $\ov{n}_i$ is the average of all the words that are $\alpha$-close to $\ov{n}_i$. In other words, the average of all the words  whose distance from $\ov{n}_i$ is $\alpha$.  For instance, if $Det$ is `few', then $\alpha$ is a small number (closer to 0 than to 1), indicating that we are taking the average of vectors that are not so close to $\ov{n}_i$. If $Det$ is `most', then $\alpha$ will be a large number (closer to 1 than to 0), indicating that we are taking the average of vectors that are close to $\ov{n}_i$. The distance $\alpha$ can be learnt from a corpus using a relevant task. This will extend to any other (non-basis) word by linearity.  
 
-The underlying idea here is that the quantitative way of quantifying in set-theoretic models, which depended on the cardinality of the quantified sets, is now transformed into a geometric way of quantifying where the meaning of the quantified phrase depends on its geometric distance with other words. Hence, a quantified phrase such as `few cats' returns a representative noun (obtained by taking the average of all such nouns) that is far from vector of  `cat'  in the semantic space. This representative noun shares `few' properties with `cat'. A quantified phrase such as `most cats' returns a representative noun that is close the the vector of `cat' and stands for a noun that shares `most' of the properties of `cat'. 
+The underlying idea here is that the quantitative way of quantifying in set-theoretic models, which depends on the cardinality of the quantified sets, is now transformed into a geometric way of quantifying where the meaning of the quantified phrase depends on its geometric distance with other words. Hence, a quantified phrase such as `few cats' returns a representative noun (obtained by taking the average of all such nouns) that is far from vector of  `cat'  in the semantic space. This representative noun shares `few' properties with `cat'. A quantified phrase such as `most cats' returns a representative noun that is close the the vector of `cat' and stands for a noun that shares `most' of the properties of `cat'. 
 
 
-The meaning of ``Q Sbj Verb'' is obtained by computing the following:
+With this instantiation, the  meaning of ``Q Sbj Verb'' is obtained by computing the following:
 
 \[
 (\epsilon_N \otimes 1_S) \circ (Det \otimes  \mu_N \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})\left(\ov{\text{Sbj}} \otimes \ov{\text{Verb}}\right)
 \]
-
-In the first step of computation we have
+In the first step of computation we have:
 
 \begin{align*}
 (\delta_N \otimes 1_{N \otimes S})\Big(\sum_i C_i \ov{n}_i \otimes \sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k\Big) = 
@@ -39,119 +34,121 @@ In the first step of computation we have
 \end{align*}
 
 \noindent
-Then we proceed by
+In the second step we obtain: 
 
 \begin{align*}
-(Det \otimes  \mu_N \otimes 1_S)\Big((\sum_i C_i \ov{n}_i \otimes \ov{n}_i) \otimes  (\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k)\Big) &= \\
-\sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \mu(\ov{n}_i \otimes \ov{n}_j) \otimes \ov{s}_k &=\\
-\sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \delta_{ij} \ov{n}_i \otimes \ov{s}_k&
+(Det \otimes  \mu_N \otimes 1_S)\Big((\sum_i C_i \ov{n}_i \otimes \ov{n}_i) \otimes  (\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k)\Big) &= 
+\sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \mu(\ov{n}_i \otimes \ov{n}_j) \otimes \ov{s}_k \\
+= \sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \delta_{ij} \ov{n}_i \otimes \ov{s}_k&
 \end{align*}
 
 \noindent
 The final step is as follows:
 
 \begin{align*}
-(\epsilon_{N} \otimes 1_S)  \Big(\sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \delta_{ij} \ov{n}_i \otimes \ov{s}_k \Big) &=   \\
+(\epsilon_{N} \otimes 1_S)  \Big(\sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \delta_{ij} \ov{n}_i \otimes \ov{s}_k \Big) &=   
 \sum_{ijk} C_i C_{jk} \langle Det(\ov{n}_i) \mid \delta_{ij} \ov{n}_i \rangle \ov{s}_k
 \end{align*}
 
 
-As an example, take $N$ to be the two dimensional space with the basis $\{\ov{n}_1, \ov{n}_2\}$. Suppose the linear expansion of $\ov{\text{Sbj}}$ in this space be $C_1 \ov{n}_1 + C_2 \ov{n}_2$ and the linear expansion of $\ov{\text{Verb}}$ be $C_{11} (\ov{n}_1 \otimes \ov{n}_1) + C_{12} (\ov{n}_1 \otimes \ov{n}_2) +  C_{21} ( \ov{n}_2 \otimes \ov{n}_1) + C_{22} (\ov{n}_2 \otimes \ov{n}_2)$.  Since the  basis is fixed, we can represent these in matrix notation as follows
-\[
-\ov{\text{Sbj}} = \left ( \begin{array}{c} C_1\\ C_2\end{array}\right)\qquad
-\ov{\text{Verb}} = \left (\begin{array}{cc} C_{11} \quad & C_{12}\\ C_{21} \quad & C_{22} \end{array}\right)
-\]
-The meaning of `Q Sbj Verb' then becomes the following vector in $S$:
-\[
-\left( \begin{array}{cc}
-C_1C_{11} \langle Det(\ov{n}_1) \mid \ov{n}_1 \rangle + C_2 C_{21} \langle Det(\ov{n}_2) \mid \ov{n}_2 \rangle\\
-&\\
-C_1 C_{12} \langle Det(\ov{n}_1) \mid \ov{n}_1 \rangle + C_2 C_{22} \langle Det(\ov{n}_2) \mid \ov{n}_2 \rangle
-\end{array} \right)
-\]
-The above is equal to the following
-\[
-\left (\begin{array}{c}
-\langle Det(\ov{n}_1) \mid \ov{n}_1 \rangle \\
-\ \\
-\langle Det(\ov{n}_2) \mid \ov{n}_2 \rangle
-\end{array}\right)
-\quad 
-\odot
-\quad 
-\left(
-\left(\begin{array}{c}
-C_1 \\ 
-\ \\
- C_2
-\end{array}\right)^T \quad \times 
-\left( \begin{array}{cc}
-C_{11}   \quad &  C_{21} \\
-&\\
- C_{12}  \quad & C_{22} 
-\end{array} \right)\right)
-\]
-By linearity of the $Det$ map, the above is equal to the following
-\[
-\left(Det\left(\begin{array}{c}
-C_1 \\ 
-\ \\
- C_2
-\end{array}\right)\right)^T \quad \times 
-\left( \begin{array}{cc}
-C_{11}   \quad &  C_{21} \\
-&\\
- C_{12}  \quad & C_{22} 
-\end{array} \right)
-\]
+As a distributional example, take $N$ to be the two dimensional space with the basis $\{\ov{n}_1, \ov{n}_2\}$ and $S$ be the two dimensional space with the basis $\{s_1, s_2\}$. Suppose the linear expansion of $\ov{\text{Sbj}}$ in this space be $C_1 \ov{n}_1 + C_2 \ov{n}_2$ and the linear expansion of $\ov{\text{Verb}}$ be $C_{11} (\ov{n}_1 \otimes \ov{s}_1) + C_{12} (\ov{n}_1 \otimes \ov{s}_2) +  C_{21} ( \ov{n}_2 \otimes \ov{s}_1) + C_{22} (\ov{n}_2 \otimes \ov{s}_2)$.  
+%Since the  basis is fixed, we can represent these in matrix notation as follows
+%\[
+%\ov{\text{Sbj}} = \left ( \begin{array}{c} C_1\\ C_2\end{array}\right)\qquad
+%\ov{\text{Verb}} = \left (\begin{array}{cc} C_{11} \quad & C_{12}\\ C_{21} \quad & C_{22} \end{array}\right)
+%\]
+%The meaning of `Q Sbj Verb' then becomes the following vector in $S$:
+%\[
+% \langle Det(\ov{n}_1) \mid \ov{n}_1 \rangle  
+% \left( \begin{array}{cc}
+%C_1C_{11}+ C_1 C_{21} \\
+%&\\
+%C_1 C_{12} + C_1 C_{22}
+%\end{array} \right)
+%\quad + \quad
+% \langle Det(\ov{n}_2) \mid \ov{n}_2 \rangle  
+% \left( \begin{array}{cc}
+%C_2C_{11}+ C_2 C_{21} \\
+%&\\
+%C_2 C_{12} + C_2 C_{22}
+%\end{array} \right)
+%\]
+%The above is equivalent to
+%\[
+% \langle Det(\ov{n}_1) \mid \ov{n}_1 \rangle  
+% \left(\begin{array}{c}
+% C_1 \\
+% C_1
+% \end{array}\right) \odot 
+% \left( \begin{array}{cc}
+%C_{11}+  C_{21} \\
+%&\\
+% C_{12} +  C_{22}
+%\end{array} \right)
+%\quad + \quad
+% \langle Det(\ov{n}_2) \mid \ov{n}_2 \rangle  
+%  \left(\begin{array}{c}
+% C_2 \\
+% C_2
+% \end{array}\right) \odot 
+% \left( \begin{array}{cc}
+%C_{11}+  C_{21} \\
+%&\\
+% C_{12} +  C_{22}
+%\end{array} \right)
+%\]
+%
+%
 Suppose $\ov{n}_1$ is the word  `prison' and $\ov{n}_2$ is the word `owner', then one will have the following vectors for the words `cats' and `murderer':
 \[
 \ov{\text{cat}} = 0.8 \  \ov{\text{owner}} + 0.2 \ \ov{\text{prison}}
 \qquad
 \ov{\text{murderer}} = 0.1\  \ov{\text{owner}} + 0.9 \  \ov{\text{prison}}
 \]
-Hence,  meaning of the phrase   `most cats' will  be a word whose vectors is close to the word `cat' in this space, for example `kitten' or `dog', whereas the meaning of `few cats' will be a word whose vectors is far from the word `cat', for example, `murderer'. Thus meaning of the sentence `most cats sneeze' will be close to the meaning of the sentence `kittens sneeze', and the meaning of the sentence `few cats sneeze' will be close the meaning of the sentence `murdered sneeze'.  In the first case, `most cats' is represented by `kitten' which shares most of the properties of `cat', whereas in the second case, `few cats' is represented by `murderers' which shares very few properties with `cats'. 
-
-Take $S = \mathbb{R}$ and do a truth theoretic example, if possible. 
+Hence,  meaning of the phrase   `most cats' will  be a word whose vectors is close to the word `cat' in this space, for example `kitten' or `dog', whereas the meaning of `few cats' will be a word whose vectors is far from the word `cat', for example, `murderer'.  Meaning of the sentence `most cats sneeze' will be close to the meaning of the sentence `kittens sneeze', and  meaning of the sentence `few cats sneeze' will be close to  the meaning of the sentence `murderes sneeze'.  In the first case, `most cats' is represented by `kittens' which shares most of the properties of `cats', whereas in the second case, `few cats' is represented by `murderers' which shares very few properties with `cats'. 
 
 
-%\section{Degrees of Truth}
-%
-%As an example, defining  $c_Q(\sigma_{ij} \ov{n}_j) =  C_{jw}\ov{s}_w$ for $\ov{n}_j \otimes \ov{s}_w \in \ov{Verb}$, will yield unification of  the subjects of the verb with the subject and obtain the modification of the subject with the verb as the output. If this output is non-zero, this provides the meaning of the sentence with Q = $\exists$, otherwise, this will be the meaning of the sentence  with Q = $\nexists$. 
-%
-%As a first example suppose the coordinates $C_i$ and $C_{jk}$ correspond to \emph{degrees of truth}. The vector of the subject $\sum_i C_i \ov{n}_i$ is read as `the degrees according to which the basis words of the space $N$, that is   $\ov{n}_i$'s,  share properties with subject'.  The linear map of the verb $\sum_{jk} C_{jk} \ov{n}_i \otimes \ov{s}_k$ is read as `the degree according to which the verb is applicable to  the basis words of $N$'. For instance, take the basis words of $N$ to be ``bearded'' and `cute'' and take $S$ as in the truth theoretic interpretation, that is the real line.  Suppose the vector of ``men'' is a follows
-%\[
-%\ov{\text{men}} = 2/3 \ov{\text{bearded}} + 1/3 \ov{\text{cute}}
-%\]
-%This is read as ``men are  bearded 2/3rd of the time and cute 1/3 of the time''. Suppose the meaning of ``sleep'' is as follows
-%\[
-%\ov{\text{sleep}} = 1/5 \ov{\text{bearded}} \otimes \ov{1}  + 3/5 \ov{\text{cute}} \otimes \ov{1}
-%\]
-%This is read as bearded things sleep 1/5th of the time  and cute things sleep 3/5th of the time. To compute the meaning of `some men sleep' , we first compute
-%\begin{align*}
-%\mu \otimes 1_S (\ov{\text{men}} \otimes \ov{\text{sleep}}) = &\\
-%2/3 \times 1/5 \ov{\text{bearded}} \otimes \ov{1} \ + \ 
-%1/3\times 3/5\ov{\text{cute}} \otimes \ov{1}&
-%\end{align*}
-%When $c_{\exists}$ is applied to the above, it returns the weights multiplied by the sentence basis vector. Hence the application of $c_{\exists} \otimes 1_S$ to the above  is 
-%\[
-%2/15 (\ov{1} \otimes \ov{1})+ 3/15 (\ov{1} \otimes \ov{1})
-%\]
-%Finally, when $\mu$ is applied to the above, we will obtain  $2/15 \ov{1} + 3/15 \ov{1}$, which reads as in 1/3rd of the times it is true that some men sleep. 
-%
-%As a third example, we  use the  concrete instantiation  of verbs as in \cite{GrefenSadr}. In this model the above so-called `degrees of truth' are obtained from a corpus by counting co-occurrences of one word with the basis words of a vector space. The vector of a noun on each coordinate is the (a normalised version) of the  number of times the noun has occurred in the window of (usually taken to be 5 words) the basis words. The vector of an intransitive verb is the sum of the vectors of its subjects across the corpus. The Vector of a transitive verb is the sum of tensor products of the subjects and objects of the verb across the corpus. That is we have
-%\[
-%\ov{iVerb} = \sum_i \ov{Sbj}_i
-%\qquad
-%\ov{tVerb} = \sum_i (\ov{Sbj} \otimes \ov{Obj})_i
-%\]
-%Hence, the vectors of `Q Sbj Verb', `Q Sbj Verb Obj'  become as follows
-%\[
-%c_Q(\ov{Sbj} \odot (\ov{Verb} \times \ov{Obj})) \times   (\ov{Verb} \times \ov{Obj}))\\
-%\]
-%In the first case, we set  $c_{\exists} = Id$  (this is possible here since $\ov{Verb} \in N$) and  via the $\odot$ obtain the joint properties of the subject of the sentence and the subjects of the verb, which at the same time will represent the application of the verb to the vector representing these joint properties. In the transitive case, we first obtain the joint properties of the subject of the sentence and the subjects of the verb phrase Verb-Obj, and then apply the verb phrase to the vector representing these joint properties. 
-%
-%
-%
-%
-%
+
+
+\section{Truth Theoretic Interpretation}
+For this part, we work in the category $Rel$ of sets and relations.  We take $N$ to be the power set of a set of individuals. A common noun is then the powerset of the set of its individuals.    For example,   the set  $\{\{m_1\}, \{m_2\}, \{m_1, m_2\}, \emptyset\}$ denotes the  common noun `men', for $m_1, m_2$ two male individuals and the set $\{\{c_1\}, \emptyset\}$ denotes  the common noun `cat', with one individual $c_1$.  We take $S$ to be the one dimensional space free over the singleton $\ov{1}$. The  origin represents false and   number  one  represents truth.   A verb is the powerset of a relation (corresponding to its predicate). For an intransitive verb, this relation is on the set $N \times S$, where each relation corresponds to a subset of $N$, since we have $N \times S \cong N$.  For a transitive verb, it is a relation on the set $N \times S \times N \cong N \times N$. Hence, an intransitive verb is the powerset of all individuals to which the verb applies. As an example, suppose the verb `sneeze'  applies to individuals $m_1$ and $c_1$, hence it is represented by $\{\{m_1\}, \{c_1\}, \{m_1, c_1\}, \emptyset\}$.  
+
+
+The map $Det$ sends a subset of individuals to a set of its subsets exactly in the same way as defined by \cite{BarwiseCooper81}. For example, for $Det$ = `two', the output is the set of subsets  of individuals whose elements have cardinality exactly two; for $Det$ = `some', the output is the set of non-empty subsets of individuals and so on. In our example,  two(men) $= \{\{m_1, m_2\}\}$, whereas some(men) $= \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}$.  For the case of `cats', we have that two(cats) $= \{\emptyset\}$. 
+
+Following previous work \cite{Coeckeetal}, we represent the  set of individuals   as vector spaces free over (or spanned by) its elements, which in this setting are represented by   basis vectors.  Common nouns become sums of their elements in this space. The truth-theoretic meaning of the sentence ``Det Sbj Verb'' can then be obtained  by computing the  morphism  developed in section 4. In the first step of the computation, we obtain the following:
+
+\begin{align*}
+(\delta_N \otimes 1_{N \otimes S})\Big(\ov{Sbj} \otimes \ov{Verb}\Big) =   (\sum_i \ov{n}_i \otimes \ov{n}_i) \otimes (\sum_j \ov{n}_j \otimes \ov{1}) = (\sum_i \ov{n}_i \otimes \ov{n}_i) \otimes (\sum_j \ov{n}_j)
+\end{align*}
+
+\noindent
+In the second step, we obtain  the following (note that we are dropping the $S$ morphisms because the $S$ is now  the unit of tensor):
+
+\begin{align*}
+(Det \otimes  \mu_N)\Big(\sum_i \ov{n}_i \otimes \ov{n}_i) \otimes (\sum_j \ov{n}_j\Big) =  Det(\sum_i \ov{n}_i) \otimes  (\sum_i \sigma_{ij} \ov{n}_i)  
+\end{align*}
+
+\noindent
+The final step  provides us with the following:
+
+\begin{align*}
+(\epsilon_{N})  \Big(Det(\sum_i \ov{n}_i) \otimes (\sum_i \sigma_{ij} \ov{n}_i)  \Big) =   \langle Det(\sum_i \ov{n}_i)  \mid \sum_{ij}  \sigma_{ij} \ov{n}_i \rangle  
+\end{align*}
+
+\noindent 
+If the result is  non-zero, the meaning of the sentence is true, else it is false. 
+As an example,  consider  the  meaning  of  `some men sneeze', which becomes as follows: 
+\[
+\langle \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \mid \{\{m_1\}, \{c_1\}, \{m_1, c_1\}, \emptyset\} \rangle =  1
+\]
+For `one cat sneezes', we have
+\[
+\langle \{\{c_1\}\} \mid \{\{m_1\}, \{c_1\}, \{m_1, c_1\}, \emptyset\} \rangle =  1
+\]
+Whereas for `two cats sneeze' we have
+\[
+\langle \{\{c_1, c_1\}\} \mid \{\{m_1\}, \{c_1\}, \{m_1, c_1\}, \emptyset\} \rangle =  0
+\]
+
+We have not done the necessary expositions here, but as shown in \cite{CoeckePaquettePavlovic09,CoeckePaq},  the Frobenius $ \mu$ map is the analog of  set-theoretic intersection and the compact closed  epsilon map is the analog of  set-theoretic application. Using these it is not hard to show that  this truth-theoretic interpretation of the compact closed semantics of quantified sentences provides us with the same meaning as their generalised quantifier semantics.
