@@ -5,29 +5,54 @@
 %%% End: 
 
 
-Relational interpretation of Frobenius and the compact structure. Also
-point out the isomorphisms $1 \to X\x Y // X \to Y // X \x Y \to 1$.
+The category $\Rel$ of sets and relations is a basic example of a
+symmetric monoidal compact closed category. The tensor is Cartesian
+product, $\times$, with $1$, the one element set, the unit; $*$ is
+identity. Monoidal closure is therefore just the product. This
+formally exhibits the correspondence between relations and subsets of
+the Cartesian product, because a relation $ 1 \to X \x Y $ is clearly
+just a subset of $X \x Y$, and by the monoidal closure isomorphism it
+is also a relation $ X \to Y $~; and of course also a relation $X \x Y
+\to 1$ by converse.
 
-Intended interpretation of $\Det$ and the need for matching powerset
-levels as a motivation for Finite Powerset lifting. 
+\ondrej{This is probably best put where compact
+  closed cats are introduced.}
 
-\medskip
-For a function $f : X \to Y$, the map $2^f : 2^Y \to 2^X$ has both a
-left and right adjoints with respect to the pointwise subset
-ordering. In more detail, the powerset of $X$, $2^X$, ordered by
-subset inclusion  can be seen as a
-category and $2^f$ as a functor from the category $2^Y$ to $2^X$. This
-functor has both adjoints. It is well known that when $f$ is the first
-projection $\pi_1 : X\x Y \to X$, the left adjoint interprets
-existential quantification in first order predicate logic, and the
-right adjoint interprets universal quantification. 
+The frobenius maps $\delta$ is just 
+the diagonal relation $x \sim (x,x)$ and $\mu$ its transpose; $\eta : 1
+\to X$ is the so-called \emph{fan} relation: $\ast \sim x, ~  \forall
+x$, $\iota$ its converse. The required axioms are easilly checked. 
+\ondrej{This is probably best put where Frobenius structur is introduced.}
 
-The definitions of the adjoints are in detail as follows. 
-The left adjoint $\exists_f : 2^X \to 2^Y$, also called the
-\emph{direct image} of $f$, is defined by 
+
+In order to introduce quantification in $\Rel$, we first discuss the
+well know case in $\Set$ where the existential and universal
+quantifiers are left and right adjoints, respectively, to inverse
+image functor.
+%
+For a set $X$, the set of functions from $X$ to the two-element set,
+$2^X$, is demonstrably the powerset of $X$.  For a function $f : X \to
+Y$, precomposition with $f$ is internally the map $2^f : 2^Y \to
+2^X$. It takes a $h$ to $hf$.  It has both left and right adjoints
+with respect to the pointwise subset ordering. In more detail, the
+powerset of $X$ ordered by subset inclusion is isomorphic to the set
+of characteristic functions on $X$, $2^X$, ordered pointwise by the
+ordering $0 < 1$.  Any pre-ordered set can be seen as a category. The
+function $2^f$ becomes a functor from the category $2^Y$ to
+$2^X$. This functor has both adjoints. It is well known that when $f$
+is the first projection $\pi_1 : X\x Y \to X$, $2^{\pi_1}$ corresponds
+to \emph{weakening} in the sense that subsets of $X$ are predicates on
+$X$, and $2^{\pi_1}$ takes predicates on $X$ to predicates on $X\x Y$
+where the element of the second component $Y$ doesn't occur.  The left
+adjoint to $2^{\pi_1}$ now interprets existential quantification in first
+order predicate logic, and the right adjoint interprets universal
+quantification. In detail, 
+the left adjoint, $\exists_f : 2^X \to 2^Y$, is defined by 
 \[\exists_f (X' \subseteq X) = \{ y \in Y ~|~ \exists x \in X. f x = y
 \wedge x \in X'\} \]
-i.e. the image of $X'$ under $f$. The right adjoint $\forall_f : 2^X
+i.e. the image of $X'$ under $f$. It is also known as the
+\emph{direct image} of $f$.
+The right adjoint $\forall_f : 2^X
 \to 2^Y$ is defined by 
 %
 \[
@@ -36,26 +61,27 @@ i.e. the image of $X'$ under $f$. The right adjoint $\forall_f : 2^X
 %
 
 
-Not that there may be many other functions from $2^{X\x Y}$ to $2^X$,
+Note that there may be many other functions from $2^{X\x Y}$ to $2^X$,
 such as the one sending an $f$ to the $g$ for which
 $g(x) = 1$ if and only if $f(x,y) = 1$ for exactly two distinct values
-of $y$. This quantifier we could call ``two''; or
-``none'' for which $g(x)=1$ iff $f(x,y) = 0$ always. Thus the
-existential and universal quantifier are the two extreme cases. 
+of $y$. This quantifier could be called ``two''. Another example is
+``none'' for which $g(x)=1$ iff $f(x,y) = 0$ always. This exhibits the 
+existential and universal quantifiers as two extreme cases of a
+spectrum of all possible quantifiers.  
 
-
-In the following assume for simplicity that the context, $X$, is
-empty, $X = 1$, and then first order and other quantifiers become
-certain functions $2^Y \to 2$. Everything we say generalises
+In the following we assume for simplicity that the ambient context,
+$X$, is empty, i.e. $X = 1$, and then quantifiers become certain
+functions $2^Y \to 2$. Everything we say generalises
 straightforwardly.  Note that in this case, the existential quantifier
-becomes the characteristic function of nonempty subsets of $Y$, the
+becomes the characteristic function of nonempty subsets of $Y$; the
 universal quantifier is the characteristic function of the singleton
-$\{Y\}$, and ``two'' is the characteristic function of exactly two
-element sets. 
+$\{Y\}$, and ``two'' is the characteristic function of two
+element sets.
 
 In single sorted first order predicate logic, quantification ranges
 over the whole domain $Y$, which is simply assumed to be fixed, and
-often implicit, throught the formula. E.g. $\exists x. x > 0$, $x$
+often implicit, throught the formula. For example, in $\exists x. x >
+0$, the bound variable, $x$,
 ranges over some ordered set. In linguistics, however, the range of
 quantification is explicitly stated, as in ``all men sleep'', where
 the category 
@@ -63,14 +89,20 @@ the category
 men. In other words, the quantifier is ``all men'', and ``all'' is a
 particle which expects a category to become a quantifier. Formally,
 when we fix a domain of all possible subjects of quantification, $X$,
-quantifiers must have type 
+a quantifier $Q$ must have type 
 \begin{equation}\label{eq:q}
 2^X \to 2^{2^X}
 \end{equation}
 
-For instance, $\exists$ (exists) takes a subset $x\subseteq X$ to all
-nonempty subsets of $x$; $\forall$ maps $x\subseteq X$ to $ \{ x \}$; ``two''
-takes $x \subseteq X$ to $\{ x' \subseteq x | \mathrm{card}\,x' = 2 \}$.
+Here, the first argument to $Q$ is a subset of the universal domain,
+the range of quantification. The result is a quantifier which
+possibly ignores everything that is outside the range. 
+
+For instance, ``some'' ($\exists$) takes a subset
+$\;\mathrm{men}\subseteq X\;$ to all nonempty subsets of men; all
+($\forall$) maps $\;\mathrm{men}\subseteq X\;$ to $ \{ \mathrm{men}
+\}$; ``two'' takes $~\mathrm{men} \subseteq X$~ to two-element sets of
+men.
 
 Now note, that the $\Rel$ is equivalent to the Kleisli category of the
 powerset monad $2^-$, i.e. an arrow of type \eqref{eq:q} is precisely
