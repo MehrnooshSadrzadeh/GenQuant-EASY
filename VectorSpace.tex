@@ -109,44 +109,46 @@ Suppose $\ov{n}_1$ is the word  `prison' and $\ov{n}_2$ is the word `owner', the
 \]
 Hence,  meaning of the phrase   `most cats' will  be a word whose vectors is close to the word `cat' in this space, for example `kitten' or `dog', whereas the meaning of `few cats' will be a word whose vectors is far from the word `cat', for example, `murderer'. Thus meaning of the sentence `most cats sneeze' will be close to the meaning of the sentence `kittens sneeze', and the meaning of the sentence `few cats sneeze' will be close the meaning of the sentence `murdered sneeze'. The idea here is that the quantitative way of quantifying in set-theoretic models, which depended on the cardinality of the quantified sets, is now transformed into a geometric way of quantifying where the meaning of the quantified phrase depends on its geometric distance with other words. 
 
-
-\section{Degrees of Truth}
-
-As an example, defining  $c_Q(\sigma_{ij} \ov{n}_j) =  C_{jw}\ov{s}_w$ for $\ov{n}_j \otimes \ov{s}_w \in \ov{Verb}$, will yield unification of  the subjects of the verb with the subject and obtain the modification of the subject with the verb as the output. If this output is non-zero, this provides the meaning of the sentence with Q = $\exists$, otherwise, this will be the meaning of the sentence  with Q = $\nexists$. 
-
-As a first example suppose the coordinates $C_i$ and $C_{jk}$ correspond to \emph{degrees of truth}. The vector of the subject $\sum_i C_i \ov{n}_i$ is read as `the degrees according to which the basis words of the space $N$, that is   $\ov{n}_i$'s,  share properties with subject'.  The linear map of the verb $\sum_{jk} C_{jk} \ov{n}_i \otimes \ov{s}_k$ is read as `the degree according to which the verb is applicable to  the basis words of $N$'. For instance, take the basis words of $N$ to be ``bearded'' and `cute'' and take $S$ as in the truth theoretic interpretation, that is the real line.  Suppose the vector of ``men'' is a follows
-\[
-\ov{\text{men}} = 2/3 \ov{\text{bearded}} + 1/3 \ov{\text{cute}}
-\]
-This is read as ``men are  bearded 2/3rd of the time and cute 1/3 of the time''. Suppose the meaning of ``sleep'' is as follows
-\[
-\ov{\text{sleep}} = 1/5 \ov{\text{bearded}} \otimes \ov{1}  + 3/5 \ov{\text{cute}} \otimes \ov{1}
-\]
-This is read as bearded things sleep 1/5th of the time  and cute things sleep 3/5th of the time. To compute the meaning of `some men sleep' , we first compute
-\begin{align*}
-\mu \otimes 1_S (\ov{\text{men}} \otimes \ov{\text{sleep}}) = &\\
-2/3 \times 1/5 \ov{\text{bearded}} \otimes \ov{1} \ + \ 
-1/3\times 3/5\ov{\text{cute}} \otimes \ov{1}&
-\end{align*}
-When $c_{\exists}$ is applied to the above, it returns the weights multiplied by the sentence basis vector. Hence the application of $c_{\exists} \otimes 1_S$ to the above  is 
-\[
-2/15 (\ov{1} \otimes \ov{1})+ 3/15 (\ov{1} \otimes \ov{1})
-\]
-Finally, when $\mu$ is applied to the above, we will obtain  $2/15 \ov{1} + 3/15 \ov{1}$, which reads as in 1/3rd of the times it is true that some men sleep. 
-
-As a third example, we  use the  concrete instantiation  of verbs as in \cite{GrefenSadr}. In this model the above so-called `degrees of truth' are obtained from a corpus by counting co-occurrences of one word with the basis words of a vector space. The vector of a noun on each coordinate is the (a normalised version) of the  number of times the noun has occurred in the window of (usually taken to be 5 words) the basis words. The vector of an intransitive verb is the sum of the vectors of its subjects across the corpus. The Vector of a transitive verb is the sum of tensor products of the subjects and objects of the verb across the corpus. That is we have
-\[
-\ov{iVerb} = \sum_i \ov{Sbj}_i
-\qquad
-\ov{tVerb} = \sum_i (\ov{Sbj} \otimes \ov{Obj})_i
-\]
-Hence, the vectors of `Q Sbj Verb', `Q Sbj Verb Obj'  become as follows
-\[
-c_Q(\ov{Sbj} \odot (\ov{Verb} \times \ov{Obj})) \times   (\ov{Verb} \times \ov{Obj}))\\
-\]
-In the first case, we set  $c_{\exists} = Id$  (this is possible here since $\ov{Verb} \in N$) and  via the $\odot$ obtain the joint properties of the subject of the sentence and the subjects of the verb, which at the same time will represent the application of the verb to the vector representing these joint properties. In the transitive case, we first obtain the joint properties of the subject of the sentence and the subjects of the verb phrase Verb-Obj, and then apply the verb phrase to the vector representing these joint properties. 
+Now in the above take $S = \mathbb{R}$ and do a truth theoretic example, if possible. 
 
 
-
-
-
+%\section{Degrees of Truth}
+%
+%As an example, defining  $c_Q(\sigma_{ij} \ov{n}_j) =  C_{jw}\ov{s}_w$ for $\ov{n}_j \otimes \ov{s}_w \in \ov{Verb}$, will yield unification of  the subjects of the verb with the subject and obtain the modification of the subject with the verb as the output. If this output is non-zero, this provides the meaning of the sentence with Q = $\exists$, otherwise, this will be the meaning of the sentence  with Q = $\nexists$. 
+%
+%As a first example suppose the coordinates $C_i$ and $C_{jk}$ correspond to \emph{degrees of truth}. The vector of the subject $\sum_i C_i \ov{n}_i$ is read as `the degrees according to which the basis words of the space $N$, that is   $\ov{n}_i$'s,  share properties with subject'.  The linear map of the verb $\sum_{jk} C_{jk} \ov{n}_i \otimes \ov{s}_k$ is read as `the degree according to which the verb is applicable to  the basis words of $N$'. For instance, take the basis words of $N$ to be ``bearded'' and `cute'' and take $S$ as in the truth theoretic interpretation, that is the real line.  Suppose the vector of ``men'' is a follows
+%\[
+%\ov{\text{men}} = 2/3 \ov{\text{bearded}} + 1/3 \ov{\text{cute}}
+%\]
+%This is read as ``men are  bearded 2/3rd of the time and cute 1/3 of the time''. Suppose the meaning of ``sleep'' is as follows
+%\[
+%\ov{\text{sleep}} = 1/5 \ov{\text{bearded}} \otimes \ov{1}  + 3/5 \ov{\text{cute}} \otimes \ov{1}
+%\]
+%This is read as bearded things sleep 1/5th of the time  and cute things sleep 3/5th of the time. To compute the meaning of `some men sleep' , we first compute
+%\begin{align*}
+%\mu \otimes 1_S (\ov{\text{men}} \otimes \ov{\text{sleep}}) = &\\
+%2/3 \times 1/5 \ov{\text{bearded}} \otimes \ov{1} \ + \ 
+%1/3\times 3/5\ov{\text{cute}} \otimes \ov{1}&
+%\end{align*}
+%When $c_{\exists}$ is applied to the above, it returns the weights multiplied by the sentence basis vector. Hence the application of $c_{\exists} \otimes 1_S$ to the above  is 
+%\[
+%2/15 (\ov{1} \otimes \ov{1})+ 3/15 (\ov{1} \otimes \ov{1})
+%\]
+%Finally, when $\mu$ is applied to the above, we will obtain  $2/15 \ov{1} + 3/15 \ov{1}$, which reads as in 1/3rd of the times it is true that some men sleep. 
+%
+%As a third example, we  use the  concrete instantiation  of verbs as in \cite{GrefenSadr}. In this model the above so-called `degrees of truth' are obtained from a corpus by counting co-occurrences of one word with the basis words of a vector space. The vector of a noun on each coordinate is the (a normalised version) of the  number of times the noun has occurred in the window of (usually taken to be 5 words) the basis words. The vector of an intransitive verb is the sum of the vectors of its subjects across the corpus. The Vector of a transitive verb is the sum of tensor products of the subjects and objects of the verb across the corpus. That is we have
+%\[
+%\ov{iVerb} = \sum_i \ov{Sbj}_i
+%\qquad
+%\ov{tVerb} = \sum_i (\ov{Sbj} \otimes \ov{Obj})_i
+%\]
+%Hence, the vectors of `Q Sbj Verb', `Q Sbj Verb Obj'  become as follows
+%\[
+%c_Q(\ov{Sbj} \odot (\ov{Verb} \times \ov{Obj})) \times   (\ov{Verb} \times \ov{Obj}))\\
+%\]
+%In the first case, we set  $c_{\exists} = Id$  (this is possible here since $\ov{Verb} \in N$) and  via the $\odot$ obtain the joint properties of the subject of the sentence and the subjects of the verb, which at the same time will represent the application of the verb to the vector representing these joint properties. In the transitive case, we first obtain the joint properties of the subject of the sentence and the subjects of the verb phrase Verb-Obj, and then apply the verb phrase to the vector representing these joint properties. 
+%
+%
+%
+%
+%
