@@ -61,7 +61,7 @@ The right adjoint $\forall_f : 2^X
 %
 
 
-Note that there may be many other functions from $2^{X\x Y}$ to $2^X$,
+There are other functions from $2^{X\x Y}$ to $2^X$,
 such as the one sending an $f$ to the $g$ for which
 $g(x) = 1$ if and only if $f(x,y) = 1$ for exactly two distinct values
 of $y$. This quantifier could be called ``two''. Another example is
@@ -72,7 +72,7 @@ spectrum of all possible quantifiers.
 In the following we assume for simplicity that the ambient context,
 $X$, is empty, i.e. $X = 1$, and then quantifiers become certain
 functions $2^Y \to 2$. Everything we say generalises
-straightforwardly.  Note that in this case, the existential quantifier
+straightforwardly.  In this case, the existential quantifier
 becomes the characteristic function of nonempty subsets of $Y$; the
 universal quantifier is the characteristic function of the singleton
 $\{Y\}$, and ``two'' is the characteristic function of two
@@ -81,73 +81,109 @@ element sets.
 In single sorted first order predicate logic, quantification ranges
 over the whole domain $Y$, which is simply assumed to be fixed, and
 often implicit, throught the formula. For example, in $\exists x. x >
-0$, the bound variable, $x$,
-ranges over some ordered set. In linguistics, however, the range of
-quantification is explicitly stated, as in ``all men sleep'', where
-the category 
-``men'' restricts the range of the quantifier, ``all'', to just
-men. In other words, the quantifier is ``all men'', and ``all'' is a
-particle which expects a category to become a quantifier. Formally,
-when we fix a domain of all possible subjects of quantification, $X$,
-a quantifier $Q$ must have type 
+0$, the bound variable, $x$, ranges over some ordered set. In
+linguistics, however, the range of quantification is explicitly
+stated, as in ``all men sleep'', where the category ``men'' restricts
+the range of the quantifier, ``all'', to just men. In other words, the
+quantifier is ``all men'', and ``all'' is a particle which expects a
+linguistic category to become a quantifier. Formally, when we fix a
+domain of all possible subjects of quantification, $X$, a quantifier
+$Q$ must have type
 \begin{equation}\label{eq:q}
 2^X \to 2^{2^X}
 \end{equation}
 
-Here, the first argument to $Q$ is a subset of the universal domain,
-the range of quantification. The result is a quantifier which
-possibly ignores everything that is outside the range. 
+Here, the first argument to $Q$ is the range of the quantification. The
+result is a quantifier which possibly ignores everything that is
+outside the range.
 
 For instance, ``some'' ($\exists$) takes a subset
-$\;\mathrm{men}\subseteq X\;$ to all nonempty subsets of men; all
+$\;\mathrm{men}\subseteq X\;$ to all nonempty subsets of $\mathrm{men}$; all
 ($\forall$) maps $\;\mathrm{men}\subseteq X\;$ to $ \{ \mathrm{men}
-\}$; ``two'' takes $~\mathrm{men} \subseteq X$~ to two-element sets of
-men.
+\}$; ``two'' takes $~\mathrm{men} \subseteq X$~ to two-element subsets of
+$\mathrm{men}$.
 
-Now note, that the $\Rel$ is equivalent to the Kleisli category of the
-powerset monad $2^-$, i.e. an arrow of type \eqref{eq:q} is precisely
-a relation $2^X \to 2^X$. 
+The exponential functor, $2^-$, is a monad where unit maps $x$ to
+$\{x\}$ and multiplication is set union.  Furthermore, $\Rel$ is
+equivalent to the Kleisli category of this monad, i.e. a relation $R$
+from $X$ to $Y$ is a function $r$ from $X$ to $2^Y$. Recall \cite{CWM}
+that for any monad $(\mathbf{T}, \mu, \eta)$ on $\mathbb{C}$, the
+Kleisli category of $\mathbf{T}$, denoted $\mathbb{C}_{\mathbf{T}}$,
+has the same objects as $\mathbb{C}$. Arrows $X \to Y$ in
+$\mathbb{C}_{\mathbf{T}}$ are arrows $X \to \mathbf{T}Y$ in
+$\mathbb{C}$. Moreover, there is an adjunction $\mathbf{F} \dashv
+\mathbf{U} : \mathbb{C} \to \mathbb{C}_\mathbf{T}$ such that
+$\mathbf{F}$ is identity on objects, and $f \mapsto \eta f$ on arrows
+and $\mathbf{U}$ is $\mathbf{T}$ on objects and $\mu \mathbf{T}(f)$ on
+arrows. It follows that $\mathbf{U}\mathbf{F} = \mathbf{T}$. 
 
-\renewcommand{\wp}{2^}
-It follows that in order to interpret quantification in relations we
-must consider relations over powersets. 
-To this end, we lift $\wp-$ to $\Rel$. Define $\wp- : \Rel \to
-\Rel$ on objects $X \mapsto \wp X$, and on arrows as follows: a
-relations $R : X \to Y$ is mapped to that relation $\wp R : \wp X \to
-\wp Y$ which relates every subset of $X$ to all subsets of $Y$ which
-arise from $X$ by replacement of elements under $R$. In other words,
-when relations are understood as nondeterministic partial functions
-$\wp R$ captures all possible nondeterminism on collections of
-elements. More formally, identify $\Rel$ with the Kleisli
-category of the covariant powerset functor whose action on functions
-is the direct image. There is a distributive law, a natural
-transformation $\lambda_X : \wp{\wp X} \to \wp{\wp X}$, which takes a
-set of subsets of $X$ into the set of its crossections. 
+Therefore, a function of type \eqref{eq:q} is
+precisely a relation $2^X \to 2^X$.
 
-For example: 
-\begin{align*}
-\lambda (\{\{a,b\},\{c\}\}) & \quad = \quad \{\{a,c\},\{b,c\}\}\\
-\lambda (\{\{a,b\},\{c\},\emptyset\}) &\quad = \quad \emptyset
-\end{align*}
+\renewcommand{\wp}{2^} It follows that quantifiers are relations over
+powersets. In order to interpret the rest of the language in $\Rel$ we
+need to lift the powerset functor to $\Rel$. The following example
+shows how. 
 
-\begin{quote}
-{\bf O.R.} check it respects the monad structure, at least the necessary
-  half of it 
-\end{quote}
+\ondrej{Shite, I don't know how this works. I remember we needed to
+  blow up to all subsets somewhere but it's too risky to write
+  anything too formal now. Maybe you can fix it in an example and
+  handwave over the relational powerset interpretations of the
+  Frobenius stuff. I would need one more day, and I'm too stressed to
+  think now anyway. So I'm finishing with the conclusion that
+  generalised quantifiers are relations over powersets. Not too good.}
 
-It follows that $\wp-$ lifts to $\Rel$ where a
-relation $R :  X \to \wp Y$ is taken to $\wp R : \wp X \xrightarrow{R} \wp {\wp Y}
-\xrightarrow{\lambda_Y} \wp {\wp Y}$.
+\ondrej{Need an example now}
 
 
-Example: lifted frobenius
+% The functor
+% $\mathbf{F}\mathbf{U}$, where $\mathbf{F} \dashv \mathbf{U}$ is the
+% splitting of $\wp-$ fits the type but not the purpose as it takes a
+% set $X$ to the functional relation whose only result is the union of
+% $R$ applied to each 
+% . It takes 
+% a relation $R : X \to Y$ to the relation $2^R = \eta\mu: 2^X \to 2^Y$
 
-\begin{quote}
-{\bf O.R.} Now it all works out :)
-\end{quote}
+% , we use the
+% left adjoint $F: \Set \to \Set_{\wp-}$.
 
 
-Examples of calculations with determiners: exists, all, some, two
+% lift
+% $\wp-$ to $\Rel$ using a \emph{distributive law} \cite{Beck69}. Define
+% $\wp- : \Rel \to \Rel$ on objects by $X \mapsto \wp X$, and on arrows as
+% follows: a relation $R : X \to Y$ is mapped to that relation $\wp R :
+% \wp X \to \wp Y$ which relates every subset of $X$ to all subsets of
+% $Y$ which arise from $X$ by replacement of elements under $R$. In
+% other words, when relations are understood as nondeterministic partial
+% functions $\wp R$ captures all possible nondeterminism on collections
+% of elements. More formally, identify $\Rel$ with the Kleisli category
+% of $\wp-$. There is a distributive law, a natural transformation
+% $\lambda_X : \wp{\wp X} \to \wp{\wp X}$, which takes a set of subsets
+% of $X$ into the set of its crossections.
+
+% For example: 
+% \begin{align*}
+% \lambda (\{\{a,b\},\{c\}\}) & \quad = \quad \{\{a,c\},\{b,c\}\}\\
+% \lambda (\{\{a\}\},\{\{b\}\}) & \quad = \quad \{ a , b \} \\
+% \lambda (\{\{a,b\},\{c\},\emptyset\}) &\quad = \quad \emptyset
+% \end{align*}
+
+% It follows from the theory in \cite{Beck69} that $\wp-$ lifts to $\Rel$ where a
+% relation $R :  X \to \wp Y$ is taken to $\wp R : \wp X
+% \xrightarrow{\wp r} \wp {\wp Y}
+% \xrightarrow{\lambda_Y} \wp {\wp Y}$.
+
+
+% {\bf Example:} The Frobenius relation $\delta$ is a map : $x \mapsto
+% (x,x)$. It follows that \[2^\delta = X \mapsto \{ (x,x) | x \in X
+% \}\].  
+
+% \begin{quote}
+% {\bf O.R.} Now it all works out :)
+% \end{quote}
+
+
+% Examples of calculations with determiners: exists, all, some, two
 
 
 
