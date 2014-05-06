@@ -113,16 +113,13 @@ $\{\ov{v_i}\}_i$ has a Frobenius algebra over it, explicitly given as follows, w
 %\delta :: \ov{v_i} \mapsto \ov{v_i} \otimes \ov{v_i} &\qquad& \iota:: \ov{v_i} \mapsto 1\\
 %\mu:: \ov{v_i} \otimes \ov{v_i} \mapsto \ov{v_i} &\qquad& \zeta:: 1 \mapsto \ov{v_i}  
 %\end{align*}
-\begin{equation*}\label{eq:frob}
-\delta :: \ov{v_i} \mapsto \ov{v_i} \otimes \ov{v_i}  \iota:: \ov{v_i} \mapsto 1 \qquad \text{and} \qquad
-\mu:: \ov{v_i} \otimes \ov{v_j} \mapsto 
-\delta_{ij}\ov{v_i} 
-%:=\left\{ \begin{array}{lll}
-%\ov{v_i} &\ \ \  & i=j\\ 
-%\ov{0} & & i\not = j
-%\end{array}\right.
- \zeta:: 1 \mapsto   \sum_i  \ov{v_i}  
-\end{equation*}
+\begin{eqnarray*}\label{eq:frob}
+\delta  \colon V \to V \otimes V  & \quad \mbox{given by} \quad&  \ov{v_i} \mapsto \ov{v_i} \otimes \ov{v_i} \\
+\mu \colon V \otimes V \to V  &\quad \mbox{given by} \quad & \ov{v_i} \otimes \ov{v_j} \mapsto 
+\delta_{ij}\ov{v_i} \\
+  \iota \colon V \to \mathbb{R} & \quad \mbox{given by} \quad&  \ov{v_i} \mapsto 1 \\
+ \zeta \colon \mathbb{R} \to V  &\quad \mbox{given by} \quad& 1 \mapsto   \sum_i  \ov{v_i}  
+\end{eqnarray*}
 
 
 %Frobenius algebras over vector spaces with orthonormal bases are
@@ -173,28 +170,35 @@ $\{\ov{v_i}\}_i$ has a Frobenius algebra over it, explicitly given as follows, w
 Another important example of a  compact closed category is
 $\Rel$, the cateogry of sets and relations. Here, $\otimes$ is
 cartesian product with the singleton set as its unit $I = \{\star\}$, and $^*$ is identity on objects. Closure reduces to the
-fact that a relation between sets $A\times B$ and $C$ is equivalently. 
-%a relation between $A$ and $B \times C$.   Given a set $S$ with elements $s_i, s_j \in S$,  the epsilon and eta maps are
-%given as follows
-%\begin{eqnarray*}
-%&\epsilon^l  =  \epsilon^r &\colon   S \times S \to I \quad \mbox{given by} \quad
-%(s_i, s_j) \quad \mapsto \quad  \star \quad \text{if} \quad i=j\\
-%&\eta^l = \eta^r& \colon  I \to S \times S
-%\quad \mbox{given by} \quad 
-%\star \quad \mapsto \quad (s_i, s_i)
-%\end{eqnarray*}
-%
-%
-%
-Every object in $\Rel$, that is a set $S$ with elements $s_i, s_j \in S$  has a
+fact that a relation between sets $A\times B$ and $C$ is equivalently a relation between $A$ and $B \times C$.   Given a set $S$ with elements $s_i, s_j \in S$,  the epsilon and eta maps are given as follows:
+
+\begin{eqnarray*}
+&\epsilon^l  =  \epsilon^r &\colon   S \times S \to \{\star\} \quad \mbox{given by} \quad
+\{((s_i, s_j), \star) \mid s_i, s_j \in S, i = j \}\\
+&\eta^l = \eta^r& \colon   \{\star\}  \to S \times S
+\quad \mbox{given by} \quad 
+\{(\star, (s_i, s_j)) \mid s_i, s_j \in S, i = j\}
+\end{eqnarray*}
+
+
+
+Every object in $\Rel$  has a
 Frobenius algebra over it given by the diagonal and codiagonal
-relations, respectively. 
+relations, as described below: 
 
 
 
+\begin{eqnarray*}
+&\delta &\colon   S \to S \times S \quad \mbox{given by} \quad
+\{(s_i, (s_j, s_k)) \mid s_i, s_j, s_k \in S, i = j  = k\}\\
+& \mu & \colon   S \times S \to S
+\quad \mbox{given by} \quad 
+\{(s_i, s_j), s_k) \mid s_i, s_j, s_k\in S, i = j=k\}\\
+& \iota& \colon S \to  \{\star\}    \quad \mbox{given by} \quad \{(s_i, \star) \mid s_i \in S\}\\
+&\zeta& \colon  \{\star\}  \to S  \quad \mbox{given by} \quad \{(\star, s_i) \mid s_i \in S\}
+\end{eqnarray*}
 
-
-
+For the details of verifying that for each of the two examples above,  the corresponding conditions hold see \cite{CoeckePaq}. 
 
 \section{String Diagrams} 
 \label{string}
