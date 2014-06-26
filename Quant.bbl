@@ -1,0 +1,65 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem{BaroniZam}
+Baroni, M., Zamparelli, R.: Nouns are vectors, adjectives are matrices:
+  Representing adjective-noun constructions in semantic space. In: Conference
+  on Empirical Methods in Natural Language Processing (EMNLP-10). Cambridge, MA
+  (2010)
+
+\bibitem{BarwiseCooper81}
+Barwise, J., Cooper, R.: Generalized quantifiers and natural language.
+  Linguistics and Philosophy  4(2),  159--219 (1981),
+  \url{http://dx.doi.org/10.1007/BF00350139}
+
+\bibitem{CoeckePaq}
+Coecke, B., Paquette, E.: {Introducing categories to the practicing physicist}.
+  In: Coecke, B. (ed.) New Structures for Physics, Lecture Notes in Physics,
+  vol. 813, pp. 167--271. Springer (2008)
+
+\bibitem{Coeckeetal}
+Coecke, B., Sadrzadeh, M., Clark, S.: {M}athematical {F}oundations for
+  {D}istributed {C}ompositional {M}odel of {M}eaning. {L}ambek {F}estschrift.
+  Linguistic Analysis  36,  345--384 (2010)
+
+\bibitem{CoeckePaquettePavlovic09}
+Coecke, B., Paquette, {\'E}.O., Pavlovic, D.: Classical and quantum
+  structuralism. In: Gay, S., Mackie, I. (eds.) Semantical Techniques in
+  Quantum Computation. pp. 29--69. Cambridge University Press (2009)
+
+\bibitem{Curran}
+Curran, J.: From Distributional to Semantic Similarity. Ph.D. thesis, School of
+  Informatics, University of Edinburgh (2004)
+
+\bibitem{Firth}
+Firth, J.: A synopsis of linguistic theory 1930--1955. In: Studies in
+  Linguistic Analysis (1957)
+
+\bibitem{GrefenSadr}
+Grefenstette, E., Sadrzadeh, M.: Experimental support for a categorical
+  compositional distributional model of meaning. In: Proceedings of Conference
+  on Empirical Methods in Natural Language Processing (EMNLP). pp. 1394--1404
+  (2011)
+
+\bibitem{kartsaklis2012}
+Kartsaklis, D., Sadrzadeh, M., Pulman, S.: A unified sentence space for
+  categorical distributional-compositional semantics: Theory and experiments.
+  In: Proceedings of 24th International Conference on Computational Linguistics
+  (COLING 2012): Posters. pp. 549--558. The COLING 2012 Organizing Committee,
+  Mumbai, India (December 2012)
+
+\bibitem{KellyLaplaza80}
+Kelly, G., Laplaza, M.: Coherence for compact closed categories. Journal of
+  Pure and Applied Algebra  19(0),  193 -- 213 (1980),
+  \url{http://www.sciencedirect.com/science/article/pii/0022404980901012}
+
+\bibitem{Kock72}
+Kock, A.: Strong functors and monoidal monads. Archiv der Mathematik  23,
+  113--120 (1972)
+
+\bibitem{ML}
+Mitchell, J., Lapata, M.: Composition in distributional models of semantics.
+  Cognitive Science  34,  1388--1439 (2010)
+
+\end{thebibliography}
