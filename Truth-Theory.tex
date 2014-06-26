@@ -16,12 +16,14 @@ Recalling that, as shown in \cite{CoeckePaquettePavlovic09,CoeckePaq},  the Frob
 
 \begin{definition}
 \label{deftrue}
-The compact closed meaning of the sentence ``Q Sbj Verb'' is true if and only if $Det(\semantics{\text Sbj}) \neq \{\emptyset\}$ and we have 
+The compact closed meaning of the sentence ``Q Sbj Verb'' is true  in $Rel$ if and only if either $Det(\semantics{\text Sbj}) \neq \{\emptyset\}$ and we have 
 \[
 \epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\star\} 
 \] 
-For the case when  $Det(\semantics{\text Sbj}) = \{\emptyset\}$,  we have to have the above as well as that the second element of the pair in  the result of  $(1_N \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big)$ is  the singleton set $\{\emptyset\}$. 
-
+or  $Det(\semantics{\text Sbj}) = \{\emptyset\}$,  and we have the above as well as the following: 
+\[
+\mu \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\emptyset\}
+\]
 In either of the above cases, we have:
 \begin{eqnarray*}
 \overline{\semantics{\text{Sbj}}} &=& \{A_i \mid A_i \in {\cal P}(\semantics{\text{Sbj}})\}\\
@@ -56,13 +58,13 @@ In the final step, we obtain:
 
 
 \begin{proposition}
-The  compact closed meaning of a quantified sentence  is true if and only if  its generalised quantifier meaning is true.
+The  compact closed meaning of a quantified sentence computed in $Rel$ is true if and only if  its generalised quantifier meaning is true.
 \end{proposition}
 
 \begin{proof}
 In the right to left direction,  first, consider the case when  $Det(\semantics{\text Sbj}) \neq \{\emptyset\}$.   Suppose $\semantics{\text{Sbj}} \cap \semantics{\text{Verb}} \in Det(\semantics{\text{Sbj}}$; we have to show that $\epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\star\}$.  For this, we need to show that there is a set $D_k$ such that $D_k$ is in $Det(\semantics{\text{Sbj}})$ and $ {\cal P} (\semantics{\text{Sbj}})$ and  ${\cal P} (\semantics{\text{Verb}})$.  Suppose the latter is true and take a set $G$ such that $G$ is a subset of $\semantics{\text{Sbj}} \cap \semantics{\text{Verb}}$ and $G$ is  in $Det(\semantics{\text{Sbj}}$.  That is, $G$ is a subset of  both $\semantics{\text{Sbj}}$ and $ \semantics{\text{Verb}}$ and an element of $Det(\semantics{\text{Sbj}}$. This means that $G$ is an element of $ {\cal P} (\semantics{\text{Sbj}})$ and an element of  ${\cal P} (\semantics{\text{Verb}})$ and an element of $Det(\semantics{\text{Sbj}}$. And this means that  there is a set $D_k$ that makes the former set non-empty, namely $D_k = G$.  
 
-For the case when   $Det(\semantics{\text Sbj}) = \{\emptyset\}$, the above argument still holds and we have that $D_k = G = \emptyset$.  In this case, it is indeed the case that the second element of  of the pair in $(1_N \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) $ is $\{\emptyset\}$,  since $D_k = A_i = B_j = \emptyset$, hence   $\{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\} = 
+For the case when   $Det(\semantics{\text Sbj}) = \{\emptyset\}$, the above argument still holds and we have that $D_k = G = \emptyset$.  In this case, it is indeed the case that $\mu\Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\emptyset\}$,  since $D_k = A_i = B_j = \emptyset$, hence   $\{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\} = 
 \{\emptyset\}$. 
 
 In the left to right direction, for the case when $Det(\semantics{\text Sbj}) \neq \{\emptyset\}$, the compact closed meaning of the sentence is the set $\{\star\}$ when we have  subsets $D_k = A_i = B_j$ such that $D_k \in Det(\semantics{\text Sbj}), A_i \in {\cal P}(\semantics{\text Sbj})$, and $B_j \in {\cal P}(\semantics{\text Verb})$.  Take an arbitrary such subset, e.g.  $G = D_k = A_i = B_j$, we have that $G \subseteq \semantics{\text Sbj}$ and $G \subseteq \semantics{\text Verb}$, hence $G \subseteq \semantics{\text Sbj}  \cap \semantics{\text Verb}$. At the same time $G \in Det(\semantics{\text Sbj})$, , hence the generalised quantifier meaning is also true.  
@@ -131,12 +133,19 @@ So the meaning of this sentence is also true (it has the same $\epsilon$ relatio
 \end{align*}
 
 \noindent
-However, this is not a true sentence, since we have that the second element of the pair in  $\{\emptyset\}  \otimes \{\emptyset, \{m_1\}\}$ is not the singleton set $\{\emptyset\}$,  that is $\{\emptyset, \{m_1\}\} \neq \{\emptyset\}$.  If we had $\overline{\semantics{\text dog}} = \{\emptyset, \{d_1\}\}$, then the compact closed meaning of the sentence ``No dogs sneeze''  would become true, since we would have
+However, this is not a true sentence, since  
 \[
-\mu(\{\emptyset, \{d_1\}\} \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\}) = \{\emptyset\}
+\mu(\overline{\semantics{\text men}} \otimes \overline{\semantics{\text sneeze}}) = \mu(\{\emptyset, \{m_1\}\} \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\}) = \{\emptyset, \{m_1\}\}   \neq \{\emptyset\}
 \]
-and also that  $\epsilon (\{\emptyset\}  \otimes \{\emptyset\}) = \{\star\}$.
-
+ If we had $\overline{\semantics{\text dog}} = \{\emptyset, \{d_1\}\}$, then the compact closed meaning of the sentence ``No dogs sneeze''  would become true, since we would have
+\[
+\mu(\overline{\semantics{\text dogs}} \otimes \overline{\semantics{\text sneeze}}) = \mu(\{\emptyset, \{d_1\}\} \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\}) = \{\emptyset\}
+\]
+and also that  
+\[
+\epsilon(No \otimes \mu)(\sigma \otimes 1) (\overline{\semantics{\text dogs}} \otimes \overline{\semantics{\text sneeze}})=  \epsilon(\{\emptyset\}  \otimes \{\emptyset\}) = \{\star\}
+\]
+Hence ``no dogs sneeze'' is true. 
 
 \section{Truth-Theory in Vector Spaces} 
 
@@ -176,15 +185,17 @@ The final step  provides us with the following:
 
 \begin{definition}
 \label{deftrue}
-The vector space meaning of the sentence ``Q Sbj Verb'' is true if and only if $Det(\ov{\text Sbj}) \neq 0$ and we have 
+The vector space meaning of the sentence ``Q Sbj Verb'' in $FVect$  is true if and only if either $Det(\ov{\text Sbj}) \neq 0$ and we have: 
 \[
 \epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big) \geqslant 1 
 \] 
-For the case when  $Det(\ov{\text Sbj}) = 0$,  we have to have the above as well as that the second element of the pair in  the result of  $(1_N \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big)$ is  the vector with only one non-zero coefficient on the basis $\emptyset$. 
+or  $Det(\ov{\text Sbj}) = 0$ and we have the above as well as the following:
+\[
+\mu \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big) = \emptyset\]
 \end{definition}
 
 \begin{proposition}
-The vector space meaning of a quantified sentence  is true if and only if  its relational meaning is true.
+The  compact closed meaning of a quantified sentence computed in $FVect$  is true if and only if  its generalised quantifier meaning is true.
 \end{proposition}
 
 \bigskip
