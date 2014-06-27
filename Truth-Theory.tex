@@ -149,7 +149,7 @@ Hence ``no dogs sneeze'' is true.
 
 \section{Truth-Theory in Vector Spaces} 
 
-One can do the same calculations as in $Rel$ in $FVect$ and obtain the same truth theoretic meanings in vector spaces. In this case, all we have to do is to model a set $N = \{n_1, n_2, \cdots\}$, by a vector space $V_N$ spanned by $N$, that is $V_N = \{\ov{n}_i\}_i$. In the case of our model, $N = {\cal P}(U)$, for $U$ a set of individuals, hence $V_N$ is spanned by subsets of $U$.  Denoting these subsets by $U_i$, we have $V_{{\cal P}(U)} = \{\ov{U}_i\}_i$. The one element set $\{\star\}$ is then modelled  by the one dimensional vector space $\{\ov{1}\}$, which  models the sentence space, that is we have $S = \{\ov{1}\} = V_{\{\star\}}$.  The zero element set, that is the empty set, is modelled by the zero vector $\ov{0}$. 
+One can do the same calculations as in $Rel$ in $FVect$ and obtain the same truth theoretic meanings in vector spaces. In this case, all we have to do is to model a set $N = \{n_1, n_2, \cdots\}$, by a vector space $V_N$ spanned by $N$, that is $V_N = \{\ov{n}_i\}_i$. In the case of our model, $N = {\cal P}(U)$, for $U$ a set of individuals, hence $V_N$ is spanned by subsets of $U$.  Denoting these subsets by $U_i$, we have $V_{{\cal P}(U)} = \{\ov{U}_i\}_i$. The  empty set is modelled by  the basis vector $\ov{\emptyset}$ of this space. The one element set $\{\star\}$ is then modelled  by the one dimensional vector space, which  models the sentence space, that is we have $S =  V_{\{\star\}}$.  
 
 We demonstrate the computation for the truth theoretic meaning of ``Q Sbj Verb'' in the above vector space below. For the meanings of the words therein, we have:
 
@@ -185,13 +185,13 @@ The final step  provides us with the following:
 
 \begin{definition}
 \label{deftrue}
-The vector space meaning of the sentence ``Q Sbj Verb'' in $FVect$  is true if and only if either $Det(\ov{\text Sbj}) \neq \ov{0}$ and we have: 
+The vector space meaning of the sentence ``Q Sbj Verb'' in $FVect$  is true if and only if either $Det(\ov{\text Sbj}) \neq \ov{\emptyset}$ and we have: 
 \[
-\epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big) \geqslant \ov{1} 
+\epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big) \geqslant {1} 
 \] 
-or  $Det(\ov{\text Sbj}) = \ov{0}$ and we have the above as well as the following:
+or  $Det(\ov{\text Sbj}) =  \ov{\emptyset}$ and we have the above as well as the following:
 \[
-\mu \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big) = \ov{0}\]
+\mu \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big) = \ov{\emptyset}\]
 \end{definition}
 
 \begin{proposition}
@@ -199,7 +199,11 @@ The  compact closed meaning of a quantified sentence computed in $FVect$  is tru
 \end{proposition}
 
 \begin{proof}
-For the right to left direction, suppose the generalised quantifier meaning is true, then we have a set $G \subseteq U$, such that  $G\subseteq\semantics{\text Sbj}, G \subseteq \semantics{\text Verb}$, and $G \in Det (\semantics{\text Sbj})$. Hence, $G$ is modelled by the vector $\ov{G} \in V_{{\cal P}(U)}$, which moreover has the property that it is a basis vector in $\ov{\text Sbj},  \ov{\text Verb}$, and $Det(\ov{\text Sbj})$. It is exactly this basis vector that makes the $\epsilon$ map in the final step of the computation non zero, since  $\langle \ov{G} \mid \ov{G}\rangle = \ov{1}$, hence the compact closed meaning of the sentence in $FVect$ is  true. In the case where $Det(\semantics{\text Sbj}) = \emptyset$, the above still holds since for $G = \emptyset$, we have that $\ov{G} = \ov{0}$, and $\langle \ov{0} \mid \ov{0} \rangle = \ov{1}$. 
+For the right to left direction, suppose the generalised quantifier meaning is true, then we have a set $G \subseteq U$, such that  $G\subseteq\semantics{\text Sbj}, G \subseteq \semantics{\text Verb}$, and $G \in Det (\semantics{\text Sbj})$. Hence, $G$ is modelled by the vector $\ov{G} \in V_{{\cal P}(U)}$, which moreover has the property that it is a projection of $\ov{\text Sbj}$ of  $\ov{\text Verb}$, and of $Det(\ov{\text Sbj})$. This projection  causes the $\epsilon$ map in the final step of the computation to become non-zero, since for $\ov{G} = \ov{U}_i = \ov{U}_j$, we have that  $\langle \ov{G} \mid \ov{G}\rangle = {1}$, hence the compact closed meaning of the sentence in $FVect$ is  true. In the case where $Det(\semantics{\text Sbj}) = \emptyset$, the above still holds, since here we  have $G = {\emptyset}$, modelled by  $\ov{G} = \ov{\emptyset}$, and implying  $\langle \ov{\emptyset} \mid \ov{\emptyset} \rangle = 1$. For the case when $Det(\semantics{\text Sbj}) = \emptyset$, the above remains true by taking $\ov{G} = \ov{\emptyset}$ and observing that $\langle \ov{\emptyset} \mid \ov{\emptyset} \rangle = 1$.  To check  the other condition, note  $
+\mu(\ov{\text Sbj} \otimes \ov{\text Verb}) = \sum_{ij} \sigma_{ij} \mu(\ov{U}_i \otimes \ov{U}_j)$, 
+but we have that  $\ov{U}_i = \ov{U}_j = \ov{G}$, hence the above is   $\ov{\emptyset}$. 
+
+For the left to right direction, suppose the compact closed meaning of the sentence in $FVect$ is true, in which case we have projections $\ov{U}_i, \ov{U_j}$, and $\ov{U_k}$, such that $\langle \ov{U_k} \mid \sigma_{ij} \ov{U}_i \rangle = \ov{\emptyset}$, these projections model subsets $U_i \subseteq \semantics{\text Sbj}$, $U_j \subseteq \semantics{\text Verb}$, and $U_k \in Det(\semantics{\text Sbj})$, hence the generalised quantifier meaning becomes true. For the case when $Det(\ov{\text Sbj}) = \ov{\emptyset}$,  if we have  $\mu(\ov{\text Sbj} \otimes \ov{\text Verb}) \neq \ov{\emptyset}$, then there are projections $\ov{U}_i= \ov{U}_j$ of vectors $\ov{\text Sbj}$ and $\ov{\text Verb}$. Hence we  also have subsets $U_i = U_j$ of  $\semantics{\text Sbj}$ and $ \semantics{\text Verb}$, which would  make the meaning of the sentence false.  
 \end{proof}
 
 \bigskip
