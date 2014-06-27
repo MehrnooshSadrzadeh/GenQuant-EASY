@@ -149,7 +149,7 @@ Hence ``no dogs sneeze'' is true.
 
 \section{Truth-Theory in Vector Spaces} 
 
-One can do the same calculations as in $Rel$ in $FVect$ and obtain the same truth theoretic meanings in vector spaces. In this case, all we have to do is to model a set $N = \{n_1, n_2, \cdots\}$, by a vector space $V_N$ spanned by $N$, that is $V_N = \{\ov{n}_i\}_i$. In the case of our model, $N = {\cal P}(U)$, for $U$ a set of individuals, hence $V_N$ is spanned by subsets of $U$.  Denoting these subsets by $U_i$, we have $V_{{\cal P}(U)} = \{\ov{U}_i\}_i$. The  empty set is modelled by  the basis vector $\ov{\emptyset}$ of this space. The one element set $\{\star\}$ is then modelled  by the one dimensional vector space, which  models the sentence space, that is we have $S =  V_{\{\star\}}$.  
+One can do the same calculations as in $Rel$ in $FVect$ and obtain the same truth theoretic meanings in vector spaces. In this case, we  model a set $N = \{n_1, n_2, \cdots\}$, by a vector space $V_N$ spanned by $N$, that is $V_N = \{\ov{n}_i\}_i$. In the case of our model, $N = {\cal P}(U)$, for $U$ a set of individuals, hence $V_N$ is spanned by subsets of $U$.  Denoting these subsets by $U_i$, we have $V_{{\cal P}(U)} = \{\ov{U}_i\}_i$. The  empty set is modelled by  the basis vector $\ov{\emptyset}$ of this space. The one element set $\{\star\}$ is then modelled  by the one dimensional vector space, which  models the sentence space, that is we have $S =  V_{\{\star\}}$.  
 
 We demonstrate the computation for the truth theoretic meaning of ``Q Sbj Verb'' in the above vector space below. For the meanings of the words therein, we have:
 
@@ -209,7 +209,19 @@ For the left to right direction, suppose the compact closed meaning of the sente
 \bigskip
 \noindent
 {\bf Example.}
-As an example,  consider  the  meaning  of  ``some men sneeze'', in the first step of the computation we have:
+As an example,  consider  the  meaning  of  ``some men sneeze'', and suppose
+\[
+\ov{\text men} = \ov{\emptyset} + \ov{\{m_1\}} + \ov{\{m_2\}} + \ov{\{m_1, m_2\}} \quad
+\ov{\text cat} = \ov{\emptyset} + \ov{\{c_1\}} \quad 
+\ov{\text sneeze} = \ov{\emptyset} + \ov{\{m_1\}} + \ov{\{c_1\}} + \ov{\{m_1, c_1\}} 
+\]
+For the meanings of generalised quantified phrases, consider the following examples:
+\[
+Some\Big(\ov{{\text{men}}}\Big) =  \ov{\{m_1\}}+ \ov{\{m_2\}}+ \ov{\{m_1, m_2\}} \qquad
+One\Big(\ov{{\text{man}}}\Big) = \ov{\{m_1\}} + \ov{\{m_2\}} \qquad 
+No\Big(\ov{\semantics{\text{men}}}\Big) = \ov{\emptyset}
+\]
+In the first step of the computation for $\ov{\mbox {some men sneeze}}$, we will have:
 \begin{eqnarray*}
 &&(\delta \otimes 1_N) \Big(\ov{\text men} \otimes \ov{\text sneeze}\Big) = (\delta \otimes 1) \Big((\emptyset + \{m_1\} + \{m_2\} + \{m_1, m_2\}) \otimes (\emptyset + \{m_1\} + \{c_1\} + \{m_1, c_1\}) \Big)\\
 &&=  (\emptyset \otimes \emptyset + \{m_1\} \otimes \{m_1\} + \{m_2\} \otimes \{m_2\} + \{m_1, m_2\} \otimes \{m_1, m_2\}) \otimes (\emptyset + \{m_1\} + \{c_1\} + \{m_1, c_1\})
