@@ -8,30 +8,13 @@ The map $Det$ sends a subset of individuals to a set of its subsets exactly in t
 
 The truth-theoretic meaning of the sentence ``Det Sbj Verb''  is obtained  by computing a simplified version of the   morphism  developed in section 4 in category $Rel$. The simplification is because we have $S = I$ and hence the morphisms that are applied to object $S$ can be dropped. 
 
-
-\bigskip
-\noindent
-{\bf Formal Justification.} 
-Recalling that, as shown in \cite{CoeckePaquettePavlovic09,CoeckePaq},  the Frobenius $ \mu$ map is the analog of  set-theoretic intersection and the compact closed  epsilon map is the analog of  set-theoretic application, it is not hard to show that  the truth-theoretic interpretation of the compact closed semantics of quantified sentences provides us with the same meaning as their generalised quantifier semantics. In this section we make this formal as follows.
-
-\begin{definition}
-\label{deftrue}
-The compact closed meaning of the sentence ``Q Sbj Verb'' is true  in $Rel$ if and only if either $Det(\semantics{\text Sbj}) \neq \{\emptyset\}$ and we have 
-\[
-\epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\star\} 
-\] 
-or  $Det(\semantics{\text Sbj}) = \{\emptyset\}$,  and we have the above as well as the following: 
-\[
-\mu \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\emptyset\}
-\]
-In either of the above cases, we have:
+Suppose we have:
 \begin{eqnarray*}
 \overline{\semantics{\text{Sbj}}} &=& \{A_i \mid A_i \in {\cal P}(\semantics{\text{Sbj}})\}\\
 \overline{\semantics{\text{Verb}}} &=& \{B_j \mid B_j \in {\cal P}(\semantics{\text{Verb}})\}\\
 Det\Big(\overline{\semantics{\text{Sbj}}}\Big) &=& \{D_k \mid D_k \in Det(\semantics{\text{Sbj}})\}
 \end{eqnarray*}
 where   $\semantics{\text{Sbj}} \subseteq U$ and $\semantics{\text{Verb}} \subseteq U$ are the set-theoretic meanings of ``Sbj'' and ``Verb'', and $Det(S)$  is the same as in the generalised quantifier approach. 
-\end{definition}
 
 The compact closed meaning of a quantified sentence is computed in three steps as follows. In the  first step, we obtain:
 
@@ -55,6 +38,23 @@ In the final step, we obtain:
 \epsilon\Big(\{D_k \mid D_k \in Det(\semantics{\text{Sbj}})\} \otimes \{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\}\Big) &=\\
  \{\star \mid  D_k = A_i, D_k \in Det(\semantics{\text{Sbj}}), A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P} (\semantics{\text{Verb}})\}
 \end{align*}
+
+
+
+
+Recalling that, as shown in \cite{CoeckePaquettePavlovic09,CoeckePaq},  the Frobenius $ \mu$ map is the analog of  set-theoretic intersection and the compact closed  epsilon map is the analog of  set-theoretic application, it is not hard to show that  the truth-theoretic interpretation of the compact closed semantics of quantified sentences provides us with the same meaning as their generalised quantifier semantics. In this section we make this formal as follows.
+
+\begin{definition}
+\label{deftrue}
+The compact closed meaning of the sentence ``Q Sbj Verb'' is true  in $Rel$ if and only if either $Det(\semantics{\text Sbj}) \neq \{\emptyset\}$ and we have 
+\[
+\epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\star\} 
+\] 
+or  $Det(\semantics{\text Sbj}) = \{\emptyset\}$,  and we have the above as well as the following: 
+\[
+\mu \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\emptyset\}
+\]
+\end{definition}
 
 
 \begin{proposition}
@@ -149,14 +149,14 @@ Hence ``no dogs sneeze'' is true.
 
 \section{Truth-Theory in Vector Spaces} 
 
-One can do the same calculations as in $Rel$ in $FVect$ and obtain the same truth theoretic meanings in vector spaces. In this case, all we have to do is to model a set $N = \{n_1, n_2, \cdots\}$, by a vector space $V_N$ spanned by $N$, that is $V_N = \{n_i\}_i$. In the case of our model, $N = {\cal P}(U)$, for $U$ a set of individuals, hence $V_N$ is spanned by subsets of $U$.  Denoting these by $U_i$, we have $V_{{\cal P}(U)} = \{U_i\}_i$. The one element set $\{\star\}$ is then modelled  by the one dimensional vector space. This space models the sentence space, that is we have $S = V_{\{\star\}}$.  
+One can do the same calculations as in $Rel$ in $FVect$ and obtain the same truth theoretic meanings in vector spaces. In this case, all we have to do is to model a set $N = \{n_1, n_2, \cdots\}$, by a vector space $V_N$ spanned by $N$, that is $V_N = \{\ov{n}_i\}_i$. In the case of our model, $N = {\cal P}(U)$, for $U$ a set of individuals, hence $V_N$ is spanned by subsets of $U$.  Denoting these subsets by $U_i$, we have $V_{{\cal P}(U)} = \{\ov{U}_i\}_i$. The one element set $\{\star\}$ is then modelled  by the one dimensional vector space $\{\ov{1}\}$, which  models the sentence space, that is we have $S = \{\ov{1}\} = V_{\{\star\}}$.  The zero element set, that is the empty set, is modelled by the zero vector $\ov{0}$. 
 
 We demonstrate the computation for the truth theoretic meaning of ``Q Sbj Verb'' in the above vector space below. For the meanings of the words therein, we have:
 
 \begin{eqnarray*}
-\ov{\text{Sbj}} &=& \sum_i U_i \qquad \text{for} \quad U_i \in {\cal P}(\semantics{\text{Sbj}})\\
-\ov{\text{Verb}} &=& \sum_j U_j  \otimes \{\star\} \cong \sum_i U_j  \qquad \text{for} \quad  U_j \in {\cal P}(\semantics{\text{Verb}})\\
-Det\Big(\ov{\text{Sbj}}\Big) &=& \sum_k U_k \qquad \text{for} \quad   U_k \in Det(\semantics{\text{Sbj}})
+\ov{\text{Sbj}} &=& \sum_i \ov{U}_i \qquad \text{for} \quad U_i \in {\cal P}(\semantics{\text{Sbj}})\\
+\ov{\text{Verb}} &=& \sum_j \ov{U}_j  \otimes \{\star\} \cong \sum_i \ov{U}_j  \qquad \text{for} \quad  U_j \in {\cal P}(\semantics{\text{Verb}})\\
+Det\Big(\ov{\text{Sbj}}\Big) &=& \sum_k \ov{U}_k \qquad \text{for} \quad   U_k \in Det(\semantics{\text{Sbj}})
 \end{eqnarray*}
 
 
@@ -166,32 +166,32 @@ The first step of the computation  is as follows:
 
 
 \begin{align*}
-(\delta_N \otimes 1_{N})\Big(\ov{\text Sbj} \otimes \ov{\text Verb}\Big) =   (\delta_N \otimes 1_{N})\Big(\sum_i {U}_i  \otimes \sum_j {U}_j \Big ) = (\sum_i {U}_i \otimes {U}_i) \otimes (\sum_j {U}_j)
+(\delta_N \otimes 1_{N})\Big(\ov{\text Sbj} \otimes \ov{\text Verb}\Big) =   (\delta_N \otimes 1_{N})\Big(\sum_i \ov{U}_i  \otimes \sum_j \ov{U}_j \Big ) = (\sum_i \ov{U}_i \otimes \ov{U}_i) \otimes (\sum_j \ov{U}_j)
 \end{align*}
 
 \noindent
 In the second step, we obtain:
 
 \begin{align*}
-(Det \otimes  \mu_N)\Big(\sum_i {U}_i \otimes {U}_i) \otimes (\sum_j {U}_j\Big) =  Det(\sum_i {U}_i) \otimes  (\sum_i \sigma_{ij} {U}_i)   = \sum_k U_k \otimes \sum_i \sigma_{ij} U_i
+(Det \otimes  \mu_N)\Big(\sum_i \ov{U}_i \otimes \ov{U}_i) \otimes (\sum_j \ov{U}_j\Big) =  Det(\sum_i \ov{U}_i) \otimes  (\sum_i \sigma_{ij} \ov{U}_i)   = \sum_k \ov{U}_k \otimes \sum_i \sigma_{ij} \ov{U}_i
 \end{align*}
 
 \noindent
 The final step  provides us with the following:
 
 \begin{align*}
-(\epsilon_{N})  \Big(\sum_k U_k \otimes \sum_i \sigma_{ij} {U}_i  \Big) =  \sum_{ijk}  \langle  U_k   \mid  \sigma_{ij} {U}_i \rangle  
+(\epsilon_{N})  \Big(\sum_k \ov{U}_k \otimes \sum_i \sigma_{ij} \ov{U}_i  \Big) =  \sum_{ijk}  \langle  \ov{U}_k   \mid  \sigma_{ij} \ov{U}_i \rangle  
 \end{align*}
 
 \begin{definition}
 \label{deftrue}
-The vector space meaning of the sentence ``Q Sbj Verb'' in $FVect$  is true if and only if either $Det(\ov{\text Sbj}) \neq 0$ and we have: 
+The vector space meaning of the sentence ``Q Sbj Verb'' in $FVect$  is true if and only if either $Det(\ov{\text Sbj}) \neq \ov{0}$ and we have: 
 \[
-\epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big) \geqslant 1 
+\epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big) \geqslant \ov{1} 
 \] 
-or  $Det(\ov{\text Sbj}) = 0$ and we have the above as well as the following:
+or  $Det(\ov{\text Sbj}) = \ov{0}$ and we have the above as well as the following:
 \[
-\mu \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big) = \emptyset\]
+\mu \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big) = \ov{0}\]
 \end{definition}
 
 \begin{proposition}
