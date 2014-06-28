@@ -224,30 +224,34 @@ No\Big(\ov{\semantics{\text{men}}}\Big) = \ov{\emptyset}
 In the first step of the computation for $\ov{\mbox {some men sneeze}}$, we will have:
 \begin{eqnarray*}
 &&(\delta \otimes 1_N) \Big(\ov{\text men} \otimes \ov{\text sneeze}\Big) = (\delta \otimes 1) \Big((\emptyset + \{m_1\} + \{m_2\} + \{m_1, m_2\}) \otimes (\emptyset + \{m_1\} + \{c_1\} + \{m_1, c_1\}) \Big)\\
-&&=  (\emptyset \otimes \emptyset + \{m_1\} \otimes \{m_1\} + \{m_2\} \otimes \{m_2\} + \{m_1, m_2\} \otimes \{m_1, m_2\}) \otimes (\emptyset + \{m_1\} + \{c_1\} + \{m_1, c_1\})
+&&=  (\ov{\emptyset} \otimes \ov{\emptyset }+ \ov{\{m_1\}} \otimes \ov{\{m_1\}} + \ov{\{m_2\}} \otimes \ov{\{m_2\}} + \ov{\{m_1, m_2\}} \otimes \ov{\{m_1, m_2\}}) \otimes (\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{c_1\}} + \ov{\{m_1, c_1\}})
 \end{eqnarray*}
 
 \noindent
 In the second step, we apply $(Some \otimes \mu)$ to the above and obtain:
 \begin{eqnarray*}
-&& Some\Big(\emptyset + \{m_1\} + \{m_2\} + \{m_1, m_2\}\Big) \otimes \mu \Big((\emptyset  + \{m_1\}  + \{m_2\}  + \{m_1, m_2\}) \otimes (\emptyset + \{m_1\} + \{c_1\} + \{m_1, c_1\})\Big) \\
-&&= (\{m_1\} + \{m_2\} + \{m_1, m_2\}) \otimes (\emptyset + \{m_1\})
+&& Some\Big(\ov{\emptyset} + \ov{\{m_1\} + \{m_2\}} + \ov{\{m_1, m_2\}}\Big) \otimes\\
+&& \mu \Big((\ov{\emptyset}  + \ov{\{m_1\}}  + \ov{\{m_2\}}  + \ov{\{m_1, m_2\}}) \otimes (\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{c_1\}} + \ov{\{m_1, c_1\}})\Big) \\
+&&= (\ov{\{m_1\}} + \ov{\{m_2\}} + \ov{\{m_1, m_2\}}) \otimes (\ov{\emptyset} + \ov{\{m_1\}})
 \end{eqnarray*}
 
 \noindent
 In the final step, we apply $\epsilon$ to the above and obtain:
 \[
-\langle \{m_1\} + \{m_2\} + \{m_1, m_2\} \mid \emptyset + \{m_1\} \rangle =  1
+\langle \ov{\{m_1\}} + \ov{\{m_2\}} + \ov{\{m_1, m_2\}} \mid \ov{\emptyset} + \ov{\{m_1\}} \rangle =  1
 \]
 
 \noindent
-For ``one man sneezes'' the hole computation is as follows:
+For ``one man sneezes'' the first step is as before; in the second step we obtain:
 \begin{eqnarray*}
-&&\epsilon(One \otimes \mu)(\delta \otimes 1_N) \Big(\ov{\text men} \otimes \ov{\text sneeze}\Big) = \\
-&&  \epsilon(One \otimes \mu)(\emptyset \otimes \emptyset + \{m_1\} \otimes \{m_1\} + \{m_2\} \otimes \{m_2\} + \{m_1, m_2\} \otimes \{m_1, m_2\}) \otimes (\emptyset + \{m_1\} + \{c_1\} + \{m_1, c_1\})\\
-&&= \epsilon \Big (One\big(\emptyset + \{m_1\} + \{m_2\} + \{m_1, m_2\}\Big) \otimes \mu \Big((\emptyset  + \{m_1\}  + \{m_2\}  + \{m_1, m_2\}) \otimes (\emptyset + \{m_1\} + \{c_1\} + \{m_1, c_1\})\Big) \\
-&&= \epsilon \Big((\{m_1\} + \{m_2\} ) \otimes (\emptyset + \{m_1\})\Big)\\
-&&= \langle \{m_1\} + \{m_2\}  \mid \emptyset + \{m_1\} \rangle =  1
+&& (One\big(\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{m_2\}} + \ov{\{m_1, m_2\}}\Big) \otimes\\
+&&  \mu \Big((\ov{\emptyset}  + \ov{\{m_1\}}  + \ov{\{m_2\}}  + \ov{\{m_1, m_2\}}) \otimes (\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{c_1\}} + \ov{\{m_1, c_1\}})
+\end{eqnarray*}
+
+\noindent
+In the last step, we obtain:
+\begin{eqnarray*}
+&& \epsilon \Big((\ov{\{m_1\}} + \ov{\{m_2\}}) \otimes (\ov{\emptyset }+ \ov{\{m_1\}})\Big) = \langle \ov{\{m_1\}} + \ov{\{m_2\}}  \mid \ov{\emptyset} + \ov{\{m_1\}} \rangle =  1
 \end{eqnarray*}
 
 
@@ -257,27 +261,33 @@ For ``no man sneezes'', we have that $Det(\ov{\text Sbj}) = 0$, hence for this t
 The first step of the computation  of the $FVect$ meaning of the sentence is as before, in the second and third steps we obtain:
 
 \begin{eqnarray*}
-&&\epsilon \Big (No (\emptyset + \{m_1\} + \{m_2\} + \{m_1, m_2\}) \otimes  \mu\big(\emptyset  + \{m_1\}  + \{m_2\}  + \{m_1, m_2\}) \otimes (\emptyset + \{m_1\} + \{c_1\} + \{m_1, c_1\}\big)\Big)\\
+&&\epsilon \Big (No (\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{m_2\}} + \ov{\{m_1, m_2\}}) \otimes \\
+&& \mu\big(\ov{\emptyset}  + \ov{\{m_1\}} + \ov{\{m_2\}}  + \ov{\{m_1, m_2\}}) \otimes (\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{c_1\}} + \ov{\{m_1, c_1\}}\big)\Big)\\
 &&= 
-\epsilon \Big(\{\emptyset\} \otimes (\emptyset + \{m_1\}) \Big) = 1
+\epsilon \Big(\{\ov{\emptyset} \otimes (\ov{\emptyset} + \ov{\{m_1\}}) \Big) = 1
 \end{eqnarray*}
 
 \noindent
 But this sentence is not true, since we have 
 \[
-(1_N \otimes \mu) \circ (\sigma \otimes 1_N)(\ov{\text men} \otimes \ov{\text sneeze})   = \emptyset + \{m_1\} \neq \emptyset
+(1_N \otimes \mu) \circ (\sigma \otimes 1_N)(\ov{\text men} \otimes \ov{\text sneeze})   = 
+\ov{\emptyset} + \ov{\{m_1\}} \neq \ov{\emptyset}
 \]
-Whereas, for  ``no dogs sneeze'', where $\ov{\text dogs} = \emptyset + \{d_1\}$, we will have:
+Whereas, for  ``no dogs sneeze'', where $\ov{\text dogs} = \ov{\emptyset} + \ov{\{d_1\}}$, we will have:
 \[
-\mu\big(\ov{\text dogs} \otimes \ov{\text sneeze}\big) = \mu \big((\emptyset + \{d_1\}) \otimes (\emptyset + \{m_1\} + \{c_1\} + \{m_1, c_1\})\big) = \emptyset
+\mu\big(\ov{\text dogs} \otimes \ov{\text sneeze}\big) = \mu \big((\ov{\emptyset} + \ov{\{d_1\}}) \otimes (\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{c_1\}} + \ov{\{m_1, c_1\}})\big) = \ov{\emptyset}
 \]
 And also that 
 \[\epsilon(No \otimes \mu) (\delta \otimes 1)(\ov{\text dogs} \otimes \ov{\text sneeze}) =
-\epsilon(\emptyset \otimes \emptyset) = 1
+\epsilon(\ov{\emptyset} \otimes \ov{\emptyset}) = 1
 \]
 
 \noindent
-Hence ``no dogs sneeze'' is true. 
+Hence ``no dogs sneeze'' is true.
+
+ADVANCED EXAMPLES
+
+DEGREES OF TRUTH 
 
 %%% Local Variables: 
 %%% mode: latex
