@@ -6,10 +6,75 @@
 %%% TeX-master: "Quant"
 %%% End: 
 
-We have not done the necessary expositions here, but as shown in \cite{CoeckePaquettePavlovic09,CoeckePaq},  the Frobenius $ \mu$ map is the analog of  set-theoretic intersection and the compact closed  epsilon map is the analog of  set-theoretic application. Using these it is not hard to show that  this truth-theoretic interpretation of the compact closed semantics of quantified sentences provides us with the same meaning as their generalised quantifier semantics.
+
+Recalling that, as shown in \cite{CoeckePaquettePavlovic09,CoeckePaq},  the Frobenius $ \mu$ map is the analog of  set-theoretic intersection and the compact closed  epsilon map is the analog of  set-theoretic application, it is not hard to show that  the truth-theoretic interpretation of the compact closed semantics of quantified sentences provides us with the same meaning as their generalised quantifier semantics. In what follows,  we make this formal as follows. 
+
+
+\begin{lemma}
+Using the non-empty down set embedding, the meaning of a sentence with a quantified phrase at its subject position becomes equivalent to the following
+\[
+ \{\star \mid  D_k = A_i = B_j , D_k \in \semantics{d}(\semantics{\text{N}}),  A_i \in {\cal P}_{\neq \emptyset} (\semantics{\text{N}}), B_j \in  {\cal P}_{\neq \emptyset} (\semantics{\text{VP}})\}
+ \]
+\end{lemma}
+
+\begin{proof}
+The non-empty down set embedding means that we have the following: 
+
+\begin{eqnarray*}
+\overline{\semantics{{n}}} &=& \{A_i \mid A_i \in {\cal P}_{\neq \emptyset}(\semantics{{n}})\} \qquad 
+\overline{\semantics{d}}\Big(\overline{\semantics{{n}}}\Big) = \{D_o \mid D_o \in {\semantics{d}}(\semantics{{n}})\}\\
+\overline{\semantics{{np}}} &=& \{C_l \mid C_l \in {\cal P}_{\neq \emptyset}(\semantics{{np}})\} \qquad 
+\overline{\semantics{{v}}} = \{(B_j, B_k) \mid B_j, B_k  \in {\cal P}_{\neq \emptyset}(\semantics{{v}})\}\\
+\end{eqnarray*}
+
+\noindent
+The meaning of a sentence with a quantified subject is computed in three steps. In the  first step, we obtain:
+
+\begin{align*}
+(\delta_N \otimes 1_{N})\Big(\overline{\semantics{\text{N}}} \otimes \overline{\semantics{\text{VP}}}\Big) =  \{(A_i, A_i) \mid A_i \in {\cal P} (\semantics{\text{N}})\} \otimes \{B_j \mid B_j \in  {\cal P}_{\neq \emptyset} (\semantics{\text{VP}})\}
+\end{align*}
+
+
+\noindent
+In the second step, we obtain:
+
+\begin{align*}
+(Det \otimes  \mu_N)\Big(\{(A_i, A_i) \mid A_i \in {\cal P}_{\neq \emptyset} (\semantics{\text{Sbj}})\} \otimes \{B_j \mid B_j \in  {\cal P} (\semantics{\text{Verb}})\}\Big) &=\\
+Det\Big(\{A_i \mid A_i \in {\cal P}_{\neq \emptyset} (\semantics{\text{Sbj}})\}\Big) \otimes \{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\} &=\\
+\{D_k \mid D_k \in Det(\semantics{\text{N}})\} \otimes \{A_i \mid A_i = B_j, A_i \in {\cal P}_{\neq \emptyset} (\semantics{\text{N}}), B_j \in  {\cal P}(\semantics{\text{VP}})\}
+\end{align*}
+
+\noindent
+In the final step, we obtain:
+\begin{align*}
+\epsilon\Big(\{D_k \mid D_k \in Det(\semantics{\text{Sbj}})\} \otimes \{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\}\Big) &=\\
+ \{\star \mid  D_k = A_i, D_k \in Det(\semantics{\text{N}}), A_i = B_j, A_i \in {\cal P}_{\neq \emptyset} (\semantics{\text{N}}), B_j \in  {\cal P} (\semantics{\text{VP}})\}
+\end{align*}
+\end{proof}
+
+
+
+
+OBJECT POSITION???
+
+\begin{definition}
+\label{deftrue}
+The compact closed meaning of the sentence ``Det N VP'' is true  in $Rel$ if and only if 
+\[
+\epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\overline{\semantics{\text{N}}} \otimes \overline{\semantics{\text{VP}}} \Big) = \{\star\} 
+\] 
+\end{definition}
+
 
 \begin{proposition}
-The truth-theoretic interpretation of the compact closed semantics of quantified sentences provides us with the same meaning as their generalised quantifier semantics.
+The  compact closed meaning of a quantified sentence computed in $Rel$ is true if and only if  its generalised quantifier meaning is true.
 \end{proposition}
 
+\begin{proof}
+For the right to left direction,  suppose  the generalised quantifier meaning of the sentence is true, that is $\semantics{\text{Sbj}} \cap \semantics{\text{Verb}} \in Det(\semantics{\text{Sbj}}$ and consider the case when  $Det(\semantics{\text Sbj}) \neq \{\emptyset\}$. We have to show that $\epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\star\}$.  For this, we need to show that there is a set $G$ equal to $D_k= A_i = B_j$ such that $G$ is in $Det(\semantics{\text{Sbj}})$ and $ {\cal P} (\semantics{\text{Sbj}})$ and  ${\cal P} (\semantics{\text{Verb}})$.  Take $G$ to be $\semantics{\text{Sbj}} \cap \semantics{\text{Verb}}$.  Then, it is a subset of   $\semantics{\text{Sbj}}$, hence an element of  $ {\cal P} (\semantics{\text{Sbj}})$, a subset of  $ \semantics{\text{Verb}}$, hence an element of $ {\cal P} (\semantics{\text{Verb}})$, and an element of $Det(\semantics{\text{Sbj}}$. 
 
+
+For the left to right direction, suppose the compact closed meaning of the sentence is true in $Rel$, and consider  the case when $Det(\semantics{\text Sbj}) \neq \{\emptyset\}$. Then  we have  subsets $D_k = A_i = B_j$ such that $D_k \in Det(\semantics{\text Sbj}), A_i \in {\cal P}(\semantics{\text Sbj})$, and $B_j \in {\cal P}(\semantics{\text Verb})$.  Pick an arbitrary such subset, e.g.  $G$, such that it   equal to  $D_k = A_i = B_j$; we have that $G \in   {\cal P}(\semantics{\text Sbj})$, hence $G \subseteq \semantics{\text Sbj}$; and that $G \in  {\cal P}(\semantics{\text Verb})$, hence $G \subseteq \semantics{\text Verb}$. It thus follows that $G \subseteq \semantics{\text Sbj}  \cap \semantics{\text Verb}$. At the same time $G \in Det(\semantics{\text Sbj})$, hence the generalised quantifier meaning is also true.  
+
+
+\end{proof}

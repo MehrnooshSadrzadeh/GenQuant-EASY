@@ -5,7 +5,13 @@
 %%% TeX-master: "Quant"
 %%% End: 
 
-In a concrete vector space model, built from a corpus using distributional methods, we assume that  vector meaning of the subject is $\sum_i C_i \ov{n}_i \in N$ and the linear map corresponding to the verb is $\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k \in N \otimes S$.  For $\ov{n}_i$ a basis vector of $N$, we define  the map $Det$  as follows:
+INSTANTIATE THE EXACT SAME RELATIONAL MODEL, I.E. WITH SETS OF INDIVIDUALS AS BASIS VECTORS ETC.
+
+In a concrete vector space model, built from a corpus using distributional methods, we assume that  vector meaning of the subject is \\
+
+$\sum_i C_i \ov{n}_i \in N$ and the linear map corresponding to the verb is\\
+
+ $\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k \in N \otimes S$.  For $\ov{n}_i$ a basis vector of $N$, we define  the map $Det$  as follows:
 
 \begin{equation}\label{eqDet}
 Det(\ov{n}_i) = \Phi \{\ov{w} \in N \mid d(\ov{n}_i, \ov{w}) = \alpha\}
@@ -27,7 +33,7 @@ The underlying idea here is that the quantitative way of quantifying in set-theo
 With this instantiation, the  meaning of ``Q Sbj Verb'' is obtained by computing the following:
 
 \[
-(\epsilon_N \otimes 1_S) \circ (Det \otimes  \mu_N \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})\left(\ov{\text{Sbj}} \otimes \ov{\text{Verb}}\right)
+(\epsilon_N \otimes 1_S) \circ (Det \otimes  \mu_N \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})\left(\ov{\text{N}} \otimes \ov{\text{VP}}\right)
 \]
 In the first step of computation we have:
 
@@ -55,7 +61,15 @@ The final step is as follows:
 
 \noindent
 {\bf Example.} 
-As a distributional example, take $N$ to be the two dimensional space with the basis $\{\ov{n}_1, \ov{n}_2\}$ and $S$ be the two dimensional space with the basis $\{\ov{s}_1, \ov{s}_2\}$.  Suppose the linear expansion of $\ov{\text{Sbj}}$ in this space is $C_1 \ov{n}_1 + C_2 \ov{n}_2$ and the linear expansion of $\ov{\text{Verb}}$ is $C_{11} (\ov{n}_1 \otimes \ov{s}_1) + C_{12} (\ov{n}_1 \otimes \ov{s}_2) +  C_{21} ( \ov{n}_2 \otimes \ov{s}_1) + C_{22} (\ov{n}_2 \otimes \ov{s}_2)$.    Suppose further the following for the interpretation of the determiner:
+As a distributional example, take $N$ to be the two dimensional space with the basis $\{\ov{n}_1, \ov{n}_2\}$ and $S$ be the two dimensional space with the basis $\{\ov{s}_1, \ov{s}_2\}$.  Suppose the linear expansion of 
+\[
+\ov{\text{N}} := C_1 \ov{n}_1 + C_2 \ov{n}_2
+\]
+ and the linear expansion of 
+ \[
+ \ov{\text{VP}} := C_{11} (\ov{n}_1 \otimes \ov{s}_1) + C_{12} (\ov{n}_1 \otimes \ov{s}_2) +  C_{21} ( \ov{n}_2 \otimes \ov{s}_1) + C_{22} (\ov{n}_2 \otimes \ov{s}_2)
+ \]
+    Suppose further the following for the interpretation of the determiner:
  \begin{equation}\label{eqDetLin}
 Det(\ov{\text{Sbj}}) = Det(C_1 \ov{n}_1 + C_2 \ov{n}_2) =  Det(C_1 \ov{n}_1) + Det(C_2 \ov{n}_2) =  C'_1 \ov{n}_1 + C'_2 \ov{n}_2
 \end{equation}
@@ -89,7 +103,14 @@ C'_1 C_{11} \ov{s}_1 + C'_1 C_{12} \ov{s}_2 + C'_2 C_{21} \ov{s}_2 + C'_2 C_{22}
 
 \noindent
 {\bf Small Corpus-Based Witness.} 
-A large scale experimentation  for this model constitutes work in progress.  For the sake of providing  intuitions for the above symbolic constructions, we provide a couple of corpus-based witnesses here. In the distributional models, the most natural instantiation of the distance $d$  in equation \ref{eqDet} is the  co-occurrence distance. For a noun `\emph{n}' and determiners `\emph{few}' and `\emph{most}', we  define these as follows:
+A large scale experimentation  for this model constitutes work in progress.  For the sake of providing  intuitions for the above symbolic constructions, we provide a couple of corpus-based witnesses here. In the distributional models, the most natural instantiation of the distance $d$  in equation \ref{eqDet} is the  co-occurrence distance. For a noun `\emph{n}' and determiners `\emph{few}' and `\emph{most}', we  define these as generally as follows:
+
+\begin{center}
+few(\emph{n}) = $Avg\{\mbox{nouns that share  few properties with \emph{n}}\}$\\
+most(\emph{n}) = $Avg\{\mbox{nouns that share most properties  with \emph{n}}\}$
+\end{center}
+
+For the purpose of this toy-example, the above can be instantiated in the simplest possible way as follows:
 \begin{center}
 few(\emph{n}) = $Avg\{\mbox{nouns that co-occurred with  \emph{n} few times}\}$\\
 most(\emph{n}) = $Avg\{\mbox{nouns that co-occurred with \emph{n} most times}\}$

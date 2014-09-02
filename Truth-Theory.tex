@@ -1,293 +1,168 @@
 \section{Truth Theoretic Interpretation}
 
-For this part, we work in the category $Rel$ of sets and relations.  We take $U$ to be a universal reference set of individuals  and take $N$ to be the set of all  subsets of $U$, denoted by ${\cal P}(U)$. A common noun is modelled by the set of all subsets of  its individuals.    We take $S$ to be the singleton set $I = \{\star\}$, that is the unit of tensor product in $Rel$.  A verb is the set of all  subsets  of a relation (corresponding to its predicate). For an intransitive verb, this relation is on the set $N \times S$; since we have $N \times S \cong N$,  each relation corresponds to a subset of $N$.  For a transitive verb, it is a relation on the set $N \times S \times N \cong N \times N$. 
-
-
-
-The map $Det$ sends a subset of individuals to a set of its subsets exactly in the same way as defined by \cite{BarwiseCooper81}. For example, for $Det$ = `two', the output is the set of subsets  of individuals whose elements have cardinality exactly two; for $Det$ = `some', the output is the set of  subsets of individuals and so on. 
-
-The truth-theoretic meaning of the sentence ``Det Sbj Verb''  is obtained  by computing a simplified version of the   morphism  developed in section 4 in category $Rel$. The simplification is because we have $S = I$ and hence the morphisms that are applied to object $S$ can be dropped. 
-
-Suppose we have:
-\begin{eqnarray*}
-\overline{\semantics{\text{Sbj}}} &=& \{A_i \mid A_i \in {\cal P}(\semantics{\text{Sbj}})\}\\
-\overline{\semantics{\text{Verb}}} &=& \{B_j \mid B_j \in {\cal P}(\semantics{\text{Verb}})\}\\
-Det\Big(\overline{\semantics{\text{Sbj}}}\Big) &=& \{D_k \mid D_k \in Det(\semantics{\text{Sbj}})\}
-\end{eqnarray*}
-where   $\semantics{\text{Sbj}} \subseteq U$ and $\semantics{\text{Verb}} \subseteq U$ are the set-theoretic meanings of ``Sbj'' and ``Verb'', and $Det(S)$  is the same as in the generalised quantifier approach. 
-
-The compact closed meaning of a quantified sentence is computed in three steps as follows. In the  first step, we obtain:
-
-\begin{align*}
-(\delta_N \otimes 1_{N})\Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}}\Big) =  \{(A_i, A_i) \mid A_i \in {\cal P} (\semantics{\text{Sbj}})\} \otimes \{B_j \mid B_j \in  {\cal P} (\semantics{\text{Verb}})\}
-\end{align*}
-
-
-\noindent
-In the second step, we obtain:
-
-\begin{align*}
-(Det \otimes  \mu_N)\Big(\{(A_i, A_i) \mid A_i \in {\cal P} (\semantics{\text{Sbj}})\} \otimes \{B_j \mid B_j \in  {\cal P} (\semantics{\text{Verb}})\}\Big) &=\\
-Det\Big(\{A_i \mid A_i \in {\cal P} (\semantics{\text{Sbj}})\}\Big) \otimes \{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\} &=\\
-\{D_k \mid D_k \in Det(\semantics{\text{Sbj}})\} \otimes \{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\}
-\end{align*}
-
-\noindent
-In the final step, we obtain:
-\begin{align*}
-\epsilon\Big(\{D_k \mid D_k \in Det(\semantics{\text{Sbj}})\} \otimes \{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\}\Big) &=\\
- \{\star \mid  D_k = A_i, D_k \in Det(\semantics{\text{Sbj}}), A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P} (\semantics{\text{Verb}})\}
-\end{align*}
-
-
-
-
-Recalling that, as shown in \cite{CoeckePaquettePavlovic09,CoeckePaq},  the Frobenius $ \mu$ map is the analog of  set-theoretic intersection and the compact closed  epsilon map is the analog of  set-theoretic application, it is not hard to show that  the truth-theoretic interpretation of the compact closed semantics of quantified sentences provides us with the same meaning as their generalised quantifier semantics. In this section we make this formal as follows.
-
-\begin{definition}
-\label{deftrue}
-The compact closed meaning of the sentence ``Q Sbj Verb'' is true  in $Rel$ if and only if either $Det(\semantics{\text Sbj}) \neq \{\emptyset\}$ and we have 
+Given the set-theoretical model $(U, \semantics{\ })$ of a language ${\cal L}_{\Sigma}$, a concrete relational instantiation of the abstract compact closed categorical interpretation is  provided by the tuple $({\cal C}_{{\cal P}{\cal P}(U), \{\star\}}, \overline{\semantics{\ }})$, defined as follows: 
+\begin{itemize}
+\item For a word with a lexical category N,NP, and VP, that is,  for $s \in \{$N, NP, VP$\}$ and any  $w \in \Sigma$ such that  $(w,s) \in {\cal X}_{\Sigma}$,  we have  
 \[
-\epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\star\} 
-\] 
-or  $Det(\semantics{\text Sbj}) = \{\emptyset\}$,  and we have the above as well as the following: 
-\[
-\mu \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\emptyset\}
+\overline{\semantics{w}} \in {\cal P}{\cal P}(U)
 \]
-\end{definition}
+represented by the morphism $\{\star\} \to {\cal P}{\cal P}(U)$. 
+
+\item For words with lexical category V, we have
+\[
+\overline{\semantics{w}} \in   {\cal P}{\cal P}(U) \times  {\cal P}{\cal P}(U) 
+\]
+Since in $Rel$, the tensor product is the cartesian product, the above is an element of ${\cal P}{\cal P}(U) \otimes {\cal P}{\cal P}(U)$, represented by the morphism $\{\star\} \to {\cal P}{\cal P}(U) \otimes {\cal P}{\cal P}(U)$. 
+
+\item For a word with the lexical category Det, that is a $d \in \Sigma$ such that $(d, Det) \in {\cal X}$ and a $w \in \Sigma$ such that $(w, \text{N}) \in {\cal X}$, we have 
+\[
+\overline{\semantics{d}}  (\overline{\semantics{w}}) \subseteq {\cal P}{\cal P}(U) \times {\cal P}{\cal P}(U)
+\]
+This is a relation on the powerset of powerset of $U$; it encodes the generalised quantifier map $\semantics{d}$ in the form of a relation.  
+\end{itemize}
+
+In this instantiation,   the sentence space is the unit of the tensor,   hence meaning of a sentence with a quantified phrase at its subject position simplifies as follows:
+\[
+\epsilon_{{\cal P}{\cal P}(U)}(\overline{\semantics{d}} \otimes  \mu_{{\cal P}{\cal P}(U)})(\delta_{{\cal P}{\cal P}(U)} \otimes 1_{{{\cal P}{\cal P}(U)}} \otimes \epsilon_{{\cal P}{\cal P}(U)})
+(\overline{\semantics{n}} \otimes \overline{\semantics{{v}}} \otimes \overline{\semantics{np}})
+\]
 
 
-\begin{proposition}
-The  compact closed meaning of a quantified sentence computed in $Rel$ is true if and only if  its generalised quantifier meaning is true.
-\end{proposition}
-
-\begin{proof}
-For the right to left direction,  suppose  the generalised quantifier meaning of the sentence is true, that is $\semantics{\text{Sbj}} \cap \semantics{\text{Verb}} \in Det(\semantics{\text{Sbj}}$ and consider the case when  $Det(\semantics{\text Sbj}) \neq \{\emptyset\}$. We have to show that $\epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\star\}$.  For this, we need to show that there is a set $G$ equal to $D_k= A_i = B_j$ such that $G$ is in $Det(\semantics{\text{Sbj}})$ and $ {\cal P} (\semantics{\text{Sbj}})$ and  ${\cal P} (\semantics{\text{Verb}})$.  Take $G$ to be $\semantics{\text{Sbj}} \cap \semantics{\text{Verb}}$.  Then, it is a subset of   $\semantics{\text{Sbj}}$, hence an element of  $ {\cal P} (\semantics{\text{Sbj}})$, a subset of  $ \semantics{\text{Verb}}$, hence an element of $ {\cal P} (\semantics{\text{Verb}})$, and an element of $Det(\semantics{\text{Sbj}}$. 
-
-Now consider  the case where   $Det(\semantics{\text Sbj}) = \{\emptyset\}$, the above argument still holds and we have that $G = \emptyset$.  It remains to check whether $\mu\Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\emptyset\}$. This is indeed the case,   since $D_k = A_i = B_j = \emptyset$, hence   $\mu\Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\} = 
-\{\emptyset\}$. 
-
-For the left to right direction, suppose the compact closed meaning of the sentence is true in $Rel$, and consider  the case when $Det(\semantics{\text Sbj}) \neq \{\emptyset\}$. Then  we have  subsets $D_k = A_i = B_j$ such that $D_k \in Det(\semantics{\text Sbj}), A_i \in {\cal P}(\semantics{\text Sbj})$, and $B_j \in {\cal P}(\semantics{\text Verb})$.  Pick an arbitrary such subset, e.g.  $G$, such that it   equal to  $D_k = A_i = B_j$; we have that $G \in   {\cal P}(\semantics{\text Sbj})$, hence $G \subseteq \semantics{\text Sbj}$; and that $G \in  {\cal P}(\semantics{\text Verb})$, hence $G \subseteq \semantics{\text Verb}$. It thus follows that $G \subseteq \semantics{\text Sbj}  \cap \semantics{\text Verb}$. At the same time $G \in Det(\semantics{\text Sbj})$, hence the generalised quantifier meaning is also true.  
-
-For the case when $Det(\semantics{\text Sbj}) = \{\emptyset\}$, we still have the above, so the generalised quantifier meaning of the sentence remains true. In this case we moreover  have that $\mu\Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{\emptyset\}$, which implies that  $G= A_i = B_j = D_k = \emptyset$. If the second condition did not hold, we would have that $\mu\Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}} \Big) = \{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\}$ is equal to a set of subsets, at least one of which is non empty, e.g.  $\{X_1, X_2, \cdots\}$, where for  $X_w$ it holds that $X_w \neq \emptyset$, and $X_w \subseteq \semantics{\text Sbj}$ and $X_w \subseteq \semantics{\text Verb}$. It would then follows that  $X_w = \semantics{\text Sbj} \cap \semantics{\text Verb} \neq \emptyset$;  whereas $\Det(\semantics{\text Sbj}) = \{\emptyset\}$, hence the generalised quantifier meaning of the sentence would become false. 
-
-
-\end{proof}
 
 \bigskip
 \noindent
-{\bf Example.} As a truth-theoretic  example,  suppose we have two male individuals $m_1, m_2$  and a cat   individual $c_1$.  Suppose further that  the verb `sneeze'  applies to individuals $m_1$ and $c_1$. Hence, we have the following interpretations for the lemmas of words ``man'', ``cat'', and ``sneeze'':
+{\bf Discussion about the choice of ${\cal P}{\cal P}(U)$ as the atomic object}. The reason one should not take $U$ to be the atomic object is that then one has to work with morphisms of the type $I \to U$, which denote elements of $U$, whereas meanings of words are subsets of $U$. The choice of ${\cal P}(U)$ fails because although now we have morphisms of the type $I \to {\cal P}(U)$, which do denote subsets of $U$, the application of the Frobenius $\mu \colon {\cal P}(U) \times {\cal P}(U)$ on them will yield unwanted results, for instance for two subsets $\{m_1, m_2\}$ and $\{m_2, m_3\}$, one wants $\mu$ to return their intersection that is $\{m_3\}$, whereas here it will return the empty set. The choice of ${\cal P}{\cal P}(U)$ is the right choice here, as shown below in the examples and corresponding propositions.   
+
+
+
+\bigskip
+\bigskip
+\noindent
+{\bf Example (I): Intransitive Verb.} As a truth-theoretic  example,  suppose $U = \{m_1, m_2, c_1\}$, from which we have two male individuals $m_1, m_2$  and a cat   individual $c_1$.  Suppose further that  the verb `sneeze'  applies to individuals $m_1$ and $c_1$. Consider the following embedding:
 
 \[
-\overline{\semantics{\text{men}}} =  \{\emptyset,  \{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \qquad
-\overline{\semantics{\text{cat}}} =  \{\emptyset, \{c_1\}\}  \qquad
-\overline{\semantics{\text{sneeze}}} = \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\}
+\overline{\semantics{\text{men}}} =  \downarrow_{\neq \emptyset}\{m_1, m_2\}  \qquad
+\overline{\semantics{\text{cat}}} =  \downarrow_{\neq \emptyset}\{c_1\}  \qquad
+\overline{\semantics{\text{sneeze}}} = \downarrow_{\neq \emptyset}\{m_1, c_1\}
+\]
+So we have:
+\[
+\overline{\semantics{\text{men}}} =  \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \qquad
+\overline{\semantics{\text{cat}}} =  \{\{c_1\}\}  \qquad
+\overline{\semantics{\text{sneeze}}} = \{\{m_1\}, \{c_1\}, \{m_1, c_1\}\}
 \]
 
 \noindent
-Consider the  following quantified phrases and their interpretations:
+For  quantifiers, we set:
+\[
+\overline{\semantics{d}}  (\overline{\semantics{w}})  :=  \semantics{d}(\semantics{w}) 
+\]
+As examples of quantified phrases we have:
 
 \[
-Some\Big(\overline{\semantics{\text{men}}}\Big) =  \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \qquad
-One\Big(\overline{\semantics{\text{man}}}\Big) = \{\{m_1\}, \{m_2\}\} \qquad 
-No\Big(\overline{\semantics{\text{men}}}\Big) = \{\emptyset\}
+Some\Big({\semantics{\text{men}}}\Big) =  \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \qquad
+All\Big({\semantics{\text{man}}}\Big) = \{\{m_1, m_2\}\} \qquad 
+No\Big({\semantics{\text{man}}}\Big) = \{\emptyset\} 
 \]
 
 \noindent
-In the first step of computation of the meaning of  ``some men sneeze'', we obtain:
+The goal is to compute the meaning of  ``some men sneeze''. In the first step of computation we obtain (the subscripts are dropped,  they are always ${\cal P}{\cal P}(U)$):
 
 \begin{align*}
-(\delta_N \otimes 1_{N})\Big(\overline{\semantics{\text{men}}} \otimes \overline{\semantics{\text{sneeze}}}\Big) =&\\
-  \{(\{\emptyset\}, \{\emptyset\}), (\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes  \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\} 
+(\delta \otimes 1)\Big(\overline{\semantics{\text{men}}} \otimes \overline{\semantics{\text{sneeze}}}\Big) =&\\
+  \{(\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes  \{\{m_1\}, \{c_1\}, \{m_1, c_1\}\} 
 \end{align*}
 
 \noindent
 In the second step, we obtain:
 \begin{align*}
-\Big(Some \otimes \mu\Big) \Big ( \{(\{\emptyset\}, \{\emptyset\}), (\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes  \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\}  \Big) =&\\
-Some\Big ( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \Big) \otimes \mu \Big( \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\} \Big)=&\\
-\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}\}
+&\Big(\overline{\semantics{Some}} \otimes \mu\Big) \Big ( \{(\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes  \{\{m_1\}, \{c_1\}, \{m_1, c_1\}\}  \Big) =\\
+&\overline{\semantics{Some}}\Big (\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \Big) \otimes \mu \Big( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\{m_1\}, \{c_1\}, \{m_1, c_1\}\} \Big)=\\
+&{\semantics{Some}}\Big (\{m_1, m_2\} \Big) \otimes\{\{m_1\}\}=\\
+&\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\{m_1\}\}
 \end{align*}
 
 \noindent
-In the last step, we obtain the following via the  relation $\epsilon \colon N \times N \to \{\star\}$ being $\{((\{m_1\}, \{m_1\}), \star)\}$:
+In the last step, we obtain the following:
 
 \begin{align*}
-\epsilon\Big(\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}\}\Big) = \{\star\}
+\epsilon\Big(\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\{m_1\}\}\Big) = \{\star\}
 \end{align*}
 
 \noindent
-Hence, the meaning of the sentence is true.  For the sentence ``One man sneezes'',  the second and third steps of computation are as follows:
+Hence, the meaning of the sentence is true.  For the sentence ``all men sneeze'',  one applies $(\overline{\semantics{all}} \otimes \mu)$ to the result of the first step as above. The second and third steps of computation are as follows:
 
 \begin{align*}
-\epsilon\Big( One\Big ( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \Big) \otimes \mu \Big( \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\} \Big)\Big) =&\\
-\epsilon \Big(\{\{m_1\}, \{m_2\}\}  \otimes \{\emptyset, \{m_1\}\}\Big) = \{\star\}
+&\epsilon   \Big(\overline{\semantics{all}}\Big ( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \Big) \otimes \mu \Big( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\{m_1\}, \{c_1\}, \{m_1, c_1\}\} \Big)  \Big) =\\
+&\epsilon \Big(\{\{m_1, m_2\}\}  \otimes \{\{m_1\}\}\Big) = \emptyset
 \end{align*}
 
 \noindent
-So the meaning of this sentence is also true (it has the same $\epsilon$ relation as the previous case). Now consider the case of the  sentence ``no man sneezes'' in which case $No (\semantics{\text man}) = \emptyset$. In this case we obtain  the following at the final step of computation
+So the meaning of this sentence is false.   For the sentence of `No men sneeze',  we have the following:
 
 \begin{align*}
-\epsilon\Big( No\Big ( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \Big) \otimes \mu \Big( \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\} \Big)\Big) =&\\
-\epsilon \Big(\{\emptyset\}  \otimes \{\emptyset, \{m_1\}\}\Big) = \{\star\}
+&\epsilon   \Big(\overline{\semantics{no}}\Big ( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \Big) \otimes \mu \Big( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\{m_1\}, \{c_1\}, \{m_1, c_1\}\} \Big)  \Big) =\\
+&\epsilon \Big(\{\emptyset\}  \otimes \{\{m_1\}\}\Big) = \emptyset
 \end{align*}
 
-\noindent
-However, this is not a true sentence, since  
-\[
-\mu(\overline{\semantics{\text men}} \otimes \overline{\semantics{\text sneeze}}) = \mu(\{\emptyset, \{m_1\}\} \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\}) = \{\emptyset, \{m_1\}\}   \neq \{\emptyset\}
-\]
- If we had $\overline{\semantics{\text dog}} = \{\emptyset, \{d_1\}\}$, then the compact closed meaning of the sentence ``No dogs sneeze''  would become true, since we would have
-\[
-\mu(\overline{\semantics{\text dogs}} \otimes \overline{\semantics{\text sneeze}}) = \mu(\{\emptyset, \{d_1\}\} \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\}) = \{\emptyset\}
-\]
-and also that  
-\[
-\epsilon(No \otimes \mu)(\sigma \otimes 1) (\overline{\semantics{\text dogs}} \otimes \overline{\semantics{\text sneeze}})=  \epsilon(\{\emptyset\}  \otimes \{\emptyset\}) = \{\star\}
-\]
-Hence ``no dogs sneeze'' is true. 
-
-\section{Truth-Theory in Vector Spaces} 
-
-One can do the same calculations as in $Rel$ in $FVect$ and obtain the same truth theoretic meanings in vector spaces. In this case, we  model a set $N = \{n_1, n_2, \cdots\}$, by a vector space $V_N$ spanned by $N$, that is $V_N = \{\ov{n}_i\}_i$. In the case of our model, $N = {\cal P}(U)$, for $U$ a set of individuals, hence $V_N$ is spanned by subsets of $U$.  Denoting these subsets by $U_i$, we have $V_{{\cal P}(U)} = \{\ov{U}_i\}_i$. The  empty set is modelled by  the basis vector $\ov{\emptyset}$ of this space. The one element set $\{\star\}$ is then modelled  by the one dimensional vector space, which  models the sentence space, that is we have $S =  V_{\{\star\}}$.  
-
-We demonstrate the computation for the truth theoretic meaning of ``Q Sbj Verb'' in the above vector space below. For the meanings of the words therein, we have:
-
-\begin{eqnarray*}
-\ov{\text{Sbj}} &=& \sum_i \ov{U}_i \qquad \text{for} \quad U_i \in {\cal P}(\semantics{\text{Sbj}})\\
-\ov{\text{Verb}} &=& \sum_j \ov{U}_j  \otimes \{\star\} \cong \sum_i \ov{U}_j  \qquad \text{for} \quad  U_j \in {\cal P}(\semantics{\text{Verb}})\\
-Det\Big(\ov{\text{Sbj}}\Big) &=& \sum_k \ov{U}_k \qquad \text{for} \quad   U_k \in Det(\semantics{\text{Sbj}})
-\end{eqnarray*}
-
-
-
-
-The first step of the computation  is as follows:
-
-
-\begin{align*}
-(\delta_N \otimes 1_{N})\Big(\ov{\text Sbj} \otimes \ov{\text Verb}\Big) =   (\delta_N \otimes 1_{N})\Big(\sum_i \ov{U}_i  \otimes \sum_j \ov{U}_j \Big ) = (\sum_i \ov{U}_i \otimes \ov{U}_i) \otimes (\sum_j \ov{U}_j)
-\end{align*}
-
-\noindent
-In the second step, we obtain:
-
-\begin{align*}
-(Det \otimes  \mu_N)\Big(\sum_i \ov{U}_i \otimes \ov{U}_i) \otimes (\sum_j \ov{U}_j\Big) =  Det(\sum_i \ov{U}_i) \otimes  (\sum_i \sigma_{ij} \ov{U}_i)   = \sum_k \ov{U}_k \otimes \sum_i \sigma_{ij} \ov{U}_i
-\end{align*}
-
-\noindent
-The final step  provides us with the following:
-
-\begin{align*}
-(\epsilon_{N})  \Big(\sum_k \ov{U}_k \otimes \sum_i \sigma_{ij} \ov{U}_i  \Big) =  \sum_{ijk}  \langle  \ov{U}_k   \mid  \sigma_{ij} \ov{U}_i \rangle  
-\end{align*}
-
-\begin{definition}
-\label{deftrue}
-The vector space meaning of the sentence ``Q Sbj Verb'' in $FVect$  is true if and only if either $Det(\ov{\text Sbj}) \neq \ov{\emptyset}$ and we have: 
-\[
-\epsilon \circ (Det \otimes \mu) \circ (\sigma \otimes 1_N) \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big) \geqslant {1} 
-\] 
-or  $Det(\ov{\text Sbj}) =  \ov{\emptyset}$ and we have the above as well as the following:
-\[
-\mu \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big) = \ov{\emptyset}\]
-\end{definition}
-
-\begin{proposition}
-The  compact closed meaning of a quantified sentence computed in $FVect$  is true if and only if  its generalised quantifier meaning is true.
-\end{proposition}
-
-\begin{proof}
-For the right to left direction, suppose the generalised quantifier meaning is true, then we have a set $G \subseteq U$, such that  $G\subseteq\semantics{\text Sbj}, G \subseteq \semantics{\text Verb}$, and $G \in Det (\semantics{\text Sbj})$. Hence, $G$ is modelled by the vector $\ov{G} \in V_{{\cal P}(U)}$, which moreover has the property that it is a projection of $\ov{\text Sbj}$ of  $\ov{\text Verb}$, and of $Det(\ov{\text Sbj})$. This projection  causes the $\epsilon$ map in the final step of the computation to become non-zero, since for $\ov{G} = \ov{U}_i = \ov{U}_j$, we have that  $\langle \ov{G} \mid \ov{G}\rangle = {1}$, hence the compact closed meaning of the sentence in $FVect$ is  true. In the case where $Det(\semantics{\text Sbj}) = \emptyset$, the above still holds, since here we  have $G = {\emptyset}$, modelled by  $\ov{G} = \ov{\emptyset}$, and implying  $\langle \ov{\emptyset} \mid \ov{\emptyset} \rangle = 1$. For the case when $Det(\semantics{\text Sbj}) = \emptyset$, the above remains true by taking $\ov{G} = \ov{\emptyset}$ and observing that $\langle \ov{\emptyset} \mid \ov{\emptyset} \rangle = 1$.  To check  the other condition, note  $
-\mu(\ov{\text Sbj} \otimes \ov{\text Verb}) = \sum_{ij} \sigma_{ij} \mu(\ov{U}_i \otimes \ov{U}_j)$, 
-but we have that  $\ov{U}_i = \ov{U}_j = \ov{G}$, hence the above is   $\ov{\emptyset}$. 
-
-For the left to right direction, suppose the compact closed meaning of the sentence in $FVect$ is true, in which case we have projections $\ov{U}_i, \ov{U_j}$, and $\ov{U_k}$, such that $\langle \ov{U_k} \mid \sigma_{ij} \ov{U}_i \rangle = \ov{\emptyset}$, these projections model subsets $U_i \subseteq \semantics{\text Sbj}$, $U_j \subseteq \semantics{\text Verb}$, and $U_k \in Det(\semantics{\text Sbj})$, hence the generalised quantifier meaning becomes true. For the case when $Det(\ov{\text Sbj}) = \ov{\emptyset}$,  if we have  $\mu(\ov{\text Sbj} \otimes \ov{\text Verb}) \neq \ov{\emptyset}$, then there are projections $\ov{U}_i= \ov{U}_j$ of vectors $\ov{\text Sbj}$ and $\ov{\text Verb}$. Hence we  also have subsets $U_i = U_j$ of  $\semantics{\text Sbj}$ and $ \semantics{\text Verb}$, which would  make the meaning of the sentence false.  
-\end{proof}
 
 \bigskip
 \noindent
-{\bf Example.}
-As an example,  consider  the  meaning  of  ``some men sneeze'', and suppose
+{\bf Example (II): Transitive Verb.} Suppose both of  the male individuals love the cat. We set:
 \[
-\ov{\text men} = \ov{\emptyset} + \ov{\{m_1\}} + \ov{\{m_2\}} + \ov{\{m_1, m_2\}} \quad
-\ov{\text cat} = \ov{\emptyset} + \ov{\{c_1\}} \quad 
-\ov{\text sneeze} = \ov{\emptyset} + \ov{\{m_1\}} + \ov{\{c_1\}} + \ov{\{m_1, c_1\}} 
-\]
-For the meanings of generalised quantified phrases, consider the following examples:
+\overline{\semantics{\text{love}}} := \downarrow_{\neq \emptyset} Dom(\text{love}) \times \downarrow_{\neq \emptyset} Codom(\text{love})
+\] 
+Hence we have:
 \[
-Some\Big(\ov{{\text{men}}}\Big) =  \ov{\{m_1\}}+ \ov{\{m_2\}}+ \ov{\{m_1, m_2\}} \qquad
-One\Big(\ov{{\text{man}}}\Big) = \ov{\{m_1\}} + \ov{\{m_2\}} \qquad 
-No\Big(\ov{\semantics{\text{men}}}\Big) = \ov{\emptyset}
+\overline{\semantics{\text{love}}} := \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \times \{\{c_1\}\}
 \]
-In the first step of the computation for $\ov{\mbox {some men sneeze}}$, we will have:
-\begin{eqnarray*}
-&&(\delta \otimes 1_N) \Big(\ov{\text men} \otimes \ov{\text sneeze}\Big) = (\delta \otimes 1) \Big((\emptyset + \{m_1\} + \{m_2\} + \{m_1, m_2\}) \otimes (\emptyset + \{m_1\} + \{c_1\} + \{m_1, c_1\}) \Big)\\
-&&=  (\ov{\emptyset} \otimes \ov{\emptyset }+ \ov{\{m_1\}} \otimes \ov{\{m_1\}} + \ov{\{m_2\}} \otimes \ov{\{m_2\}} + \ov{\{m_1, m_2\}} \otimes \ov{\{m_1, m_2\}}) \otimes (\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{c_1\}} + \ov{\{m_1, c_1\}})
-\end{eqnarray*}
+Meaning of the sentence `Some men love cats' is computed as follows. In the first step we compute:
+
+\begin{align*}
+(\sigma \otimes 1 \otimes \epsilon)(\overline{\semantics{\text{men}}} \otimes \overline{\semantics{\text{love}}} \otimes \overline{\semantics{\text{cats}}}) =& \\
+   \{(\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes
+   \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \otimes \epsilon(\{\{c_1\}\} \otimes \{\{c_1\}\}) = \\
+     \{(\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes
+   \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \otimes  \{\star\}  = \\
+     \{(\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes
+   \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  
+\end{align*}
 
 \noindent
-In the second step, we apply $(Some \otimes \mu)$ to the above and obtain:
-\begin{eqnarray*}
-&& Some\Big(\ov{\emptyset} + \ov{\{m_1\} + \{m_2\}} + \ov{\{m_1, m_2\}}\Big) \otimes\\
-&& \mu \Big((\ov{\emptyset}  + \ov{\{m_1\}}  + \ov{\{m_2\}}  + \ov{\{m_1, m_2\}}) \otimes (\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{c_1\}} + \ov{\{m_1, c_1\}})\Big) \\
-&&= (\ov{\{m_1\}} + \ov{\{m_2\}} + \ov{\{m_1, m_2\}}) \otimes (\ov{\emptyset} + \ov{\{m_1\}})
-\end{eqnarray*}
+In the second step, we apply $\overline{\semantics{\text Some}} \otimes \mu$ to the above and compute:
+
+\begin{align*}
+\overline{\semantics{\text Some}} (\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}) \otimes \mu(\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \otimes \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}) = \\
+ \semantics{\text Some}(\{m_1, m_2\})  \otimes \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} = \\
+\{\{m_1\}, \{m_2\}, \{m_1,m_2\}\} \otimes   \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}\\
+\end{align*}
 
 \noindent
-In the final step, we apply $\epsilon$ to the above and obtain:
+In the final step, we apply $\epsilon$ to the above and compute:
+
 \[
-\langle \ov{\{m_1\}} + \ov{\{m_2\}} + \ov{\{m_1, m_2\}} \mid \ov{\emptyset} + \ov{\{m_1\}} \rangle =  1
+\epsilon(\{\{m_1\}, \{m_2\}, \{m_1,m_2\}\} \otimes   \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}) = \{\star\}
 \]
+So the sentence is true. For ``all men love cats'', the first step of the computation is as above. For the second and third steps we compute:
+\begin{align*}
+\epsilon\Big(\overline{\semantics{all}} \big(\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}\big) \otimes  \mu \big(\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \otimes \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}\big)\Big)=\\
+\epsilon(\{\{m_1, m_2\}\} \otimes  \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}) = \{\star\}
+\end{align*}
 
 \noindent
-For ``one man sneezes'' the first step is as before; in the second step we obtain:
-\begin{eqnarray*}
-&& (One\big(\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{m_2\}} + \ov{\{m_1, m_2\}}\Big) \otimes\\
-&&  \mu \Big((\ov{\emptyset}  + \ov{\{m_1\}}  + \ov{\{m_2\}}  + \ov{\{m_1, m_2\}}) \otimes (\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{c_1\}} + \ov{\{m_1, c_1\}})
-\end{eqnarray*}
+So this sentence is also true. Whereas for ``no men love cats'' we have:
+\begin{align*}
+\epsilon\Big(\overline{\semantics{no}} \big(\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}\big) \otimes  \mu \big(\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \otimes \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}\big)\Big)=\\
+\epsilon(\{\emptyset\} \otimes  \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}) =\emptyset
+\end{align*}
 
 \noindent
-In the last step, we obtain:
-\begin{eqnarray*}
-&& \epsilon \Big((\ov{\{m_1\}} + \ov{\{m_2\}}) \otimes (\ov{\emptyset }+ \ov{\{m_1\}})\Big) = \langle \ov{\{m_1\}} + \ov{\{m_2\}}  \mid \ov{\emptyset} + \ov{\{m_1\}} \rangle =  1
-\end{eqnarray*}
+So the meaning of this sentence is also false.  
 
 
-\noindent
-For ``no man sneezes'', we have that $Det(\ov{\text Sbj}) = 0$, hence for this to be true its $FVect$ meaning should be above 1 and also $\mu \Big(\ov{\text{Sbj}} \otimes \ov{\text{Verb}} \Big)$ should be the $\emptyset$ vector. 
 
-The first step of the computation  of the $FVect$ meaning of the sentence is as before, in the second and third steps we obtain:
 
-\begin{eqnarray*}
-&&\epsilon \Big (No (\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{m_2\}} + \ov{\{m_1, m_2\}}) \otimes \\
-&& \mu\big(\ov{\emptyset}  + \ov{\{m_1\}} + \ov{\{m_2\}}  + \ov{\{m_1, m_2\}}) \otimes (\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{c_1\}} + \ov{\{m_1, c_1\}}\big)\Big)\\
-&&= 
-\epsilon \Big(\{\ov{\emptyset} \otimes (\ov{\emptyset} + \ov{\{m_1\}}) \Big) = 1
-\end{eqnarray*}
 
-\noindent
-But this sentence is not true, since we have 
-\[
-(1_N \otimes \mu) \circ (\sigma \otimes 1_N)(\ov{\text men} \otimes \ov{\text sneeze})   = 
-\ov{\emptyset} + \ov{\{m_1\}} \neq \ov{\emptyset}
-\]
-Whereas, for  ``no dogs sneeze'', where $\ov{\text dogs} = \ov{\emptyset} + \ov{\{d_1\}}$, we will have:
-\[
-\mu\big(\ov{\text dogs} \otimes \ov{\text sneeze}\big) = \mu \big((\ov{\emptyset} + \ov{\{d_1\}}) \otimes (\ov{\emptyset} + \ov{\{m_1\}} + \ov{\{c_1\}} + \ov{\{m_1, c_1\}})\big) = \ov{\emptyset}
-\]
-And also that 
-\[\epsilon(No \otimes \mu) (\delta \otimes 1)(\ov{\text dogs} \otimes \ov{\text sneeze}) =
-\epsilon(\ov{\emptyset} \otimes \ov{\emptyset}) = 1
-\]
-
-\noindent
-Hence ``no dogs sneeze'' is true.
-
-ADVANCED EXAMPLES 
-
-``all men like a drink'
 
 
 %%% Local Variables: 
