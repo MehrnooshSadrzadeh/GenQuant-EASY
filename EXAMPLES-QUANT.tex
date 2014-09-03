@@ -1,0 +1,186 @@
+
+%Examples with powerset of $\semantics{w}$
+
+\bigskip
+\bigskip
+\noindent
+{\bf Example (I): Intransitive Verb.} As a truth-theoretic  example,  suppose we have two male individuals $m_1, m_2$  and a cat   individual $c_1$.  Suppose further that  the verb `sneeze'  applies to individuals $m_1$ and $c_1$. Hence, we have the following interpretations for the lemmas of words ``man'', ``cat'', and ``sneeze'':
+
+\[
+\overline{\semantics{\text{men}}} =  {\cal P}(\{m_1, m_2\})  \qquad
+\overline{\semantics{\text{cat}}} =  {\cal P}(\{c_1\})  \qquad
+\overline{\semantics{\text{sneeze}}} = {\cal P}(\{m_1, c_1\})
+\]
+
+\[
+\overline{\semantics{\text{men}}} =  \{\emptyset,  \{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \qquad
+\overline{\semantics{\text{cat}}} =  \{\emptyset, \{c_1\}\}  \qquad
+\overline{\semantics{\text{sneeze}}} = \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\}
+\]
+
+\noindent
+Consider the  following quantified phrases and their interpretations:
+
+\[
+Some\Big(\overline{\semantics{\text{men}}}\Big) =  \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \qquad
+One\Big(\overline{\semantics{\text{man}}}\Big) = \{\{m_1\}, \{m_2\}\} \qquad 
+No\Big(\overline{\semantics{\text{men}}}\Big) = \{\emptyset\}
+\]
+
+\noindent
+In the first step of computation of the meaning of  ``some men sneeze'', we obtain:
+
+\begin{align*}
+(\delta_N \otimes 1_{N})\Big(\overline{\semantics{\text{men}}} \otimes \overline{\semantics{\text{sneeze}}}\Big) =&\\
+  \{(\{\emptyset\}, \{\emptyset\}), (\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes  \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\} 
+\end{align*}
+
+\noindent
+In the second step, we obtain:
+\begin{align*}
+\Big(Some \otimes \mu\Big) \Big ( \{(\{\emptyset\}, \{\emptyset\}), (\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes  \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\}  \Big) =&\\
+Some\Big ( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \Big) \otimes \mu \Big( \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\} \Big)=&\\
+\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}\}
+\end{align*}
+
+\noindent
+In the last step, we obtain the following via the  relation $\epsilon \colon N \times N \to \{\star\}$ being $\{((\{m_1\}, \{m_1\}), \star)\}$:
+
+\begin{align*}
+\epsilon\Big(\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}\}\Big) = \{\star\}
+\end{align*}
+
+\noindent
+Hence, the meaning of the sentence is true.  For the sentence ``One man sneezes'',  one applies $(One \otimes \mu)$ to the result of the first step, which is as above. Hence,  the second and third steps of computation are as follows:
+
+\begin{align*}
+\epsilon \quad  \Big( \quad One\Big ( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \Big) \otimes \mu \Big( \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\} \Big) \quad \Big) =&\\
+\epsilon \Big(\{\{m_1\}, \{m_2\}\}  \otimes \{\emptyset, \{m_1\}\}\Big) = \{\star\}
+\end{align*}
+
+\noindent
+So the meaning of this sentence is also true (it has the same $\epsilon$ relation as the previous case). Now consider the case of the  sentence ``no man sneezes'' in which case $No (\semantics{\text man}) = \emptyset$. In this case we obtain  the following at the final step of computation
+
+\begin{align*}
+\epsilon\Big( No\Big ( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \Big) \otimes \mu \Big( \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\} \Big)\Big) =&\\
+\epsilon \Big(\{\emptyset\}  \otimes \{\emptyset, \{m_1\}\}\Big) = \{\star\}
+\end{align*}
+
+\noindent
+However, this is not a true sentence, since  
+\[
+\mu(\overline{\semantics{\text men}} \otimes \overline{\semantics{\text sneeze}}) = \mu(\{\emptyset, \{m_1\}\} \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\}) = \{\emptyset, \{m_1\}\}   \neq \{\emptyset\}
+\]
+ If we had $\overline{\semantics{\text dog}} = \{\emptyset, \{d_1\}\}$, then the compact closed meaning of the sentence ``No dogs sneeze''  would become true, since we would have
+\[
+\mu(\overline{\semantics{\text dogs}} \otimes \overline{\semantics{\text sneeze}}) = \mu(\{\emptyset, \{d_1\}\} \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\}) = \{\emptyset\}
+\]
+and also that  
+\[
+\epsilon(No \otimes \mu)(\sigma \otimes 1) (\overline{\semantics{\text dogs}} \otimes \overline{\semantics{\text sneeze}})=  \epsilon(\{\emptyset\}  \otimes \{\emptyset\}) = \{\star\}
+\]
+Hence ``no dogs sneeze'' is true. 
+
+
+\bigskip
+\noindent
+{\bf Example (II): Transitive Verb.} Suppose both the male individuals love the cat. That is, for the verb `love' we have
+\[
+\overline{\semantics{\text{love}}} := {\cal P}(\{m_1, m_2\}) \times {\cal P}(\{c_1\})
+\] 
+Meaning of the sentence `Some men love cats' is computed as follows. In the first step we obtain
+
+\begin{align*}
+(\sigma \otimes 1 \otimes \epsilon)(\overline{\semantics{\text{men}}} \otimes \overline{\semantics{\text{love}}} \otimes \overline{\semantics{\text{cats}}}) =\\
+   \{(\{\emptyset\}, \{\emptyset\}), (\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes\\
+   \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\} \otimes \epsilon(\{\emptyset, \{c_1\}\} \otimes \{\emptyset, \{c_1\}\}) \quad = \\
+     \{(\{\emptyset\}, \{\emptyset\}), (\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes\\
+   \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\} \otimes  \{\star\} \quad = \\
+     \{(\{\emptyset\}, \{\emptyset\}), (\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes
+   \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}  
+\end{align*}
+
+\noindent
+In the second step, we apply $\overline{\semantics{\text Some}} \otimes \mu$ to the above and obtain:
+
+\begin{align*}
+\overline{\semantics{\text Some}} (\{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}) \otimes \mu(\{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\} \otimes \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\})\\
+=
+\overline{\semantics{\text Some}} (\{\emptyset\} \cup  \{\{m_1\}\} \cup \{\{m_2\}\} \cup  \{\{m_1, m_2\}\})  \otimes \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}\\
+= \semantics{\text Some}(\{m_1, m_2\})  \otimes \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}\\
+=\{\{m_1\}, \{m_2\}, \{m_1,m_2\}\} \otimes   \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}\\
+\end{align*}
+
+\noindent
+In the final step, we apply $\epsilon$ to the above and compute
+
+\[
+\epsilon(\{\{m_1\}, \{m_2\}, \{m_1,m_2\}\} \otimes   \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\})
+\]
+which is equal to 
+\[
+\{\star\}
+\]
+ 
+%Examples Ended
+
+
+
+
+
+
+
+An abstract compact closed semantics for a pregroup grammar $P_{\cal B}$, seen as a compact closed category,   is defined  to be the tuple $({\cal C}_{b},F, \overline{\semantics{\ }})$, where 
+\begin{itemize}
+\item ${\cal C}_{b}$ is a compact closed category with  a set of atomic  objects $b$ some of which with  Frobenius algebras over them;
+\item $F \colon P_{\cal B} \to {\cal C}_{W, S}$  is a strongly monoidal functor that assigns to each type  of the pregroup grammar an interpretation. The atomic types of the grammar in ${\cal B}$ are interpreted as atomic objects in $b$; the grammatical reductions and compounds types are interpreted compositionally using the functorial and monoidal properties of $F$. For  $p,q \in P_{\cal B}$ we obtain the following:
+
+\[
+F(p^l) = F(p)^l \qquad 
+F(p^r) = F(p)^r\qquad
+F(p \cdot q) = F(p) \otimes F(q)\qquad
+F(1) =  I 
+\]
+\item $\overline{\semantics{\ }} \colon \Sigma \to {\cal C}$ is a map that assigns semantics to  words of the language; for a word  $w  \in \Sigma$, its semantics  is an element of the object assigned to its pregroup grammar type $p \in P_{\cal B}$, that is we have
+\[
+\overline{\semantics{w}} := I \to F(p) \quad \text{for} \ (w, p) \in \beta
+\]
+\end{itemize}
+
+\noindent
+The abstract compact closed meaning of a sequence of words $w_1 \cdots w_k$  of the vocabulary with grammatical reduction $\alpha \colon p_1 \cdots p_k \leq q$, for $(w_i, p_i) \in \beta$,  is as follows:
+\[
+\overline{\semantics{w_1 \cdots w_k}} := F(\alpha)(\overline{\semantics{w_1}} \otimes \cdots \otimes \overline{\semantics{w_k}})
+\]
+
+
+An abstract compact closed semantics for the pregroup grammar described in the previous section has $\beta = \{W, S\}$ with $W$ a Frobenius algebra over it. The atomic types of this grammar  are interpreted as follows:
+
+\[
+F(m) = F(n) = W \qquad
+F(s) = S
+\]
+
+\noindent
+For the compound types, we obtain the following:
+
+\[
+F(m^r \cdot s) = W^r \otimes S\qquad
+F(m^r \cdot s \cdot m^l) = W^r \otimes S \otimes W^l\qquad
+F(m \cdot n^l) = W \otimes W^l
+\]
+The semantics of words of this language is as follows
+
+\begin{center}
+\begin{tabular}{c|c}
+ Words & Abstract Compact Closed Semantics\\
+\hline
+ John, Mary, something, $\cdots$ & $I \to W$\\
+ cat, dog, man, $\cdots$ & $I \to W$\\
+ sneeze, sleep,$\cdots$ & $I \to W^r \otimes S$\\
+ love, kiss, $\cdots$ & $I \to W^r \otimes S \otimes W^l$\\
+ a, the, some, every, each, all, no, most, few, one, two, $\cdots$ & $I \to W \otimes W^l$
+\end{tabular}
+\end{center}
+
+

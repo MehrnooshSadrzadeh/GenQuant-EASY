@@ -1,0 +1,613 @@
+ \documentclass[a4paper,11pt]{easychair}
+
+\usepackage{times}
+\usepackage{url}
+\usepackage{latexsym}
+
+%\special{papersize=210mm,297mm} % to avoid having to use "-t a4" with dvips 
+%\setlength\titlebox{6.5cm}  % You can expand the title box if you really have to
+%\documentclass[a4paper,11pt]{eacl2014}
+
+\usepackage{amsmath}
+\usepackage{amssymb}  
+%\usepackage{amsthm}
+\usepackage{latexsym} 
+\usepackage{multirow}
+%\usepackage{diagxy}
+
+\input{tikzpreamble.tex}
+
+\input{macros.tex}
+
+\begin{document}
+
+
+\title{A low-level treatment of generalised quantifiers in categorical compositional distributional semantics\\ \ \\ Extended Abstract \\ }
+
+
+% \titlerunning{} has to be set to either the main title or its shorter
+% version for the running heads. When processed by
+% EasyChair, this command is mandatory: a document without \titlerunning
+% will be rejected by EasyChair
+
+\titlerunning{Generalised Quantifiers in Compositional Distributional Semantics}
+
+% Authors are joined by \and. Their affiliations are given by \inst, which indexes
+% into the list defined using \institute
+%
+\author{
+Ond\v{r}ej Ryp\'a\v{c}ek\inst{1}\thanks{Author supported by EPSRC Grant EP/I037512/1.}
+\and
+    Mehrnoosh Sadrzadeh\inst{2}\thanks{Author supported by an EPSRC CAF grant EP/J002607/1.}
+}
+
+% Institutes for affiliations are also joined by \and,
+\institute{
+  University of Oxford,
+  Oxford, UK\\
+  \email{ondrej@cs.ox.ac.uka}
+\and
+   Queen Mary University, 
+   London, UK\\
+   \email{m.sadrzadeh@qmul.ac.uk}\\
+ }
+%  \authorrunning{} has to be set for the shorter version of the authors' names;
+% otherwise a warning will be rendered in the running heads. When processed by
+% EasyChair, this command is mandatory: a document without \authorrunning
+% will be rejected by EasyChair
+
+\authorrunning{ Ryp\'a\v{c}ek and Sadrzadeh}
+
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\setcounter{tocdepth}{2}
+%{\small
+%\tableofcontents}
+%
+%\section{To mention}
+%
+%Processing in EasyChair - number of pages.
+%
+%Examples of how EasyChair processes papers. Caveats (replacement of EC
+%class, errors).
+
+%\pagestyle{empty}
+
+
+
+
+\begin{abstract}
+We show how one can  formalise quantifiers in the categorical compositional distributional model of meaning. Our model is based on the generalised quantifier theory of Barwise and Cooper. We develop an abstract compact closed semantics using Frobenius Algebras for these quantifiers and instantiate the abstract model in vector spaces and in relations. The former is an example for the  distributional corpus-based models of language  and the latter for the truth-theoretic ones. We provide explanations and toy examples and defer formal proofs and large scale empirical validation to the full version of the paper. 
+\end{abstract}
+
+
+\section{Introduction}
+\emph{Distributional} models of natural language are based on Firth's hypothesis that  meanings of words can be deduced from the contexts in which they often occur  \cite{Firth}.  One then fixes a context window of $n$ words and computes frequencies of how many times a words has occurred in this window with other words. These models have been applied to various language processing tasks, for instance thesauri construction \cite{Curran}.  \emph{Compositional} distributional models of meaning extend these  models from words to sentences. The categorical such models \cite{Coeckeetal,BaroniZam} do so by taking into account the grammatical structure of sentences and the vectors of the words in there.  These models have proven successful in practical natural language tasks such as disambiguation, term/definition classification and phrase similarity, for example see \cite{GrefenSadr,KartSadr}. Nevertheless, it has been an open problem how to deal  with  meanings of logical words such as  quantifiers and conjunctives. In this paper, we present preliminary work which aims to show how quantifiers can be deal with using the generalised quantifier  theory  of Barwise and Cooper \cite{BarwiseCooper81}. 
+
+Very briefly put, according to the  `living on property' of generalised quantifier theory, the meaning of a sentence with a natural language  quantifier $Det$ such as  `$Det$ Sbj Verb' is determined by first taking the intersection of the denotation of Sbj with the denotation of subjects of the Verb, then checking if  this is an element of the denotation of $Det(\text{Sbj})$. The denotation of $Det$ is specified separately, for example, for $Det = \exists$, it is the set of non-empty subsets of the universe, for $Det = 2$ it is  the set of  subsets of the universe that have  two elements and so on. As a result, and for example, the meaning of a sentence ``some men sleep'' becomes  true if the set of men who sleep is non empty and the meaning of ``two men sleep'' is true if the set of men who sleep has cardinality 2. 
+
+
+In what follows,  we work in the categorical compositional distributional model of \cite{Coeckeetal}, treat natural language quantifiers as generalised quantifiers and model  them in a  way similar  to how we modelled  relative pronouns  in previous work \cite{SadrClarkCoecke1, SadrClarkCoecke2}. We  first present  a brief preliminary account of compact closed categories and Frobenius algebras over them and review  how vector spaces and relations provide instances. Then, we develop a compact closed categorical semantic for quantifiers, in terms of diagrams and morphisms of compact closed categories and Frobenius Algebras over certain objects of them. We present two concrete interpretations for this abstract setting: relations and vector spaces. The former provides  basis for  a  truth-theoretic model of meaning and the latter  for a corpus-base distributional model of meaning.  In the full article version of the current extended abstract, we provide details of interpretation maps,   formal proofs,  and results of  large scale empirical evaluations. 
+
+
+
+
+\section{Preliminaries}
+This subsection briefly reviews compact closed
+categories and Frobenius algebras. For a formal presentation, see
+\cite{KellyLaplaza80,Kock72}.  A compact closed category, $\cC$, has objects $A, B$; morphisms $f \colon A
+\to B$; a monoidal tensor $A \otimes B$ that has a unit $I$, that is we have $A \otimes I \cong I \otimes A \cong A$. Furthermore, for
+each object $A$ there are two objects $A^r$ and $A^l$ and  the
+following morphisms:
+\begin{align*}
+A \otimes A^r \stackrel{\epsilon_A^r} {\longrightarrow} \; &I
+\stackrel{\eta_A^r}{\longrightarrow} A^r \otimes A \hspace{1cm}
+A^l \otimes A \stackrel{\epsilon_A^l}{\longrightarrow} \; I
+\stackrel{\eta_A^l}{\longrightarrow} A \otimes A^l\
+\end{align*}
+These morphisms satisfy the following equalities, sometimes
+referred to as the \emph{yanking} equalities, where $1_A$ is the
+identity morphism on object $A$:
+\begin{align*}
+& (1_A \otimes \epsilon_A^l) \circ (\eta_A^l \otimes 1_A)  = 1_A 
+\hspace{1cm}
+(\epsilon_A^r \otimes 1_A) \circ (1_A \otimes
+  \eta_A^r)   = 1_A\\
+& (\epsilon_A^l \otimes 1_A) \circ (1_{A^l} \otimes
+  \eta_A^l) = 1_{A^l}  
+    \hspace{1cm}
+    (1_{A^r} \otimes \epsilon_A^r) \circ (\eta_A^r \otimes 1_{A^r}) = 1_{A^r}
+\end{align*}
+%
+\noindent These express the fact the $A^l$ and $A^r$ are the left and right
+adjoints, respectively, of $A$ in the 1-object bicategory whose
+1-cells are objects of $\cC$.
+
+
+A Frobenius algebra  in a   monoidal  category $({\cal
+  C}, \otimes, I)$ is a tuple $(X,  \delta, \iota, \mu, \zeta)$ where,
+for $X$ an object of ${\cal C}$, the triple $(X, \delta, \iota)$ is  an internal comonoid; 
+i.e.~the following are  coassociative and counital  morphisms of ${\cal
+  C}$:
+\begin{align*}
+\delta \colon X \to X \otimes X&\qquad& \iota \colon X \to I
+\end{align*}
+Moreover $(X, \mu, \zeta)$ is  an internal  monoid; i.e.~the following are  associative and unital  morphisms:
+\begin{align*}
+\mu \colon  X \otimes X \to X  &\qquad& \zeta \colon I \to X
+\end{align*}
+And finally the  $\delta$ and $\mu$ morphisms satisfy the
+following \emph{Frobenius condition}:
+\begin{align*}
+\mbox{ $(\mu \otimes 1_X) \circ (1_X \otimes \delta) \ = \  \delta \circ \mu  \ = \  (1_X \otimes \mu) \circ (\delta \otimes 1_X)$}
+\end{align*}
+%MS
+Informally, the  comultiplication $\delta$  dispatches the information contained in
+one object into two objects, and the  multiplication $\mu$ unifies  the
+information of two objects into one.
+
+
+\medskip
+\noindent
+{\bf Finite Dimensional Vector Spaces.}
+These structures  together with  linear maps  form a compact
+closed category, which we refer to as $\FdVect$.  Finite dimensional
+vector spaces $V, W$ are objects of this category; linear maps $f
+\colon V \to W$ are its morphisms with composition being the
+composition of linear maps. The tensor product $V
+\otimes W$ is the 
+linear algebraic tensor product,
+%tensor of the category, 
+whose unit is the scalar
+field of vector spaces; in our case this is the field of reals
+$\mathbb{R}$.  Here, there is  a naturual
+isomorphism $V \otimes W \cong W \otimes V$. As a result of the
+symmetry of the tensor, the two adjoints reduce to one and we obtain the  isomorphism $V^l \cong V^r \cong V^*$, 
+where $V^*$ is the dual space of $V$. When the
+basis vectors of the vector spaces are fixed, it is further the case
+that we have $V^* \cong V$.
+
+
+Given a basis $\{r_i\}_i$ for a vector space $V$, the epsilon maps are
+given by the inner product extended by linearity; i.e. we have:
+\[
+\epsilon^l  =  \epsilon^r \colon   V \otimes V \to \mathbb{R} \quad \mbox{given by} \quad
+\sum_{ij} c_{ij} \ \psi_i \otimes \phi_j  \quad \mapsto \quad \sum_{ij} c_{ij} \langle \psi_i \mid \phi_j \rangle\]
+Similarly, eta maps   are defined as follows:
+\[
+\eta^l = \eta^r \colon   \mathbb{R} \to V \otimes V
+\quad \mbox{given by} \quad 
+1 \; \mapsto \; \sum_i r_i \otimes r_i
+\]
+Any vector space $V$ with a fixed basis
+$\{\ov{v_i}\}_i$ has a Frobenius algebra over it, explicitly given as follows, where $\delta_{ij}$ is the Kronecker delta.
+%\begin{align*}
+%\delta :: \ov{v_i} \mapsto \ov{v_i} \otimes \ov{v_i} &\qquad& \iota:: \ov{v_i} \mapsto 1\\
+%\mu:: \ov{v_i} \otimes \ov{v_i} \mapsto \ov{v_i} &\qquad& \zeta:: 1 \mapsto \ov{v_i}  
+%\end{align*}
+\begin{eqnarray*}\label{eq:frob}
+\delta  \colon V \to V \otimes V  & \quad \mbox{given by} \quad&  \ov{v_i} \mapsto \ov{v_i} \otimes \ov{v_i} \\
+\mu \colon V \otimes V \to V  &\quad \mbox{given by} \quad & \ov{v_i} \otimes \ov{v_j} \mapsto 
+\delta_{ij}\ov{v_i} \\
+  \iota \colon V \to \mathbb{R} & \quad \mbox{given by} \quad&  \ov{v_i} \mapsto 1 \\
+ \zeta \colon \mathbb{R} \to V  &\quad \mbox{given by} \quad& 1 \mapsto   \sum_i  \ov{v_i}  
+\end{eqnarray*}
+
+
+
+
+\medskip
+\noindent
+{\bf Relations}.
+Another important example of a  compact closed category is
+$\Rel$, the cateogry of sets and relations. Here, $\otimes$ is
+cartesian product with the singleton set as its unit $I = \{\star\}$, and the adjoin operators  are identity morphisms on objects. Closure reduces to the
+fact that a relation between sets $A\times B$ and $C$ is equivalently a relation between $A$ and $B \times C$.   Given a set $S$ with elements $s_i, s_j \in S$,  the epsilon and eta maps are given as follows:
+
+\begin{eqnarray*}
+&\epsilon^l  =  \epsilon^r &\colon   S \times S \to \{\star\} \quad \mbox{given by} \quad
+\{((s_i, s_j), \star) \mid s_i, s_j \in S, s_i = s_j \}\\
+&\eta^l = \eta^r& \colon   \{\star\}  \to S \times S
+\quad \mbox{given by} \quad 
+\{(\star, (s_i, s_j)) \mid s_i, s_j \in S, s_i = s_j\}
+\end{eqnarray*}
+
+
+
+Every object in $\Rel$  has a
+Frobenius algebra over it given by the diagonal and codiagonal
+relations, as described below: 
+
+
+
+\begin{eqnarray*}
+&\delta &\colon   S \to S \times S \quad \mbox{given by} \quad
+\{(s_i, (s_j, s_k)) \mid s_i, s_j, s_k \in S, s_i = s_j  = s_k\}\\
+& \mu & \colon   S \times S \to S
+\quad \mbox{given by} \quad 
+\{(s_i, s_j), s_k) \mid s_i, s_j, s_k\in S, s_i = s_j= s_k\}\\
+& \iota& \colon S \to  \{\star\}    \quad \mbox{given by} \quad \{(s_i, \star) \mid s_i \in S\}\\
+&\zeta& \colon  \{\star\}  \to S  \quad \mbox{given by} \quad \{(\star, s_i) \mid s_i \in S\}
+\end{eqnarray*}
+
+For the details of verifying that for each of the two examples above,  the corresponding conditions hold see \cite{CoeckePaq}. 
+
+\subsection{String Diagrams} 
+\label{string}
+
+The framework of compact closed categories and Frobenius algebras
+comes with a complete diagrammatic calculus that visualises
+derivations, and which also simplifies the
+categorical and vector space computations. Morphisms are depicted by
+boxes and objects by lines, representing their identity morphisms. For
+instance a morphism $f \colon A \to B$, and an object $A$ with the
+identity arrow $1_A \colon A \to A$, are depicted as follows:
+
+\begin{center}
+  \tikzfig{compact-diag}
+\end{center}
+
+Morphisms from $I$ to objects are depicted by triangles with strings emanating from them. In concrete categories, these morphisms represent  elements within the  objects. For instance, a vector  $a$ in a vector space $A$ is represented by the morphism $a: I \to A$ and depicted by a  triangle with one string. The number of strings of such triangles depict the tensor rank of the vector space; for instance, the
+diagrams for ${a} \in A, {a'} \in A \otimes B$, and ${a''}
+\in A \otimes B \otimes C$ are as follows:
+
+\begin{center}
+  \tikzfig{compact-diag-triangle}  
+\end{center} 
+
+
+The tensor products of the objects and morphisms are depicted by
+juxtaposing their diagrams side by side, whereas compositions of
+morphisms are depicted by putting one on top of the other; for instance
+the object $A \otimes B$, and the morphisms $f \otimes g$ and $f \circ
+h$, for $f \colon A \to B, g \colon C \to D$, and $h \colon B \to C$,
+are depicted as follows:
+
+\begin{center}
+  \tikzfig{compact-diag-tensor}
+\end{center}
+
+The $\epsilon$ maps are depicted by cups, $\eta$ maps by caps, and
+yanking by their composition and straightening of the strings.  For
+instance, the diagrams for $\epsilon^l \colon A^l \otimes A \to I$,
+$\eta \colon I \to A\otimes A^l$ and $(\epsilon^l \otimes 1_A) \circ
+(1_A \otimes \eta^l) = 1_A$ are as follows:
+
+\begin{center}
+  \tikzfig{compact-cap-cup}
+  \qquad
+    \tikzfig{compact-yank}
+\end{center}
+
+ 
+As for Frobenius algebras, the diagrams for the  monoid and  comonoid 
+morphisms are as follows:
+
+\begin{center}
+\tikzfig{comp-alg-coalg}
+\end{center} 
+ 
+\noindent
+with the Frobenius condition being depicted as:
+
+\begin{center}
+\tikzfig{equation}
+\end{center} 
+
+
+\noindent
+The defining axioms   guarantee that any picture depicting a
+Frobenius computation can be reduced to a normal form that only
+depends on the number of input and output strings of the nodes,
+independent of the topology. 
+These normal forms can be simplified to so-called `spiders': 
+\[
+\tikzfig{spider}
+\]
+
+
+\section{Diagrammatic Compact Closed Semantics}
+
+Following the terminology and notation of \cite{BarwiseCooper81}, given a quantified phrase such as  ``Det noun'', we call ``Det'' a determiner. A 
+quantified phrase is a noun phrase which is created by the application of a determiner to a noun phrase.
+We suggest the following diagrammatic semantics for a determiner Det:
+
+\begin{center}
+\tikzfig{Det-N}  
+\end{center}
+
+\noindent
+It corresponds to the following compact closed categorical morphism:
+
+\[
+(1_N \otimes \delta_N) \circ (1_N \otimes Det \otimes \mu_N) \circ (1_N \otimes \eta_N \otimes 1_N) \circ \eta_N
+\]
+
+The meaning of the sentence with a quantified phrase in a subject position and its normalised form are
+as follows:
+
+\begin{minipage}{20cm}
+\begin{minipage}{7cm}
+\tikzfig{Q-Sbj-Frob-Sent}
+\end{minipage}
+\ $\cong$ \ \qquad
+\begin{minipage}{5cm}
+ \tikzfig{Q-Sbj-Norm}
+\end{minipage}
+\end{minipage}
+
+\noindent
+Here,  ``Sbj'', ``Obj'', and  ``Verb'' are elements within objects $N$, $N$, and $N \otimes S \otimes N$, respectively.  The symbolic representation of the normal form diagram is as follows:
+
+\[
+(\epsilon_N \otimes 1_S) \circ (Det \otimes \mu_N \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S} \otimes \epsilon_N)( {\text Sbj} \otimes  {\text Verb} \otimes  {\text Obj})
+\] 
+
+\noindent
+The intuitive justification is that the determiner $Det$  first makes a copy of the subject (via the Frobenius $\delta$
+map), so now we have two copies of the subject. One of these is being unified with the subject argument
+of the verb (via the Frobenius $\mu$ map). In set-theoretic terms this is the intersection of the interpretations
+of subject and subjects-of-verb. The other copy is being inputted to the determiner map $Det$ and will
+produce a modified noun based on the meaning of the determiner. The last step is the application of the
+unification to the output of $Det$. Set theoretically, this step will decide whether the intersection of the
+subject-of-verb and the noun belongs to the interpretation of the quantified noun.
+
+
+The diagrams, morphisms, and intuitions for a quantified phrase in an object position are obtained in a similar way.
+
+
+\section{Truth-Theoretic Interpretation}
+For this part, we work in the category $Rel$ of sets and relations. We take $N$ to be the set of all subsets of individuals from a universal reference set $U$, that is $N = {\cal P}(U)$.  A common noun in $N$  is hence taken to be  the set of all subsets of its individuals.  We take $S$ to be the one dimensional space; the origin $0$ represents false and the vector $\ov{1}$ represents truth.  A verb is the set of all non-empty subsets of a relation (corresponding to its predicate). 
+For an intransitive verb, this relation is on the set $N \times S$, where each relation corresponds to a subset of $N$, since we have  $N \times S \cong N$. For a transitive verb, it is a relation on the set $N \times S \times N \cong 
+N \times N$.
+
+We denote the set-theoretical  semantics of a word ``w'' by $\semantics{\text w}$ and its categorical representation as developed above  by $\overline{\semantics{\text w}}$. Then  we have the following:
+
+\begin{eqnarray*}
+\overline{\semantics{\text{Sbj}}} &=& \{A_i \mid A_i \in {\cal P}(\semantics{\text{Sbj}})\}\\
+\overline{\semantics{\text{Verb}}} &=& \{B_j \mid B_j \in {\cal P}(\semantics{\text{Verb}})\}\\
+Det\Big(\overline{\semantics{\text{Sbj}}}\Big) &=& \{D_k \mid D_k \in Det(\semantics{\text{Sbj}})\}
+\end{eqnarray*}
+where   $\semantics{\text{Sbj}} \subseteq U$ and $\semantics{\text{Verb}} \subseteq U$ are the set-theoretic meanings of ``Sbj'' and ``Verb'', and $Det(S)$  is the same as in the generalised quantifier approach. 
+
+The truth-theoretic meaning of the sentence ``Det Sbj Verb''  is obtained  by computing   the   morphism  developed in section 4 in category $Rel$. Here, since we  have $S = I$,  the morphisms that are applied to object $S$ are dropped, that is we have:
+\[
+\epsilon(Det \otimes  \mu_N)(\delta_N \otimes 1_{N})
+\Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}}
+\Big)
+\] 
+This  is computed in three steps. In the  first step, we obtain:
+
+\begin{align*}
+(\delta_N \otimes 1_{N})\Big(\overline{\semantics{\text{Sbj}}} \otimes \overline{\semantics{\text{Verb}}}\Big) =  \{(A_i, A_i) \mid A_i \in {\cal P} (\semantics{\text{Sbj}})\} \otimes \{B_j \mid B_j \in  {\cal P} (\semantics{\text{Verb}})\}
+\end{align*}
+
+
+\noindent
+In the second step, we obtain:
+
+\begin{align*}
+(Det \otimes  \mu_N)\Big(\{(A_i, A_i) \mid A_i \in {\cal P} (\semantics{\text{Sbj}})\} \otimes \{B_j \mid B_j \in  {\cal P} (\semantics{\text{Verb}})\}\Big) &=\\
+Det\Big(\{A_i \mid A_i \in {\cal P} (\semantics{\text{Sbj}})\}\Big) \otimes \{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\} &=\\
+\{D_k \mid D_k \in Det(\semantics{\text{Sbj}})\} \otimes \{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\}
+\end{align*}
+
+\noindent
+In the final step, we obtain:
+\begin{align*}
+\epsilon\Big(\{D_k \mid D_k \in Det(\semantics{\text{Sbj}})\} \otimes \{A_i \mid A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P}(\semantics{\text{Verb}})\}\Big) &=\\
+ \{\star \mid  D_k = A_i, D_k \in Det(\semantics{\text{Sbj}}), A_i = B_j, A_i \in {\cal P} (\semantics{\text{Sbj}}), B_j \in  {\cal P} (\semantics{\text{Verb}})\}
+\end{align*}
+
+
+\noindent
+If the result is non-zero, the meaning of the sentence is true, else it is false. 
+
+
+\medskip
+\noindent
+{\bf Example.} 
+As an  example,  suppose we have two male individuals $m_1, m_2$  and a cat   individual $c_1$.  Suppose further that  the verb `sneeze'  applies to individuals $m_1$ and $c_1$. Hence, we have the following interpretations for the lemmas of words ``man'', ``cat'', and ``sneeze'':
+
+\[
+\overline{\semantics{\text{men}}} =  {\cal P}(\{m_1, m_2\})  \qquad
+\overline{\semantics{\text{cat}}} =  {\cal P}(\{c_1\})  \qquad
+\overline{\semantics{\text{sneeze}}} = {\cal P}(\{m_1, c_1\})
+\]
+
+\noindent
+Consider the  following quantified phrases and their interpretations:
+
+\[
+Some\Big(\overline{\semantics{\text{men}}}\Big) =  \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \qquad
+One\Big(\overline{\semantics{\text{man}}}\Big) = \{\{m_1\}, \{m_2\}\}\]
+
+\noindent
+In the first step of computation of the meaning of  ``some men sneeze'', we obtain:
+
+\begin{align*}
+  \{(\{\emptyset\}, \{\emptyset\}), (\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes  \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\} 
+\end{align*}
+
+\noindent
+In the second step, we obtain:
+\begin{align*}
+Some\Big ( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \Big) \otimes \mu \Big( \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\} \Big)\\
+= \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}\}
+\end{align*}
+
+\noindent
+In the last step, we obtain the following:
+
+\begin{align*}
+\epsilon\Big(\{\{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}\}\Big) = \{\star\}
+\end{align*}
+
+\noindent
+Hence, the meaning of the sentence is true.  For the sentence ``One man sneezes'',  one applies $(One \otimes \mu)$ to the result of the first step, which is as above. Hence,  the second and third steps of computation are as follows:
+
+{\small
+\begin{align*}
+\epsilon   \Big( One\Big ( \{\{m_1\}, \{m_2\}, \{m_1, m_2\}\} \Big) \otimes \mu \Big( \{\emptyset, \{m_1\}, \{m_2\}, \{m_1, m_2\}\}  \otimes \{\emptyset, \{m_1\}, \{c_1\}, \{m_1, c_1\}\} \Big)  \Big)\\
+= \epsilon \Big(\{\{m_1\}, \{m_2\}\}  \otimes \{\emptyset, \{m_1\}\}\Big) = \{\star\}
+\end{align*}
+}
+
+
+Due to lack of space, we  have not done the necessary expositions here, but as established  in \cite{CoeckePaq} and used in a similar context for relative pronouns  in \cite{SadrClarkCoecke1, SadrClarkCoecke2},  the Frobenius map $\mu$ is the analog of set-theoretic intersection and the compact closed epsilon map is the analog of set-theoretic
+application. Then it follows  that  our truth-theoretic interpretation of the
+compact closed semantics of quantified sentences provides us with the same truth-theoretic meaning as their generalised
+quantifier semantics. The proof of this claims uses  the  `living on property' of generalised quantifiers. 
+
+\section{Concrete Corpus-Based Interpretation}
+
+In a concrete vector space model, built from a corpus using distributional methods, we assume that  vector meaning of the subject is
+$\sum_i C_i \ov{n}_i \in N$ and the linear map corresponding to the verb is  $\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k \in N \otimes S$.  For $\ov{n}_i$ a basis vector of $N$, we define  the map $Det$  as follows:
+
+\begin{equation}\label{eqDet}
+Det(\ov{n}_i) = \Phi \{\ov{w} \in N \mid d(\ov{n}_i, \ov{w}) = \alpha\}
+\end{equation}
+
+\noindent
+where we have that   $\phi$ is a linear  function and   $\alpha$ indicates how close $\ov{w}$ is to the $\ov{n}_i$ and depends on the quantifier expressed by $Det$. 
+
+
+The intuitive reading of the above is that $Det$ of a word $\ov{n}_i$ is a linear combination  of all the words that are $\alpha$-close to $\ov{n}_i$.  For instance, if $Det$ is `few', then $\alpha$ is a small number (closer to 0 than to 1), indicating that we are taking the combination of vectors that are not so close to $\ov{n}_i$. If $Det$ is `most', then $\alpha$ will be a large number (closer to 1 than to 0), indicating that we are taking the combination of vectors that are close to $\ov{n}_i$.  Here we are interpreting the notion of \emph{closeness}  based on   the number of properties the words share. The distance $\alpha$ can be learnt from a corpus using a relevant task. 
+
+The underlying idea here is that the quantitative way of quantifying in set-theoretic models, which depends on the cardinality of the quantified sets, is now transformed into a geometric way of quantifying where the meaning of the quantified phrase depends on its geometric distance with other words. Hence, a quantified phrase such as `few cats' returns a representative noun (obtained by taking the average of all such nouns) that is far from vector of  `cat'  in the semantic space. This representative noun shares `few' properties with `cat'. A quantified phrase such as `most cats' returns a representative noun that is close the the vector of `cat' and stands for a noun that shares `most' of the properties of `cat'. 
+
+
+With this instantiation, the  meaning of ``Det Sbj Verb'' is obtained by computing the following:
+
+\[
+(\epsilon_N \otimes 1_S) \circ (Det \otimes  \mu_N \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})\left(\ov{\text{Sbj}} \otimes \ov{\text{Verb}}\right)
+\]
+In the first step of computation we have:
+
+\begin{align*}
+(\delta_N \otimes 1_{N \otimes S})\Big(\sum_i C_i \ov{n}_i \otimes \sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k\Big) = 
+(\sum_i C_i \ov{n}_i \otimes \ov{n}_i) \otimes  (\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k)
+\end{align*}
+
+\noindent
+In the second step we obtain: 
+
+\begin{align*}
+(Det \otimes  \mu_N \otimes 1_S)\Big((\sum_i C_i \ov{n}_i \otimes \ov{n}_i) \otimes  (\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k)\Big) &= 
+\sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \mu(\ov{n}_i \otimes \ov{n}_j) \otimes \ov{s}_k \\
+= \sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \delta_{ij} \ov{n}_i \otimes \ov{s}_k&
+\end{align*}
+
+\noindent
+The final step is as follows:
+
+\begin{align*}
+(\epsilon_{N} \otimes 1_S)  \Big(\sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \delta_{ij} \ov{n}_i \otimes \ov{s}_k \Big) &=   
+\sum_{ijk} C_i C_{jk} \langle Det(\ov{n}_i) \mid \delta_{ij} \ov{n}_i \rangle \ov{s}_k
+\end{align*}
+
+\noindent
+{\bf Example.} 
+As a distributional example, take $N$ to be the two dimensional space with the basis $\{\ov{n}_1, \ov{n}_2\}$ and $S$ be the two dimensional space with the basis $\{\ov{s}_1, \ov{s}_2\}$.  Suppose the linear expansion of 
+\[
+\ov{\text{N}} := C_1 \ov{n}_1 + C_2 \ov{n}_2
+\]
+ and the linear expansion of 
+ \[
+ \ov{\text{VP}} := C_{11} (\ov{n}_1 \otimes \ov{s}_1) + C_{12} (\ov{n}_1 \otimes \ov{s}_2) +  C_{21} ( \ov{n}_2 \otimes \ov{s}_1) + C_{22} (\ov{n}_2 \otimes \ov{s}_2)
+ \]
+    Suppose further the following for the interpretation of the determiner:
+ \begin{equation}\label{eqDetLin}
+Det(\ov{\text{Sbj}}) = Det(C_1 \ov{n}_1 + C_2 \ov{n}_2) =  Det(C_1 \ov{n}_1) + Det(C_2 \ov{n}_2) =  C'_1 \ov{n}_1 + C'_2 \ov{n}_2
+\end{equation}
+Then the result of the first step of the computation of a meaning vector for the sentence `Q Sbj Verb' is:
+\[
+(C_1\ov{n}_1 + C_2 \ov{n}_2) \otimes (C_{11} \ov{n}_1 \otimes \ov{s}_1 + C_{12} \ov{n}_1 \otimes \ov{s}_2
++ C_{21} \ov{n}_2 \otimes \ov{s}_1 + C_{22} \ov{n}_2 \otimes \ov{s}_2)
+\]
+In the second step of computation we obtain:
+
+\begin{align*}
+C_1C_{11} Det(\ov{n}_1) \ov{n}_1 \otimes \ov{s}_1  + C_1 C_{12} Det(\ov{n}_1) \ov{n}_1 \otimes \ov{s}_2  + 
+C_2 C_{21} Det(\ov{n}_2) \ov{n}_2 \otimes \ov{s}_1 + \\
+C_2 C_{22} Det(\ov{n}_2) \ov{n}_2 \otimes \ov{s}_2
+\end{align*}
+
+\noindent
+Since $Det$ is a linear map, the above is equal to the following:
+\[
+Det(C_1\ov{n}_1) (C_{11} \ov{n}_1 \otimes \ov{s}_1 + C_{12} \ov{n}_1 \otimes \ov{s}_2) + Det(C_2 \ov{n}_2)(C_{21} \ov{n}_2 \otimes \ov{s}_1 + C_{22} \ov{n}_2 \otimes \ov{s}_2)
+\]
+According to the expansion of the assumption in equation \ref{eqDetLin},  the above is equivalent to the following:
+\[
+(C'_1\ov{n}_1) (C_{11} \ov{n}_1 \otimes \ov{s}_1 + C_{12} \ov{n}_1 \otimes \ov{s}_2) + (C'_2 \ov{n}_2)(C_{21} \ov{n}_2 \otimes \ov{s}_1 + C_{22} \ov{n}_2 \otimes \ov{s}_2)
+\]
+Substituting  this in the last step of the computation provide us with the following vector in $S$:
+\begin{equation}\label{eqSent}
+C'_1 C_{11} \ov{s}_1 + C'_1 C_{12} \ov{s}_2 + C'_2 C_{21} \ov{s}_2 + C'_2 C_{22} \ov{s}_2
+\end{equation}
+%Assuming that the basis is fixed, the above can be written in matrix notation as follows:
+%\begin{equation}\label{eqSent}
+%\left ( \begin{array}{cc} C_{11} & C_{21} \\ C_{21} & C_{22} \end{array} \right) \times 
+%\left ( \begin{array}{c} C'_1 \\ C'_2 \end{array} \right) \ = \ \ov{\text{Verb}} \times Det(\ov{\text{Sbj}})
+%\end{equation}
+%
+
+\noindent
+{\bf Small Corpus-Based Witness.} 
+A large scale experimentation  for this model constitutes work in progress.  For the sake of providing  intuitions for the above symbolic constructions, we provide a couple of corpus-based witnesses here. In the distributional models, the most natural instantiation of the distance $d$  in equation \ref{eqDet} is the  co-occurrence distance. For a noun `\emph{n}' and determiners `\emph{few}' and `\emph{most}', we  define these as generally as follows:
+
+\begin{center}
+few(\emph{n}) = $Avg\{\mbox{nouns that share  few properties with \emph{n}}\}$\\
+most(\emph{n}) = $Avg\{\mbox{nouns that share most properties  with \emph{n}}\}$
+\end{center}
+
+For the purpose of this toy-example, the above can be instantiated in the simplest possible way as follows:
+\begin{center}
+few(\emph{n}) = $Avg\{\mbox{nouns that co-occurred with  \emph{n} few times}\}$\\
+most(\emph{n}) = $Avg\{\mbox{nouns that co-occurred with \emph{n} most times}\}$
+\end{center}
+In this case, a sample query from the online  \emph{Reuter News Corpus}, with at most 100 outputs per query,  provides the following instantiations:
+\begin{center}
+few(\emph{dogs}) = $Avg\{\mbox{bike, drum, snails}\}$\\
+most(\emph{dogs}) = $Avg\{\mbox{cats, pets,birds, puppies}\}$\\
+few(\emph{cats}) = $Avg\{\mbox{fluid, needle, care}\}$\\
+most(\emph{cats}) = $Avg\{\mbox{dogs, birds, rats, feces}\}$\\
+\end{center}
+A cosine-based similarity measure over this corpus results in the fact that any of the words in the `most(\emph{n})' set are   more similar to `\emph{n}' than any of  the  words in the `few(\emph{n})' set. This is indeed because  the words in the former set are geometrically closer to `\emph{n}' than the words in the latter set, since they have co-occurred with them more.  This is the first advantage of our model over  a distributional model, where words such as `few' and `most' are treated as  {noise} and hence meanings of phrase such as `few cats', `most cats', and `cats'  become  identical (and similarly for any other noun). Moreover, in our setting we can establish that `most cats' and `most dogs' have similar meanings, because of the over lap of their determiner sets. A larger corpus and a more thorough statistical analysis  will let us achieve more,  that for instance,   `few cats' and `few dogs' also have similar meanings. 
+
+At the level of sentence meanings,  compositional  distributional models  do not interpret determiners (e.g. see  the model of \cite{ML}). As a result, meanings of sentences such as `cats sleep', `most cats sleep' and `few cats sleep'  will become identical; meanings of sentences `most cats sleep' and `few dogs snooze' become very close, since `cats' and `dogs' often occur in the same context and so do `sleep' and `snooze'. In our setting, equation \ref{eqSent} tells us that these sentences have different meanings, since their quantified subjects have different meanings. To see this, take  $\ov{\text{cats}} = C_1 \ov{n}_1 + C_2 \ov{n}_2$, where as $few(\text{cats}) = C'_1 \ov{n}_1 + C'_2 \ov{n}_2$ and $most(\text{cats}) = C''_1 \ov{n}_1 + C''_2 \ov{n}_2$. Instantiating these in equation \ref{eqSent} provides us with the following three different vectors:
+\begin{eqnarray*}
+\ov{\mbox{cats sleep}} &=&C_1 C_{11} \ov{s}_1 + C_1 C_{12} \ov{s}_2 + C_2 C_{21} \ov{s}_2 + C_2 C_{22} \ov{s}_2\\
+\ov{\mbox{few cats sleep}} &=&C'_1 C_{11} \ov{s}_1 + C'_1 C_{12} \ov{s}_2 + C'_2 C_{21} \ov{s}_2 + C'_2 C_{22} \ov{s}_2\\
+\ov{\mbox{most cats sleep}} &=& C''_1 C_{11} \ov{s}_1 + C''_1 C_{12} \ov{s}_2 + C''_2 C_{21} \ov{s}_2 + C''_2 C_{22} \ov{s}_2
+\end{eqnarray*}
+On the other hand, we have  that `most cats sleep' and `most dogs snooze'  have close meanings, one which is close to `pets sleep'.  This is because, their quantified   subjects and their  verbs have similar meanings, that is we have:
+\[
+\begin{cases}
+most(\ov{\text{dogs}}) \sim most(\ov{\text{cats}}) \sim  \ov{\text{pets}}&\\
+\ov{\text{snooze}}  \sim \ov{\text{sleep}} &
+\end{cases} \implies 
+\mbox{most cats sleep}  \sim  \mbox{most dogs snooze} \sim
+\mbox{pets sleep}
+\]
+At the same time,  `few cats sleep' and `most dogs snooze' have a less-close meaning, since their quantified  subjects have different meanings, that is:
+\[
+most(\ov{\text{dogs}}) \sim\!\!\!\!\!/ \ few(\ov{\text{cats}})  \implies \ov{\mbox{most dogs snooze}}  \sim\!\!\!\!\!/ \
+\ov{\mbox{few cats sleep}}
+\]
+
+
+\bibliographystyle{plain}
+\bibliography{quant.bib}
+
+%\bibliographystyle{splncs03}
+
+
+
+\end{document}
