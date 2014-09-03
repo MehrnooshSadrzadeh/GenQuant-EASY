@@ -264,10 +264,9 @@ The yanking equalities directly follow from the preroup inequalities on the adjo
 
 \medskip
 \noindent
-{\bf Finite Dimensional Vector Spaces.}
-These structures  together with  linear maps  form a compact
-closed category, which we refer to as $\FdVect$.  Finite dimensional
-vector spaces $V, W$ are objects of this category; linear maps $f
+{\bf Finite Dimensional Vector Spaces} together with  linear maps  form a compact
+closed category, $\FdVect$.  Finite dimensional
+vector spaces $V, W$ are objects; linear maps $f
 \colon V \to W$ are its morphisms with composition being the
 composition of linear maps. The tensor product $V
 \otimes W$ is the 
@@ -275,7 +274,7 @@ linear algebraic tensor product,
 %tensor of the category, 
 whose unit is the scalar
 field of vector spaces; in our case this is the field of reals
-$\mathbb{R}$.  Here, there is  a naturual
+$\mathbb{R}$.  The tensor is symmetric as there is an 
 isomorphism $V \otimes W \cong W \otimes V$. As a result of the
 symmetry of the tensor, the two adjoints reduce to one and we obtain the  isomorphism $V^l \cong V^r \cong V^*$, 
 where $V^*$ is the dual space of $V$. When the
@@ -365,10 +364,10 @@ fact that a relation between sets $A\times B$ and $C$ is equivalently a relation
 
 \begin{eqnarray*}
 &\epsilon^l  =  \epsilon^r &\colon   S \times S \to \{\star\} \quad \mbox{given by} \quad
-\{((s_i, s_j), \star) \mid s_i, s_j \in S, s_i = s_j \}\\
+\{((s, s), \star) \mid s \in S \}\\
 &\eta^l = \eta^r& \colon   \{\star\}  \to S \times S
 \quad \mbox{given by} \quad 
-\{(\star, (s_i, s_j)) \mid s_i, s_j \in S, s_i = s_j\}
+\{(\star, (s, s)) \mid s\in S\}
 \end{eqnarray*}
 
 
@@ -381,12 +380,12 @@ relations, as described below:
 
 \begin{eqnarray*}
 &\delta &\colon   S \to S \times S \quad \mbox{given by} \quad
-\{(s_i, (s_j, s_k)) \mid s_i, s_j, s_k \in S, s_i = s_j  = s_k\}\\
+\{(s, (s, s)) \mid s \in S \}\\
 & \mu & \colon   S \times S \to S
 \quad \mbox{given by} \quad 
-\{(s_i, s_j), s_k) \mid s_i, s_j, s_k\in S, s_i = s_j= s_k\}\\
-& \iota& \colon S \to  \{\star\}    \quad \mbox{given by} \quad \{(s_i, \star) \mid s_i \in S\}\\
-&\zeta& \colon  \{\star\}  \to S  \quad \mbox{given by} \quad \{(\star, s_i) \mid s_i \in S\}
+\{(s, s), s) \mid s \in S\}\\
+& \iota& \colon S \to  \{\star\}    \quad \mbox{given by} \quad \{(s, \star) \mid s \in S\}\\
+&\zeta& \colon  \{\star\}  \to S  \quad \mbox{given by} \quad \{(\star, s) \mid s \in S\}
 \end{eqnarray*}
 
 For the details of verifying that for each of the two examples above,  the corresponding conditions hold see \cite{CoeckePaq}. 
