@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  3 SEP 2014 14:55
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  11 SEP 2014 19:05
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1037,7 +1037,7 @@ Underfull \vbox (badness 1436) has occurred while \output is active []
 LaTeX Font Warning: Command \small invalid in math mode on input line 137.
 
 ) (./Truth-Theory.tex [12]
-Overfull \hbox (2.88832pt too wide) detected at line 66
+Overfull \hbox (2.88832pt too wide) detected at line 70
 \OML/cmm/m/it/10.95 Some[][][] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 ff\OML/
 cmm/m/it/10.95 m[]\OMS/cmsy/m/n/10.95 g\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.9
 5 f\OML/cmm/m/it/10.95 m[]\OMS/cmsy/m/n/10.95 g\OML/cmm/m/it/10.95 ; \OMS/cmsy/
@@ -1048,76 +1048,88 @@ OMS/cmsy/m/n/10.95 f;g
  []
 
 
-Overfull \hbox (12.56367pt too wide) in paragraph at lines 83--83
+Overfull \hbox (12.56367pt too wide) in paragraph at lines 87--87
 [] 
  []
 
 [13]
-Overfull \hbox (42.79771pt too wide) in paragraph at lines 129--129
+Overfull \hbox (42.79771pt too wide) in paragraph at lines 133--133
 [] 
  []
 
-) (./Justification.tex [14] [15]) (./VectorSpace.tex
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
-
+) (./Justification.tex [14] [15]) (./VectorSpace.tex [16]
+Overfull \hbox (0.77728pt too wide) in paragraph at lines 81--84
+\OT1/ptm/b/n/10.95 Intransitive Ex-am-ple. \OT1/ptm/m/n/10.95 As an ex-am-ple, 
+take $\OML/cmm/m/it/10.95 W$ \OT1/ptm/m/n/10.95 to be the two di-men-sional spa
+ce with the ba-sis $\OMS/cmsy/m/n/10.95 f[][]\OML/cmm/m/it/10.95 ; [][]\OMS/cms
+y/m/n/10.95 g$
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 12--13
-
- []
-
-[16]
-Overfull \hbox (24.71805pt too wide) in paragraph at lines 52--52
+[17]
+Overfull \hbox (28.02145pt too wide) in paragraph at lines 109--109
 [] 
  []
 
 
-Overfull \hbox (21.70016pt too wide) detected at line 84
-\OML/cmm/m/it/10.95 C[]C[]Det\OT1/cmr/m/n/10.95 ([][])[][] \OMS/cmsy/m/n/10.95 
-
- [][] \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 C[]C[]Det\OT1/cmr/m/n/10.95 ([][
-])[][] \OMS/cmsy/m/n/10.95 
- [][] \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 C[]C[]Det\OT1/cmr/m/n/10.95 ([][
-])[][] \OMS/cmsy/m/n/10.95 
- [][] \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 C[]C[]Det\OT1/cmr/m/n/10.95 ([][
-])[][] \OMS/cmsy/m/n/10.95 
- [][]
+Overfull \hbox (6.0853pt too wide) detected at line 113
+\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 C[]d\OT1/cmr/m/n/10.95 ([][]) + \OML/cm
+m/m/it/10.95 C[]d\OT1/cmr/m/n/10.95 ([][])) \OMS/cmsy/m/n/10.95 
+ \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 C[]C[][][] \OMS/cmsy/m/n/10.95 
+ [][] \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 C[]C[][][] \OMS/cmsy/m/n/10.95 
+ [][] \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 C[]C[][][] \OMS/cmsy/m/n/10.95 
+ [][] \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 C[]C[][][] \OMS/cmsy/m/n/10.95 
+ [][]\OT1/cmr/m/n/10.95 ) (\OMS/cmsy/m/n/10.95 ^^C\OT1/cmr/m/n/10.95 )
  []
 
 
-Overfull \hbox (4.02344pt too wide) in paragraph at lines 104--107
-\OT1/ptm/b/n/10.95 Small Corpus-Based Wit-ness. \OT1/ptm/m/n/10.95 A large scal
-e ex-per-i-men-ta-tion for this model con-sti-tutes work in progress.
+Overfull \hbox (77.81119pt too wide) in alignment at lines 115--119
+ [][][] []
  []
 
-[17]) (./Quant.bbl [18]) [19] (./Quant.aux) ) 
+[18]
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 174.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 174.
+ [19]
+
+LaTeX Warning: Reference `eqSent' on page 20 undefined on input line 217.
+
+
+LaTeX Warning: Reference `eqSent' on page 20 undefined on input line 217.
+
+[20]) (./Quant.bbl) [21] (./Quant.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 19342 strings out of 493633
- 437619 string characters out of 3143378
- 609032 words of memory out of 3000000
- 22092 multiletter control sequences out of 15000+200000
- 27259 words of font info for 71 fonts, out of 3000000 for 9000
+ 19364 strings out of 493633
+ 437858 string characters out of 3143378
+ 610025 words of memory out of 3000000
+ 22104 multiletter control sequences out of 15000+200000
+ 30135 words of font info for 81 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 58i,20n,74p,1368b,702s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2011/texmf-dis
-t/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2011/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmex10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr8.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy8.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts
-/symbols/msbm10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/courier
-/ucrr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/times/utmb8a.pf
-b></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/lo
-cal/texlive/2011/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Quant.pdf (19 pages, 225463 bytes).
+ 58i,20n,74p,1367b,702s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
+ve/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
+/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive
+/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
+011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2011
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2011/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2011/te
+xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/201
+1/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2011/texmf-
+dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2011/texmf-dist/fonts
+/type1/urw/times/utmr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw
+/times/utmri8a.pfb>
+Output written on Quant.pdf (21 pages, 239869 bytes).
 PDF statistics:
- 138 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 148 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

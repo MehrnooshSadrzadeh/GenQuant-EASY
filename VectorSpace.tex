@@ -1,17 +1,179 @@
-\section{Concrete Corpus  Interpretation}
+\section{Vector Space and Concrete Corpus  Interpretation}
 
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "Quant"
 %%% End: 
 
-INSTANTIATE THE EXACT SAME RELATIONAL MODEL, I.E. WITH SETS OF INDIVIDUALS AS BASIS VECTORS ETC.
+In this section, we first provide the computation of the meaning of a quantified phrase in a sentence in vector spaces in general, and then instantiate these in a couple of concrete models and provide corpus-based applications. 
 
-In a concrete vector space model, built from a corpus using distributional methods, we assume that  vector meaning of the subject is \\
+\subsection{Vector Space Computations}
 
-$\sum_i C_i \ov{n}_i \in N$ and the linear map corresponding to the verb is\\
+A concrete vector instantiation of the abstract compact closed categorical interpretation is  provided by the tuple $({\cal C}_{W,S}, \ov{\text{\ }})$, where $W$ is a vector space with a basis $\{n_i\}_i$ and $S$ is a vector space with a basis $\{s_j\}_j$.  Vector meanings of words are as follows (the corresponding morphisms are obtained as before): 
+\begin{itemize}
+\item For a word w with a lexical category N,NP we have  
+\[
+\overline{\semantics{\text{w}}} := \ov{\text{w}} = \sum_i C_i \ov{n}_i \in W
+\]
+\item For words w with lexical category VP, we have
+\[
+\overline{\semantics{\text{w}}} := \ov{\text{w}} = \sum_{ij} C_{ij} \ov{n}_i \otimes \ov{s}_j \in  W \otimes S
+\]
+\item For words w with lexical category V, we have
+\[
+\overline{\semantics{\text{w}}} := \ov{\text{w}} =  \sum_{ijk} C_{ijk} \ov{n}_i \otimes \ov{s}_j \otimes \ov{n}_k \in W \otimes S \otimes W
+\]
+\item For a word d with the lexical category Det, we have 
+\[
+\overline{\semantics{\text{d}}} := d \colon W \to W \qquad d(\ov{\text {w}})  = \sum_o C_o \ov{n}_o
+\]
+By linearity of $d$, from the above it follows that 
+\[
+d(\ov{\text {w}})  =  d(\sum_i  C_i \ov{n}_i) = \sum_i C_i d(\ov{n}_i) = \sum_o C_o \ov{n}_o
+\]
+So if we take $d(\ov{n}_i) = \sum_t C^i_t \ov{n}_t$, we obtain  that $\sum_{it} C_i C^i_t \ov{n}_t =  \sum_o C_o \ov{n}_o$. 
+\end{itemize}
 
- $\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k \in N \otimes S$.  For $\ov{n}_i$ a basis vector of $N$, we define  the map $Det$  as follows:
+\noindent
+In this instantiation, the  meaning of  a sentence with a quantified subject  is obtained by computing the following:
+
+\[
+(\epsilon_W \otimes 1_S) \circ (d \otimes  \mu_W \otimes 1_S) \circ (\Delta_W \otimes 1_{W \otimes S} \otimes \epsilon_W)  \circ (\ov{{n}} \otimes \ov{{v}} \otimes \ov{{np}})
+\]
+Setting $\ov{{n}} = \sum_l C_l \ov{n}_l, \ov{{v}} = \sum_{ijk} C_{ijk} \ov{n}_i \otimes \ov{s}_j \otimes \ov{n}_k$, and $\ov{{np}} = \sum_r C_r \ov{n}_r$, and   unfolding the morphisms, in the first step of the computation we obtain the following (where $\delta_{rk}$ is 1 when $r=k$ and 0 otherwise):
+
+\begin{align*}
+(\Delta_W \otimes 1_{W \otimes S} \circ \epsilon_W)\Big(\sum_l C_l \ov{n}_l \otimes \sum_{ijk} C_{ijk} \ov{n}_i \otimes \ov{s}_j \otimes \ov{n}_k \ \otimes \sum_r C_r \ov{n}_r \Big) = \\
+(\sum_l C_l \ov{n}_l \otimes \ov{n}_l) \otimes  (\sum_{ijkr} C_{ijk} C_r \ov{n}_i \otimes \ov{s}_j \otimes \langle \ov{n}_k \mid \ov{n}_r \rangle)=\\
+(\sum_l C_l \ov{n}_l \otimes \ov{n}_l) \otimes  (\sum_{ijkr} C_{ijk} C_r \ov{n}_i \otimes \ov{s}_j  \delta_{rk})
+\end{align*}
+
+\noindent
+In the second step we obtain: 
+
+\begin{align*}
+(d \otimes  \mu_W \otimes 1_S)\Big((\sum_l C_l \ov{n}_l \otimes \ov{n}_l) \otimes  (\sum_{ijkr} C_{ijk} C_r \ov{n}_i \otimes \ov{s}_j  \delta_{rk})\Big) =\\ 
+\sum_{ijkrl} C_{ijk}  C_r  C_l d(\ov{n_l}) \otimes \mu(\ov{n}_l \otimes \ov{n}_i) \otimes \ov{s}_j \delta_{rk}=\\
+\sum_{ijkrl} C_{ijk}  C_r  C_l d(\ov{n_l}) \otimes \delta_{li}\ov{n}_i \otimes \ov{s}_j \delta_{rk}
+\end{align*}
+
+\noindent
+The final step is as follows:
+
+\begin{align*}
+(\epsilon_{W} \otimes 1_S) \Big( \sum_{ijkrl} C_{ijk}  C_r  C_l d(\ov{n_l}) \otimes \delta_{li}\ov{n}_i \otimes \ov{s}_j \delta_{rk} \Big) =
+\sum_{ijkrl} C_{ijk}  C_r  C_l \langle d(\ov{n_l}) \mid \ov{n}_i \rangle  \delta_{li} \ov{s}_j \delta_{rk}
+\end{align*}
+
+\noindent Now if we instantiate $d(\ov{n}_l)$ to $\sum_t C^i_t \ov{n}_t$, the above further simplifies to the following:
+ 
+ \[
+\sum_{ijkrl} C_{ijk}  C_r  C_l \langle \sum_t C^i_t \ov{n}_t \mid \ov{n}_i \rangle  \delta_{li} \ov{s}_j \delta_{rk}=
+\sum_{ijkrlt} C_{ijk}  C_r  C_l C^i_t \delta_{ti}  \delta_{li} \ov{s}_j \delta_{rk}
+\]
+
+\noindent
+Similar computations provide us with the following for the meaning of a sentence with a quantified object:
+\[
+(1_S \otimes \epsilon_W) \circ (1_S \otimes \mu_W \otimes d) \circ (\epsilon_W \otimes 1_{S \otimes W} \otimes \Delta_W)(\ov{{n}} \otimes \ov{{v}} \otimes \ov{{np}}) = \sum_{ijkrlt} C_{ijk} C_r C_l C^i_t \delta_{ri} \ov{s}_j \delta_{kl} \delta_{kt}
+\]
+
+\noindent
+{\bf Intransitive Example.} 
+As an example, take $W$ to be the two dimensional space with the basis $\{\ov{n}_1, \ov{n}_2\}$ and $S$ be the two dimensional space with the basis $\{\ov{s}_1, \ov{s}_2\}$.  Consider an intransitive sentence with a quantified subject and the following linear expansions for its subject and verb:
+\[
+\ov{np} := C_1 \ov{n}_1 + C_2 \ov{n}_2
+\qquad 
+ \ov{vp} := C_{11} \ov{n}_1 \otimes \ov{s}_1 + C_{12} \ov{n}_1 \otimes \ov{s}_2 +  C_{21}  \ov{n}_2 \otimes \ov{s}_1 + C_{22} \ov{n}_2 \otimes \ov{s}_2
+ \]
+    Suppose further the following for the interpretation of the determiner:
+ \begin{equation*}\label{eqDetLin}
+d(\ov{{np}}) = d(C_1 \ov{n}_1 + C_2 \ov{n}_2) =  C_1 d(\ov{n}_1) + C_2 d(\ov{n}_2) =  C'_1 \ov{n}_1 + C'_2 \ov{n}_2
+\end{equation*}
+where we further assume the following for the effect of $d$ on each basis:
+\[
+d(\ov{n}_1) = C^1_1 \ov{n}_1 + C^1_2 \ov{n}_2 \qquad
+d(\ov{n}_2) = C^2_1 \ov{n}_1 + C^2_2 \ov{n}_2 
+\]
+So we obtain the following equivalence between the application of $d$ on words and on basis vectors:
+\[
+d(\ov{{np}}) = C'_1 \ov{n}_1 + C'_2 \ov{n}_2 \ = \ (C_1 C_1^1 + C_2 C_1^2) \ov{n}_1 + (C_1C_2^1 + C_2C_2^2) \ov{n}_2
+\]
+
+In the first step of the computation of the meaning vector of the sentence `Q np vp' we have:
+\begin{align*}
+(\Delta_W \otimes 1_{W \otimes S})\Big((C_1\ov{n}_1 + C_2 \ov{n}_2) \otimes (C_{11} \ov{n}_1 \otimes \ov{s}_1 + C_{12} \ov{n}_1 \otimes \ov{s}_2
++ C_{21} \ov{n}_2 \otimes \ov{s}_1 + C_{22} \ov{n}_2 \otimes \ov{s}_2) \Big)=\\
+(C_1 \ov{n}_1 \otimes \ov{n}_1 + C_2 \ov{n}_2 \otimes \ov{n}_2) \otimes (C_{11} \ov{n}_1 \otimes \ov{s}_1 + C_{12} \ov{n}_1 \otimes \ov{s}_2
++ C_{21} \ov{n}_2 \otimes \ov{s}_1 + C_{22} \ov{n}_2 \otimes \ov{s}_2)
+\end{align*}
+In the second step of computation, we apply $(d \otimes \mu_W \otimes 1_S)$ to the above and obtain:
+\[
+(C_1 d(\ov{n}_1) + C_2 d(\ov{n}_2)) \otimes (C_1 C_{11} \ov{n}_1 \otimes \ov{s}_1 +  C_1 C_{12} \ov{n}_1 \otimes \ov{s}_2 + C_2 C_{21} \ov{n}_2 \otimes \ov{s}_1 + C_2 C_{22} \ov{n}_2 \otimes \ov{s}_2) \qquad (*)
+\]
+In the final step, we apply $(\epsilon_W \otimes 1_S)$ to the above and obtain:
+\begin{eqnarray*}
+C_1 C_1 C_{11}  \langle d(\ov{n}_1) \mid \ov{n}_1\rangle   \ov{s}_1 +  C_1 C_1 C_{12} \langle d(\ov{n}_1) \mid \ov{n}_1 \rangle  \ov{s}_2 + C_1 C_2 C_{21} \langle d(\ov{n}_1) \mid \ov{n}_2\rangle  \ov{s}_1 + C_1 C_2 C_{22} \langle d(\ov{n}_1) \mid  \ov{n}_2 \rangle  \ov{s}_2 \\
++\\
+C_2 C_1 C_{11}  \langle d(\ov{n}_2) \mid \ov{n}_1\rangle   \ov{s}_1 +  C_2 C_1 C_{12} \langle d(\ov{n}_2) \mid \ov{n}_1 \rangle  \ov{s}_2 + C_2 C_2 C_{21} \langle d(\ov{n}_2) \mid \ov{n}_2\rangle  \ov{s}_1 + C_2 C_2 C_{22} \langle d(\ov{n}_2) \mid  \ov{n}_2 \rangle  \ov{s}_2
+\end{eqnarray*}
+Now,  using the linear expansion of $d$, the above is further simplified   to the following:
+\begin{eqnarray*}
+C_1 C_1 C_{11}C_1^1 \ov{s}_1 + C_1 C_1 C_{12} C_1^1 \ov{s}_2 + C_1 C_2 C_{21} C_2^1 \ov{s}_1 + C_1 C_2 C_{22} C_2^1 \ov{s}_2\\
++\\
+C_2C_1C_{11} C_1^2\ov{s}_1 + C_2C_1C_{12} C_1^2 \ov{s}_2 + C_2C_2C_{21} C_2^2 \ov{s}_1 +
+C_2 C_2 C_{22} C_2^2 \ov{s}_2
+\end{eqnarray*}
+
+To obtain a more readable notation,  instead of expanding, which is what we have been doing so far, let us factor things out a bit.  First note that the $(*)$ above is equivalent to the following by linearity of the map $d$:
+\[
+d(C_1 \ov{n}_1 + C_2 \ov{n}_2) \otimes (C_1 C_{11} \ov{n}_1 \otimes \ov{s}_1 +  C_1 C_{12} \ov{n}_1 \otimes \ov{s}_2 + C_2 C_{21} \ov{n}_2 \otimes \ov{s}_1 + C_2 C_{22} \ov{n}_2 \otimes \ov{s}_2) 
+\]
+Then, using a matrix notation where we assume column vectors are elements of $W$ and 2 by 2 matrices elements of $W \otimes S$, observe that the above can be written down as follows:
+\[
+\left(
+ \left ( \begin{array}{cc}
+ C_1 & C_1\\ C_2 & C_2
+  \end{array} \right)
+ \ \odot \ 
+ \left ( \begin{array}{cc}
+ C_{11} & C_{12}\\ C_{21} & C_{22}
+\end{array} \right ) \right)
+ \quad \times \quad
+ d\left ( \begin{array}{c} C_1 \\ C_2 \end{array} \right )
+ \hspace{2cm} (**)
+\]
+Here the map $d$ is being applied to the vector meaning of the word $np$  rather to the basis vectors of the vector space $W$. In the preceding computations, the map $d$ was being applied to the basis vectors and the result of the final step of the computation was expressed in that form.  A routine computations shows that the equivalence between the above assumptions on the applications of the $d$, on words or basis vectors,   in linear expansion form has the following matrix form:
+
+\[
+d\left ( \begin{array}{c} C_1 \\ C_2 \end{array} \right ) \ = \ \left ( \begin{array}{c} C'_1 \\ C'_2 \end{array} \right ) \ = \ 
+\left( \begin{array}{c}
+C_1C_1^1 + C_2 C_1^2\\
+C_1C_2^1 + C_2C_2^2
+\end{array}\right)
+\]
+This can then be replaces and used in the $(**)$ formula. 
+
+
+\smallskip
+\noindent
+{\bf Transitive Example.}
+Consider the same two dimensional $W$ and $S$ spaces for the case of transitive sentences and the same assumption for the vector meaning of the subject $\ov{n}$. Assume further that for the vector of the object we have $\ov{np} = C'_1 \ov{n}_1 + C'_2 \ov{n}_2$. In this case, because the verb is an element of a rank 3 tensor space, that is $\ov{v} \in W \otimes S \otimes W$, it is not possible to express it as a matrix in two dimensions: indeed elements of  rank 3 tensor   spaces are cubes rather than matrices. But opting for not expanding the corresponding tensor and just denoting the cube of the verb by $\ov{v}$, the meaning vector of the transitive sentence with a quantified subject can be expressed as follows
+\[
+\left(
+ \left ( \begin{array}{cc}
+ C_1 & C_1\\ C_2 & C_2
+  \end{array} \right)
+ \ \odot \ 
+\epsilon (\ov{v} \otimes\left (\begin{array}{c} C'_1 \\C'_2 \end{array} \right) ) \right)
+ \quad \times \quad
+ d\left ( \begin{array}{c} C_1 \\ C_2 \end{array} \right )
+\]
+The details of the tedious computations are as before, with the exception that in this case, first the verb has to be applied to its object. This is denoted by the application of the $\epsilon$ map to $\ov{v}$ and matrix form of $\ov{np}$. The rest of the computation is as before: one takes the point wise multiplication of this result with a form of diagonalisation of the vector of the subject, then applies this to the effect of the quantifier map $d$ on the vector of the subject. The result is a sentence vectors in $S$. 
+
+\subsection{Instantiating the map $d$} 
+
+For $\ov{n}_i$ a basis vector of $N$, we instantiate  the map $d$  as follows:
 
 \begin{equation}\label{eqDet}
 Det(\ov{n}_i) = \Phi \{\ov{w} \in N \mid d(\ov{n}_i, \ov{w}) = \alpha\}
@@ -29,80 +191,8 @@ The intuitive reading of the above is that $Det$ of a word $\ov{n}_i$ is a linea
 
 The underlying idea here is that the quantitative way of quantifying in set-theoretic models, which depends on the cardinality of the quantified sets, is now transformed into a geometric way of quantifying where the meaning of the quantified phrase depends on its geometric distance with other words. Hence, a quantified phrase such as `few cats' returns a representative noun (obtained by taking the average of all such nouns) that is far from vector of  `cat'  in the semantic space. This representative noun shares `few' properties with `cat'. A quantified phrase such as `most cats' returns a representative noun that is close the the vector of `cat' and stands for a noun that shares `most' of the properties of `cat'. 
 
+\subsection{Small Corpus-Based Witness.} 
 
-With this instantiation, the  meaning of ``Q Sbj Verb'' is obtained by computing the following:
-
-\[
-(\epsilon_N \otimes 1_S) \circ (Det \otimes  \mu_N \otimes 1_S) \circ (\delta_N \otimes 1_{N \otimes S})\left(\ov{\text{N}} \otimes \ov{\text{VP}}\right)
-\]
-In the first step of computation we have:
-
-\begin{align*}
-(\delta_N \otimes 1_{N \otimes S})\Big(\sum_i C_i \ov{n}_i \otimes \sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k\Big) = 
-(\sum_i C_i \ov{n}_i \otimes \ov{n}_i) \otimes  (\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k)
-\end{align*}
-
-\noindent
-In the second step we obtain: 
-
-\begin{align*}
-(Det \otimes  \mu_N \otimes 1_S)\Big((\sum_i C_i \ov{n}_i \otimes \ov{n}_i) \otimes  (\sum_{jk} C_{jk} \ov{n}_j \otimes \ov{s}_k)\Big) &= 
-\sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \mu(\ov{n}_i \otimes \ov{n}_j) \otimes \ov{s}_k \\
-= \sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \delta_{ij} \ov{n}_i \otimes \ov{s}_k&
-\end{align*}
-
-\noindent
-The final step is as follows:
-
-\begin{align*}
-(\epsilon_{N} \otimes 1_S)  \Big(\sum_{ijk} C_i C_{jk} Det(\ov{n}_i) \otimes \delta_{ij} \ov{n}_i \otimes \ov{s}_k \Big) &=   
-\sum_{ijk} C_i C_{jk} \langle Det(\ov{n}_i) \mid \delta_{ij} \ov{n}_i \rangle \ov{s}_k
-\end{align*}
-
-\noindent
-{\bf Example.} 
-As a distributional example, take $N$ to be the two dimensional space with the basis $\{\ov{n}_1, \ov{n}_2\}$ and $S$ be the two dimensional space with the basis $\{\ov{s}_1, \ov{s}_2\}$.  Suppose the linear expansion of 
-\[
-\ov{\text{N}} := C_1 \ov{n}_1 + C_2 \ov{n}_2
-\]
- and the linear expansion of 
- \[
- \ov{\text{VP}} := C_{11} (\ov{n}_1 \otimes \ov{s}_1) + C_{12} (\ov{n}_1 \otimes \ov{s}_2) +  C_{21} ( \ov{n}_2 \otimes \ov{s}_1) + C_{22} (\ov{n}_2 \otimes \ov{s}_2)
- \]
-    Suppose further the following for the interpretation of the determiner:
- \begin{equation}\label{eqDetLin}
-Det(\ov{\text{Sbj}}) = Det(C_1 \ov{n}_1 + C_2 \ov{n}_2) =  Det(C_1 \ov{n}_1) + Det(C_2 \ov{n}_2) =  C'_1 \ov{n}_1 + C'_2 \ov{n}_2
-\end{equation}
-Then the result of the first step of the computation of a meaning vector for the sentence `Q Sbj Verb' is:
-\[
-(C_1\ov{n}_1 + C_2 \ov{n}_2) \otimes (C_{11} \ov{n}_1 \otimes \ov{s}_1 + C_{12} \ov{n}_1 \otimes \ov{s}_2
-+ C_{21} \ov{n}_2 \otimes \ov{s}_1 + C_{22} \ov{n}_2 \otimes \ov{s}_2)
-\]
-In the second step of computation we obtain:
-\[
-C_1C_{11} Det(\ov{n}_1) \ov{n}_1 \otimes \ov{s}_1  + C_1 C_{12} Det(\ov{n}_1) \ov{n}_1 \otimes \ov{s}_2  + C_2 C_{21} Det(\ov{n}_2) \ov{n}_2 \otimes \ov{s}_1 + C_2 C_{22} Det(\ov{n}_2) \ov{n}_2 \otimes \ov{s}_2
-\]
-Since $Det$ is a linear map, the above is equal to the following:
-\[
-Det(C_1\ov{n}_1) (C_{11} \ov{n}_1 \otimes \ov{s}_1 + C_{12} \ov{n}_1 \otimes \ov{s}_2) + Det(C_2 \ov{n}_2)(C_{21} \ov{n}_2 \otimes \ov{s}_1 + C_{22} \ov{n}_2 \otimes \ov{s}_2)
-\]
-According to the expansion of the assumption in equation \ref{eqDetLin},  the above is equivalent to the following:
-\[
-(C'_1\ov{n}_1) (C_{11} \ov{n}_1 \otimes \ov{s}_1 + C_{12} \ov{n}_1 \otimes \ov{s}_2) + (C'_2 \ov{n}_2)(C_{21} \ov{n}_2 \otimes \ov{s}_1 + C_{22} \ov{n}_2 \otimes \ov{s}_2)
-\]
-Substituting  this in the last step of the computation provide us with the following vector in $S$:
-\begin{equation}\label{eqSent}
-C'_1 C_{11} \ov{s}_1 + C'_1 C_{12} \ov{s}_2 + C'_2 C_{21} \ov{s}_2 + C'_2 C_{22} \ov{s}_2
-\end{equation}
-%Assuming that the basis is fixed, the above can be written in matrix notation as follows:
-%\begin{equation}\label{eqSent}
-%\left ( \begin{array}{cc} C_{11} & C_{21} \\ C_{21} & C_{22} \end{array} \right) \times 
-%\left ( \begin{array}{c} C'_1 \\ C'_2 \end{array} \right) \ = \ \ov{\text{Verb}} \times Det(\ov{\text{Sbj}})
-%\end{equation}
-%
-
-\noindent
-{\bf Small Corpus-Based Witness.} 
 A large scale experimentation  for this model constitutes work in progress.  For the sake of providing  intuitions for the above symbolic constructions, we provide a couple of corpus-based witnesses here. In the distributional models, the most natural instantiation of the distance $d$  in equation \ref{eqDet} is the  co-occurrence distance. For a noun `\emph{n}' and determiners `\emph{few}' and `\emph{most}', we  define these as generally as follows:
 
 \begin{center}

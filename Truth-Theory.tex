@@ -7,7 +7,7 @@ Given the set-theoretical model $(U, \semantics{\ })$ of a language ${\cal L}_{\
 \overline{\semantics{w}} \in {\cal P}{\cal P}(U)
 \]
 represented by the morphism $\{\star\} \to {\cal P}{\cal P}(U)$. 
-
+\item For words with lexical category VP, we have
 \item For words with lexical category V, we have
 \[
 \overline{\semantics{w}} \in   {\cal P}{\cal P}(U) \times  {\cal P}{\cal P}(U) 
@@ -23,15 +23,19 @@ This is a relation on the powerset of powerset of $U$; it encodes the generalise
 
 In this instantiation,   the sentence space is the unit of the tensor,   hence meaning of a sentence with a quantified phrase at its subject position simplifies as follows:
 \[
-\epsilon_{{\cal P}{\cal P}(U)}(\overline{\semantics{d}} \otimes  \mu_{{\cal P}{\cal P}(U)})(\delta_{{\cal P}{\cal P}(U)} \otimes 1_{{{\cal P}{\cal P}(U)}} \otimes \epsilon_{{\cal P}{\cal P}(U)})
+\epsilon_{{\cal P}{\cal P}(U)}(\overline{\semantics{d}} \otimes  \mu_{{\cal P}{\cal P}(U)})(\Delta_{{\cal P}{\cal P}(U)} \otimes 1_{{{\cal P}{\cal P}(U)}} \otimes \epsilon_{{\cal P}{\cal P}(U)}) \circ
 (\overline{\semantics{n}} \otimes \overline{\semantics{{v}}} \otimes \overline{\semantics{np}})
 \]
-
+Similarly, meaning of a sentence with a quantified phrase at its object position simplifies as follows:
+\[
+\epsilon_{{\cal P}{\cal P}(U)} \circ (\mu_{{\cal P}{\cal P}(U)} \otimes \overline{\semantics{d}}) \circ (\epsilon_{{\cal P}{\cal P}(U)} \otimes 1_{{{\cal P}{\cal P}(U)}} \otimes \Delta_{{\cal P}{\cal P}(U)}) \circ (\overline{\semantics{np}} \otimes \overline{\semantics{v}} \otimes \overline{\semantics{n}})
+\]
 
 
 \bigskip
 \noindent
 {\bf Discussion about the choice of ${\cal P}{\cal P}(U)$ as the atomic object}. The reason one should not take $U$ to be the atomic object is that then one has to work with morphisms of the type $I \to U$, which denote elements of $U$, whereas meanings of words are subsets of $U$. The choice of ${\cal P}(U)$ fails because although now we have morphisms of the type $I \to {\cal P}(U)$, which do denote subsets of $U$, the application of the Frobenius $\mu \colon {\cal P}(U) \times {\cal P}(U)$ on them will yield unwanted results, for instance for two subsets $\{m_1, m_2\}$ and $\{m_2, m_3\}$, one wants $\mu$ to return their intersection that is $\{m_3\}$, whereas here it will return the empty set. The choice of ${\cal P}{\cal P}(U)$ is the right choice here, as shown below in the examples and corresponding propositions.   
+
 
 
 
@@ -69,7 +73,7 @@ No\Big({\semantics{\text{man}}}\Big) = \{\emptyset\}
 The goal is to compute the meaning of  ``some men sneeze''. In the first step of computation we obtain (the subscripts are dropped,  they are always ${\cal P}{\cal P}(U)$):
 
 \begin{align*}
-(\delta \otimes 1)\Big(\overline{\semantics{\text{men}}} \otimes \overline{\semantics{\text{sneeze}}}\Big) =&\\
+(\Delta \otimes 1)\Big(\overline{\semantics{\text{men}}} \otimes \overline{\semantics{\text{sneeze}}}\Big) =&\\
   \{(\{m_1\}, \{m_1\}), (\{m_2\}, \{m_2\}), (\{m_1, m_2\}, \{m_1, m_2\}) \} \otimes  \{\{m_1\}, \{c_1\}, \{m_1, c_1\}\} 
 \end{align*}
 
