@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  14 SEP 2014 15:52
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  16 SEP 2014 21:40
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -872,11 +872,15 @@ Non-PDF special ignored!{/usr/local/texlive/2011/texmf-var/fonts/map/pdftex/upd
 map/pdftex.map}]) (./Prelim.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 5.
- [2] [3] [4]
 
-LaTeX Warning: Citation `Penthus' on page 5 undefined on input line 160.
 
-[5] [6] (./tikz/compact-diag.tikz
+LaTeX Warning: Citation `???' on page 2 undefined on input line 8.
+
+[2] [3] [4] [5]
+
+LaTeX Warning: Citation `Penthus' on page 6 undefined on input line 220.
+
+[6] [7] (./tikz/compact-diag.tikz
 Missing character: There is no . in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no a in font nullfont!
@@ -895,7 +899,7 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no t in font nullfont!
-) [7] (./tikz/compact-cap-cup.tikz
+) [8] (./tikz/compact-cap-cup.tikz
 Missing character: There is no . in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no a in font nullfont!
@@ -927,7 +931,7 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no t in font nullfont!
-)) (./Diagrammatic.tex [8] (./tikz/N-NP.tikz
+)) (./Diagrammatic.tex [9] (./tikz/N-NP.tikz
 Missing character: There is no . in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no a in font nullfont!
@@ -971,7 +975,7 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no t in font nullfont!
-) [9]
+) [10]
 (./tikz/V-NP.tikz
 Missing character: There is no . in font nullfont!
 Missing character: There is no e in font nullfont!
@@ -1005,7 +1009,7 @@ Overfull \hbox (134.36761pt too wide) in paragraph at lines 84--93
 
 Underfull \vbox (badness 7030) has occurred while \output is active []
 
- [10]
+ [11]
 (./tikz/Q-Obj-Frob-Sent.tikz
 Missing character: There is no . in font nullfont!
 Missing character: There is no e in font nullfont!
@@ -1032,15 +1036,15 @@ Missing character: There is no t in font nullfont!
 )
 Underfull \vbox (badness 1436) has occurred while \output is active []
 
- [11]
+ [12]
 
 LaTeX Font Warning: Command \small invalid in math mode on input line 137.
 
 ) (./Truth-Theory.tex
 
-LaTeX Warning: Reference `AbsComCloSem' on page 12 undefined on input line 36.
+LaTeX Warning: Reference `AbsComCloSem' on page 13 undefined on input line 36.
 
-[12]
+[13]
 Overfull \hbox (2.88832pt too wide) detected at line 74
 \OML/cmm/m/it/10.95 Some[][][] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 ff\OML/
 cmm/m/it/10.95 m[]\OMS/cmsy/m/n/10.95 g\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.9
@@ -1056,12 +1060,12 @@ Overfull \hbox (12.56367pt too wide) in paragraph at lines 91--91
 [] 
  []
 
-[13]
+[14]
 Overfull \hbox (42.79771pt too wide) in paragraph at lines 137--137
 [] 
  []
 
-[14]) (./Justification.tex [15]) (./VectorSpace.tex [16]
+[15]) (./Justification.tex [16]) (./VectorSpace.tex [17]
 Overfull \hbox (0.77728pt too wide) in paragraph at lines 74--77
 \OT1/ptm/b/n/10.95 Intransitive Ex-am-ple. \OT1/ptm/m/n/10.95 As an ex-am-ple, 
 take $\OML/cmm/m/it/10.95 W$ \OT1/ptm/m/n/10.95 to be the two di-men-sional spa
@@ -1069,7 +1073,7 @@ ce with the ba-sis $\OMS/cmsy/m/n/10.95 f[][]\OML/cmm/m/it/10.95 ; [][]\OMS/cms
 y/m/n/10.95 g$
  []
 
-[17]
+[18]
 Overfull \hbox (28.02145pt too wide) in paragraph at lines 102--102
 [] 
  []
@@ -1090,20 +1094,17 @@ Overfull \hbox (77.81119pt too wide) in alignment at lines 108--112
  [][][] []
  []
 
-[18]) (./Concrete.tex
+[19]) (./Concrete.tex
 
-LaTeX Warning: Citation `CoeckeClarkSadr' on page 19 undefined on input line 13
-.
+LaTeX Warning: Citation `SadrClarkCoecke13' on page 20 undefined on input line 
+12.
 
+[20]
 
-LaTeX Warning: Citation `thisandthat' on page 19 undefined on input line 13.
-
-[19] [20]
-
-LaTeX Warning: Reference `eqSent' on page 21 undefined on input line 88.
+LaTeX Warning: Reference `eqSent' on page 21 undefined on input line 67.
 
 
-LaTeX Warning: Reference `eqSent' on page 21 undefined on input line 88.
+LaTeX Warning: Reference `eqSent' on page 21 undefined on input line 67.
 
 [21]) (./Quant.bbl) [22] (./Quant.aux)
 
@@ -1111,13 +1112,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 19348 strings out of 493633
- 437697 string characters out of 3143378
- 610023 words of memory out of 3000000
- 22095 multiletter control sequences out of 15000+200000
+ 19351 strings out of 493633
+ 437721 string characters out of 3143378
+ 610032 words of memory out of 3000000
+ 22098 multiletter control sequences out of 15000+200000
  27259 words of font info for 71 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 58i,20n,74p,1367b,702s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 58i,20n,74p,1439b,702s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
@@ -1127,15 +1128,16 @@ ve/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
 011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2011
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2011/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2011/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/201
-1/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2011/texmf-
-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2011/texmf-dist/fonts
-/type1/urw/times/utmr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw
-/times/utmri8a.pfb>
-Output written on Quant.pdf (22 pages, 237631 bytes).
+xmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/local/texlive/20
+11/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texliv
+e/2011/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2011/t
+exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2011/texmf-dist/
+fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type
+1/urw/times/utmri8a.pfb>
+Output written on Quant.pdf (22 pages, 240383 bytes).
 PDF statistics:
- 147 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
+ 151 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

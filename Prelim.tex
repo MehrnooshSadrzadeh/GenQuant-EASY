@@ -2,6 +2,66 @@
 \section{Preliminaries}
 \label{prelim}
 
+\subsection{Corpus-Based Vector Space models of Natural Language}
+\label{DistVect}
+
+These models are also referred to by \emph{distributional} models. The idea behind them mainly originates from the work of  Firth \cite{Firth} who argued that the meaning of a word depends on the context in which it often occurs. Based on this idea, computational linguists developed a vector space model for word meanings \cite{???}. We denote such a model with a tuple  $(V_{l[\Sigma]}, \ov{\text{\ }})$, described below:
+\begin{itemize}
+\item $l\subseteq \Sigma \times \Sigma$ is a relation on the vocabulary $\Sigma$ of the language: for each $w \in \Sigma$, we have that $l(w)$ is the canonical form, otherwise known as the lemma, corresponding to the word $w$.   Hence $l[\Sigma]$, which is the image of $l$ on $\Sigma$ is the set of lemmas of the vocabulary $\Sigma$ of a  language.  An example of a lemma is `kill':  the canonical form of  words such as `kill', `kills', `killed', `killing',  etc. 
+\item $V_{l(\Sigma)}$ is a vector space whose basis vectors are the lemmas of the language; we refer to each such basis vectors  by $\ov{v}_i$. 
+\item The meaning of each word $w$ is represented by a vector $\ov{w} = \sum_i C_i \ov{v}_i$, obtained by counting and normalising the number of times $w$ has occurred in the context window of any of the  words in $l^{-1}({v}_i)$.   We refer to each such $C_i$ by `the degree to which $w$ has co-occurred with $\ov{v}_i$. The length of the context window and the normalisation scheme are usually treated as parameters of the model.
+\end{itemize}
+
+Here is an example of such a model:
+
+\begin{figure}[h]
+\begin{center}
+\begin{minipage}{10cm}
+\begin{center}
+\setlength{\unitlength}{0.7mm}
+\begin{picture}(60, 70)
+  \linethickness{0.3mm}
+  \put(26,57){\text{\bf food}}
+  \put(30, 20){\vector(1, 0){45}}
+  \put(77,18){\text{\bf owner}}
+  \put(30, 20){\vector(0, 1){35}}
+  \put(30, 20){\vector(-1, -1){25}}
+  \put(-4,-12){\text{\bf pillow}}
+   
+  \linethickness{0.3mm}
+   
+  \put(30, 20){\begin{color}{blue}\vector(1, 1){18}\end{color}}
+  \put(42,48){\text{\bf \begin{color}{blue}cat\end{color}}}
+  
+  \put(30, 20){\begin{color}{blue}\vector(1, 2){12}\end{color}}
+  \put(50,40){\text{\bf \begin{color}{blue}dog\end{color}}}
+  
+  \put(30, 20){\begin{color}{red}\vector(-2, -1){25}\end{color}}
+  \put(-5,15){\text{\bf \begin{color}{red}sleep\end{color}}}
+  
+  \put(30, 20){\begin{color}{red}\vector(-4, -1){25}\end{color}}
+  \put(-10,6){\text{\bf \begin{color}{red}snooze\end{color}}}
+%  \put(30, 20){\begin{color}{magenta}\vector(-1, 2){14}\end{color}}
+%  \put(-17,50){\text{\bf \begin{color}{magenta}gaze $\otimes$ gesture\end{color}}}
+ \end{picture}
+\end{center}
+
+\vspace{0.9cm}
+\end{minipage}
+\end{center}
+\caption{An example of a  vector space model of meaning}
+\label{fig:VectMod}
+\end{figure}
+
+In Figure \ref{fig:VectMod}, for instance for $n=5$, the coordinate of cat on food is the normalised count of the number of times cat has occurred 5 words before or after any  word whose lemma is food. A normalisation scheme is to divide the number of occurrences by the total number of times a word has occurred in a corpus. 
+
+
+
+The most mainstream  application of distributional models has been to deciding about the degree of similarity between meanings  of words \cite{Curran}. The cosine of the angle of the vector representations of words has proven to be a good measure of such similarity decisions. This is backed by the  philosophy behind these models, which implies that words that have similar meanings often occur in the same context. 
+For instance in the above example, we have a high degree of similarity between meanings of words  cat and dog and less so between dog and snooze. 
+
+
+
 \subsection{Generalised Quantifier Theory in Natural Language}
 \label{GenQuant}
 
@@ -264,9 +324,10 @@ The yanking equalities directly follow from the preroup inequalities on the adjo
 
 \medskip
 \noindent
-{\bf Finite Dimensional Vector Spaces} together with  linear maps  form a compact
-closed category, $\FdVect$.  Finite dimensional
-vector spaces $V, W$ are objects; linear maps $f
+{\bf Finite Dimensional Vector Spaces.}
+These structures  together with  linear maps  form a compact
+closed category, which we refer to as $\FdVect$.  Finite dimensional
+vector spaces $V, W$ are objects of this category; linear maps $f
 \colon V \to W$ are its morphisms with composition being the
 composition of linear maps. The tensor product $V
 \otimes W$ is the 
@@ -274,7 +335,7 @@ linear algebraic tensor product,
 %tensor of the category, 
 whose unit is the scalar
 field of vector spaces; in our case this is the field of reals
-$\mathbb{R}$.  The tensor is symmetric as there is an 
+$\mathbb{R}$.  Here, there is  a naturual
 isomorphism $V \otimes W \cong W \otimes V$. As a result of the
 symmetry of the tensor, the two adjoints reduce to one and we obtain the  isomorphism $V^l \cong V^r \cong V^*$, 
 where $V^*$ is the dual space of $V$. When the
@@ -364,10 +425,10 @@ fact that a relation between sets $A\times B$ and $C$ is equivalently a relation
 
 \begin{eqnarray*}
 &\epsilon^l  =  \epsilon^r &\colon   S \times S \to \{\star\} \quad \mbox{given by} \quad
-\{((s, s), \star) \mid s \in S \}\\
+\{((s_i, s_j), \star) \mid s_i, s_j \in S, s_i = s_j \}\\
 &\eta^l = \eta^r& \colon   \{\star\}  \to S \times S
 \quad \mbox{given by} \quad 
-\{(\star, (s, s)) \mid s\in S\}
+\{(\star, (s_i, s_j)) \mid s_i, s_j \in S, s_i = s_j\}
 \end{eqnarray*}
 
 
@@ -380,12 +441,12 @@ relations, as described below:
 
 \begin{eqnarray*}
 &\delta &\colon   S \to S \times S \quad \mbox{given by} \quad
-\{(s, (s, s)) \mid s \in S \}\\
+\{(s_i, (s_j, s_k)) \mid s_i, s_j, s_k \in S, s_i = s_j  = s_k\}\\
 & \mu & \colon   S \times S \to S
 \quad \mbox{given by} \quad 
-\{(s, s), s) \mid s \in S\}\\
-& \iota& \colon S \to  \{\star\}    \quad \mbox{given by} \quad \{(s, \star) \mid s \in S\}\\
-&\zeta& \colon  \{\star\}  \to S  \quad \mbox{given by} \quad \{(\star, s) \mid s \in S\}
+\{(s_i, s_j), s_k) \mid s_i, s_j, s_k\in S, s_i = s_j= s_k\}\\
+& \iota& \colon S \to  \{\star\}    \quad \mbox{given by} \quad \{(s_i, \star) \mid s_i \in S\}\\
+&\zeta& \colon  \{\star\}  \to S  \quad \mbox{given by} \quad \{(\star, s_i) \mid s_i \in S\}
 \end{eqnarray*}
 
 For the details of verifying that for each of the two examples above,  the corresponding conditions hold see \cite{CoeckePaq}. 

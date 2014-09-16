@@ -3,10 +3,14 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Quant.aux
 The style file: splncs03.bst
 Database file #1: quant.bib.bib
+Warning--I didn't find a database entry for "???"
+Warning--I didn't find a database entry for "Penthus"
+Warning--I didn't find a database entry for "CoeckeClarkSadr"
+Warning--I didn't find a database entry for "thisandthat"
 Warning--missing publisher in Firth
 You've used 12 entries,
             2785 wiz_defined-function locations,
-            679 strings with 6703 characters,
+            685 strings with 6761 characters,
 and the built_in function-call counts, 6915 in all, are:
 = -- 601
 > -- 155
@@ -45,4 +49,4 @@ warning$ -- 1
 while$ -- 59
 width$ -- 14
 write$ -- 129
-(There was 1 warning)
+(There were 5 warnings)
