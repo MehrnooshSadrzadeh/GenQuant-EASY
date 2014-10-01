@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  16 SEP 2014 21:43
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  1 OCT 2014 14:56
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -864,23 +864,68 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
  (./Intro.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 7.
+
+
+LaTeX Warning: Citation `Firth' on page 1 undefined on input line 7.
+
+
+LaTeX Warning: Citation `Curran' on page 1 undefined on input line 7.
+
+
+LaTeX Warning: Citation `Coeckeetal' on page 1 undefined on input line 7.
+
+
+LaTeX Warning: Citation `BaroniZam' on page 1 undefined on input line 7.
+
+
+LaTeX Warning: Citation `GrefenSadr' on page 1 undefined on input line 7.
+
+
+LaTeX Warning: Citation `kartsaklis2012' on page 1 undefined on input line 7.
+
+
+LaTeX Warning: Citation `BarwiseCooper81' on page 1 undefined on input line 7.
+
+
+LaTeX Warning: Citation `Coeckeetal' on page 1 undefined on input line 12.
 
 [1
 
 
 Non-PDF special ignored!{/usr/local/texlive/2011/texmf-var/fonts/map/pdftex/upd
 map/pdftex.map}]) (./Prelim.tex
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 5.
+
+LaTeX Warning: Citation `Firth' on page 2 undefined on input line 8.
 
 
 LaTeX Warning: Citation `???' on page 2 undefined on input line 8.
 
-[2] [3] [4] [5]
+[2]
+
+LaTeX Warning: Citation `Curran' on page 3 undefined on input line 60.
+
+
+LaTeX Warning: Citation `BarwiseCooper81' on page 3 undefined on input line 68.
+
+
+[3] [4] [5]
 
 LaTeX Warning: Citation `Penthus' on page 6 undefined on input line 220.
 
-[6] [7] (./tikz/compact-diag.tikz
+
+LaTeX Warning: Citation `KellyLaplaza80' on page 6 undefined on input line 249.
+
+
+
+LaTeX Warning: Citation `Kock72' on page 6 undefined on input line 249.
+
+[6] [7]
+
+LaTeX Warning: Citation `CoeckePaq' on page 8 undefined on input line 452.
+
+(./tikz/compact-diag.tikz
 Missing character: There is no . in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no a in font nullfont!
@@ -1065,7 +1110,15 @@ Overfull \hbox (42.79771pt too wide) in paragraph at lines 137--137
 [] 
  []
 
-[15]) (./Justification.tex [16]) (./VectorSpace.tex [17]
+[15]) (./Justification.tex
+
+LaTeX Warning: Citation `CoeckePaquettePavlovic09' on page 16 undefined on inpu
+t line 10.
+
+
+LaTeX Warning: Citation `CoeckePaq' on page 16 undefined on input line 10.
+
+[16]) (./VectorSpace.tex [17]
 Overfull \hbox (0.77728pt too wide) in paragraph at lines 74--77
 \OT1/ptm/b/n/10.95 Intransitive Ex-am-ple. \OT1/ptm/m/n/10.95 As an ex-am-ple, 
 take $\OML/cmm/m/it/10.95 W$ \OT1/ptm/m/n/10.95 to be the two di-men-sional spa
@@ -1096,26 +1149,52 @@ Overfull \hbox (77.81119pt too wide) in alignment at lines 108--112
 
 [19]) (./Concrete.tex
 
+LaTeX Warning: Citation `kartsaklis2012' on page 20 undefined on input line 12.
+
+
+
+LaTeX Warning: Citation `kartsaklis2012' on page 20 undefined on input line 12.
+
+
+
 LaTeX Warning: Citation `SadrClarkCoecke13' on page 20 undefined on input line 
 12.
 
+
+LaTeX Warning: Citation `GrefenSadr' on page 20 undefined on input line 12.
+
 [20]
 
-LaTeX Warning: Reference `eqSent' on page 21 undefined on input line 67.
+LaTeX Warning: Citation `GrefenSadr' on page 21 undefined on input line 38.
 
 
-LaTeX Warning: Reference `eqSent' on page 21 undefined on input line 67.
+LaTeX Warning: Citation `GrefenSadr' on page 21 undefined on input line 40.
 
-[21]) (./Quant.bbl) [22] (./Quant.aux)
+
+LaTeX Warning: Citation `Erf' on page 21 undefined on input line 55.
+
+[21]
+
+LaTeX Warning: Citation `ML' on page 22 undefined on input line 98.
+
+
+LaTeX Warning: Reference `eqSent' on page 22 undefined on input line 98.
+
+
+LaTeX Warning: Reference `eqSent' on page 22 undefined on input line 98.
+
+[22])
+No file Quant.bbl.
+[23] (./Quant.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 19351 strings out of 493633
- 437721 string characters out of 3143378
- 610032 words of memory out of 3000000
- 22098 multiletter control sequences out of 15000+200000
+ 19348 strings out of 493633
+ 437689 string characters out of 3143378
+ 609993 words of memory out of 3000000
+ 22097 multiletter control sequences out of 15000+200000
  27259 words of font info for 71 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  58i,20n,74p,1439b,702s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1134,10 +1213,10 @@ e/2011/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2011/t
 exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2011/texmf-dist/
 fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type
 1/urw/times/utmri8a.pfb>
-Output written on Quant.pdf (22 pages, 240262 bytes).
+Output written on Quant.pdf (23 pages, 238552 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
+ 154 PDF objects out of 1000 (max. 8388607)
+ 98 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
